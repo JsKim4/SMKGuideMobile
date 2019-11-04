@@ -13,6 +13,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
         <TextView
+            android:id="@+id/tvTobaccoName"
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:text="Tobacco Name"
@@ -37,6 +38,7 @@
                     android:text="Price : ">
                 </TextView>
                 <TextView
+                    android:id="@+id/tvPrice"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="match_parent"
@@ -61,6 +63,7 @@
                     android:text="Type : ">
                 </TextView>
                 <TextView
+                    android:id="@+id/tvType"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="match_parent"
@@ -88,6 +91,7 @@
                     android:text="Nicotine : ">
                 </TextView>
                 <TextView
+                    android:id="@+id/tvNicotine"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="match_parent"
@@ -112,6 +116,7 @@
                     android:text="Tar : ">
                 </TextView>
                 <TextView
+                    android:id="@+id/tvTar"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="match_parent"

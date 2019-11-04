@@ -6,16 +6,17 @@
     android:padding="30dp">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="40dp"
         android:orientation="horizontal">
         <Button
+            android:id="@+id/btnMost"
             android:layout_width="55dp"
             android:layout_height="40dp"
             android:text="Most"
             android:textSize="8dp"
             android:layout_gravity="center"></Button>
         <Button
+            android:id="@+id/btnBest"
             android:layout_width="55dp"
             android:layout_height="40dp"
             android:text="BEST"
@@ -27,9 +28,11 @@
             android:orientation="horizontal"
             android:gravity="right">
             <EditText
+                android:id="@+id/etSearchTobacco"
                 android:layout_width="120dp"
                 android:layout_height="match_parent"></EditText>
             <Button
+                android:id="@+id/btnSearchTobacco"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:text="S"
@@ -38,9 +41,31 @@
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_height="40dp"
+        android:orientation="horizontal">
         <Spinner
+            android:id="@+id/spBrand"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"></Spinner>
+        <Spinner
+            android:id="@+id/spCompany"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"></Spinner>
+        <Spinner
+            android:id="@+id/spCountry"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"></Spinner>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+        <Spinner
+            android:id="@+id/spType"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"></Spinner>
@@ -57,28 +82,12 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
-        <Spinner
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"></Spinner>
-        <Spinner
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"></Spinner>
-        <Spinner
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"></Spinner>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="10">
-
+        android:layout_weight="10"
+        android:orientation="vertical">
         <ListView
+            android:id="@+id/listTobacco"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
     </LinearLayout>
 </LinearLayout>
