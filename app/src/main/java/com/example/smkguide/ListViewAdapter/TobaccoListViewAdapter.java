@@ -1,31 +1,20 @@
 package com.example.smkguide.ListViewAdapter;
 
 import android.content.Context;
-import android.os.AsyncTask;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.smkguide.R;
 import com.example.smkguide.domain.Criteria;
 import com.example.smkguide.domain.TobaccoVO;
 
-import org.w3c.dom.Text;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 
 import lombok.NoArgsConstructor;
+
 
 @NoArgsConstructor
 public class TobaccoListViewAdapter extends BaseAdapter {
