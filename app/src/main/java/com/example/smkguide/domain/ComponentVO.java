@@ -1,5 +1,12 @@
 package com.example.smkguide.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class ComponentVO {	//company, country, brand, type 묶음
     Long id;			// 타입별 고유번호
     String name;		// 타입별 이름
