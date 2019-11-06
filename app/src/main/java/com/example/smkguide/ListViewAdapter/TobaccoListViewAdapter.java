@@ -75,6 +75,7 @@ public class TobaccoListViewAdapter extends BaseAdapter {
 
         // 화면에 표시될 View(Layout이 inflate된)으로부터 위젯에 대한 참조 획득
         TextView tobaccoName = (TextView)convertView.findViewById(R.id.tvTobaccoName);
+        TextView price = (TextView)convertView.findViewById(R.id.tvPrice);
         TextView type = (TextView)convertView.findViewById(R.id.tvType);
         TextView nicotine = (TextView)convertView.findViewById(R.id.tvNicotine);
         TextView tar = (TextView)convertView.findViewById(R.id.tvTar);
@@ -83,7 +84,8 @@ public class TobaccoListViewAdapter extends BaseAdapter {
 
         // 아이템 내 각 위젯에 데이터 반영
         tobaccoName.setText(listViewItem.getTobaccoName());
-//        type.setText(listViewItem.getType().getName());
+        price.setText(String.valueOf(listViewItem.getPrice()));
+        type.setText(listViewItem.getType().getName());
         nicotine.setText(String.valueOf(listViewItem.getNicotine()));
         tar.setText(String.valueOf(listViewItem.getTar()));
 

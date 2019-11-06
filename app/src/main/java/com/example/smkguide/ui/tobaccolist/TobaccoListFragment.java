@@ -27,6 +27,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
+import lombok.Data;
+
 public class TobaccoListFragment extends Fragment {
 
     public static TobaccoListFragment newInstance(){
@@ -35,19 +37,29 @@ public class TobaccoListFragment extends Fragment {
     TobaccoListViewAdapter adapter;
 
     ListView tobaccoListView ;
+    TobaccoTask task;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_tobaccolist, container, false);
 
         tobaccoListView = (ListView)root.findViewById(R.id.listTobacco);
-        TobaccoTask task = new TobaccoTask(getActivity(),new Criteria());
-        task.execute("http://ggi4111.cafe24.com/mobile/tobacco/list.json");
         return root;
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        task.cancel(true);
+    }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        task = new TobaccoTask(getActivity(),new Criteria());
+        task.execute("http://ggi4111.cafe24.com/mobile/tobacco/list.json");
+    }
 
-
+    @Data
     @SuppressLint("NewApi")
     public class TobaccoTask extends AsyncTask<String,Void, ArrayList<TobaccoVO>> {
         private Activity context;
@@ -90,7 +102,7 @@ public class TobaccoListFragment extends Fragment {
                     for(int i=0; i<array.length(); i++)
                     {
                         JSONObject tobaccoObject = array.getJSONObject(i);
-
+                        Log.i("tobaccoVV",tobaccoObject.toString());
                         list.add(new TobaccoVO(tobaccoObject));
 
                     }
