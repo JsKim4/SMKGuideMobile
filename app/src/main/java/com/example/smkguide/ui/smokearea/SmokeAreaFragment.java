@@ -23,33 +23,7 @@ public class SmokeAreaFragment extends Fragment {
 
 
 
-<<<<<<< Updated upstream
         return root;
-=======
-        if(mapView != null)
-        {
-            mapView.onCreate(savedInstanceState);
-        }
-    }
-
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
-        LatLng SEOUL = new LatLng(37.584678, 126.925189);
-
-        MarkerOptions markerOptions = new MarkerOptions();
-
-        markerOptions.position(SEOUL);
-
-        markerOptions.title("명지전문대");
-
-        markerOptions.snippet("학교");
-
-        googleMap.addMarker(markerOptions);
-
-        googleMap.moveCamera(CameraUpdateFactory.newLatLng(SEOUL));
-        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(SEOUL,13));
-
->>>>>>> Stashed changes
     }
 
 
