@@ -1,5 +1,7 @@
 package com.example.smkguide.ListViewAdapter;
 
+import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -15,6 +17,8 @@ import com.example.smkguide.R;
 import com.example.smkguide.domain.Criteria;
 import com.example.smkguide.domain.TobaccoVO;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.w3c.dom.Text;
 
 import java.io.BufferedReader;
@@ -32,6 +36,10 @@ public class TobaccoListViewAdapter extends BaseAdapter {
     private ArrayList<TobaccoVO> list = new ArrayList<TobaccoVO>();
     private Criteria cri = new Criteria();
 
+    public TobaccoListViewAdapter(ArrayList<TobaccoVO>list){
+        this.list = list;
+        Log.i("list",list.toString());
+    }
     public TobaccoListViewAdapter(Criteria cri){
         this.cri = cri;
 
@@ -75,10 +83,11 @@ public class TobaccoListViewAdapter extends BaseAdapter {
 
         // 아이템 내 각 위젯에 데이터 반영
         tobaccoName.setText(listViewItem.getTobaccoName());
-        type.setText(listViewItem.getType().getName());
+//        type.setText(listViewItem.getType().getName());
         nicotine.setText(String.valueOf(listViewItem.getNicotine()));
         tar.setText(String.valueOf(listViewItem.getTar()));
 
         return convertView;
     }
+
 }

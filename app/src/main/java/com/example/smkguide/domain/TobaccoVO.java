@@ -1,5 +1,7 @@
 package com.example.smkguide.domain;
 
+import org.json.JSONObject;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -28,5 +30,20 @@ public class TobaccoVO {        //담배
         this.setQuantity(20D);
         this.setPrice(4500L);
         this.setTobaccoId(tobaccoId);
+    }
+
+    public TobaccoVO(JSONObject jObject){
+        try {
+            this.setTobaccoId(jObject.getLong("tobaccoId"));
+            this.setTobaccoName(jObject.getString("tobaccoName"));
+            this.setDeleteFlag(jObject.getBoolean("deleteFlag"));
+            this.setTar(jObject.getDouble("tar"));
+            this.setNicotine(jObject.getDouble("nicotine"));
+            this.setPrice(jObject.getLong("price"));
+            this.setCommentCnt(jObject.getInt("commentCnt"));
+        }
+        catch ( Exception e){
+            e.printStackTrace();
+        }
     }
 }
