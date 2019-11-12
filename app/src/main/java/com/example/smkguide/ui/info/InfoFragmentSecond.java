@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import com.example.smkguide.R;
 
 public class InfoFragmentSecond extends Fragment {
+
     public static InfoFragmentSecond newInstance(){
         return new InfoFragmentSecond();
     }
@@ -25,8 +25,8 @@ public class InfoFragmentSecond extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        RelativeLayout layout = (RelativeLayout)inflater.inflate(R.layout.fragment_info_second,
-                container, false);
+        View layout = inflater.inflate(R.layout.fragment_info_second, container, false);
+
         return layout;
     }
 }
