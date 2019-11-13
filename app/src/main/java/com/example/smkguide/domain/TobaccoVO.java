@@ -1,5 +1,9 @@
 package com.example.smkguide.domain;
 
+import android.util.Log;
+
+import org.json.JSONObject;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -29,4 +33,31 @@ public class TobaccoVO {        //담배
         this.setPrice(4500L);
         this.setTobaccoId(tobaccoId);
     }
+
+    public TobaccoVO(JSONObject jObject){
+        try {
+            Log.d("tobaccoVo json", jObject.toString());
+            this.setTobaccoId(jObject.getLong("tobaccoId"));
+            this.setTobaccoName(jObject.getString("tobaccoName"));
+            this.setDeleteFlag(jObject.getBoolean("deleteFlag"));
+            this.setTar(jObject.getDouble("tar"));
+            this.setNicotine(jObject.getDouble("nicotine"));
+            this.setPrice(jObject.getLong("price"));
+            this.setType(getComponent(jObject.getJSONObject("type")));
+            this.setBrand(getComponent(jObject.getJSONObject("brand")));
+            this.setCompany(getComponent(jObject.getJSONObject("company")));
+            this.setCountry(getComponent(jObject.getJSONObject("country")));
+            this.setCommentCnt(jObject.getInt("commentCnt"));
+            this.setCommentCnt(jObject.getInt("commentCnt"));
+        }
+        catch ( Exception e){
+            e.printStackTrace();
+        }
+
+    }
+    public ComponentVO getComponent(JSONObject jObject){
+        ComponentVO vo = new ComponentVO(jObject);
+        return vo;
+    }
+
 }
