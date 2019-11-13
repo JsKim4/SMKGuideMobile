@@ -2,13 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical"
-    android:background="@drawable/ic_launcher_background"> <!-- 배경사진 추가 -->
+    android:orientation="vertical"> <!-- 배경사진 추가 -->
 
     <FrameLayout
         android:id="@+id/fragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <ScrollView
             android:id="@+id/mainScrollView"
             android:layout_width="match_parent"
@@ -19,7 +19,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center_horizontal"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/mainText"
@@ -27,8 +27,8 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:text="Info 메인화면 입니다."
-                    android:textColor="#FFFFFF"
-                    android:textAppearance="?android:attr/textAppearanceLarge" />
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="#000000" />
 
                 <!--ImageView
                     android:id="@+id/imageView1"
@@ -46,26 +46,25 @@
                     android:fadeScrollbars="false"
                     android:scrollbarSize="10dp"
                     android:scrollbarStyle="outsideInset"
-                    android:scrollbarThumbHorizontal="@drawable/scrollbar_btn"
-                    android:scrollbarTrackHorizontal="@drawable/scrollbar_bg">
+                    android:scrollbarThumbHorizontal="@drawable/scrollbar_btn">
 
                     <LinearLayout
                         android:id="@+id/linearLayout1_1"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="horizontal" >
+                        android:orientation="horizontal">
 
                         <LinearLayout
                             android:id="@+id/linearLayout1_2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical" >
+                            android:orientation="vertical">
 
                             <LinearLayout
                                 android:id="@+id/linearLayout1_3"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:orientation="horizontal" >
+                                android:orientation="horizontal">
 
                                 <TextView
                                     android:id="@+id/textView1_1"
@@ -86,28 +85,28 @@
                                 android:id="@+id/linearLayout1_4"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:orientation="vertical" >
+                                android:orientation="vertical">
 
                                 <TextView
                                     android:id="@+id/textView1_2"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_margin="10dp"
-                                    android:text="예시111111111111111111111111111111111111111111111111111111111"/>
+                                    android:text="예시111111111111111111111111111111111111111111111111111111111" />
 
                                 <TextView
                                     android:id="@+id/textView1_3"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_margin="10dp"
-                                    android:text="예시222222222222222222222222222222222222222222222222222222222"/>
+                                    android:text="예시222222222222222222222222222222222222222222222222222222222" />
 
                                 <TextView
                                     android:id="@+id/textView1_4"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_margin="10dp"
-                                    android:text="예시3333333333333333333333333333333333333333333333333333333333"/>
+                                    android:text="예시3333333333333333333333333333333333333333333333333333333333" />
                             </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>
@@ -122,26 +121,25 @@
                     android:fadeScrollbars="false"
                     android:scrollbarSize="10dp"
                     android:scrollbarStyle="outsideInset"
-                    android:scrollbarThumbHorizontal="@drawable/scrollbar_btn"
-                    android:scrollbarTrackHorizontal="@drawable/scrollbar_bg">
+                    android:scrollbarThumbHorizontal="@drawable/scrollbar_btn">
 
                     <LinearLayout
                         android:id="@+id/linearLayout2_1"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="horizontal" >
+                        android:orientation="horizontal">
 
                         <LinearLayout
                             android:id="@+id/linearLayout2_2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical" >
+                            android:orientation="vertical">
 
                             <LinearLayout
                                 android:id="@+id/linearLayout2_3"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:orientation="horizontal" >
+                                android:orientation="horizontal">
 
                                 <TextView
                                     android:id="@+id/textView2_1"
@@ -162,28 +160,28 @@
                                 android:id="@+id/linearLayout2_4"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:orientation="vertical" >
+                                android:orientation="vertical">
 
                                 <TextView
                                     android:id="@+id/textView2_2"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_margin="10dp"
-                                    android:text="예시11111111111111111111111111111111111111111111111111"/>
+                                    android:text="예시11111111111111111111111111111111111111111111111111" />
 
                                 <TextView
                                     android:id="@+id/textView2_3"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_margin="10dp"
-                                    android:text="예시2222222222222222222222222222222222222222222222222"/>
+                                    android:text="예시2222222222222222222222222222222222222222222222222" />
 
                                 <TextView
                                     android:id="@+id/textView2_4"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_margin="10dp"
-                                    android:text="예시33333333333333333333333333333333333333333333333333"/>
+                                    android:text="예시33333333333333333333333333333333333333333333333333" />
                             </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>
@@ -198,26 +196,25 @@
                     android:fadeScrollbars="false"
                     android:scrollbarSize="10dp"
                     android:scrollbarStyle="outsideInset"
-                    android:scrollbarThumbHorizontal="@drawable/scrollbar_btn"
-                    android:scrollbarTrackHorizontal="@drawable/scrollbar_bg">
+                    android:scrollbarThumbHorizontal="@drawable/scrollbar_btn">
 
                     <LinearLayout
                         android:id="@+id/linearLayout3_1"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="horizontal" >
+                        android:orientation="horizontal">
 
                         <LinearLayout
                             android:id="@+id/linearLayout3_2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical" >
+                            android:orientation="vertical">
 
                             <LinearLayout
                                 android:id="@+id/linearLayout3_3"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:orientation="horizontal" >
+                                android:orientation="horizontal">
 
                                 <TextView
                                     android:id="@+id/textView3_1"
@@ -238,28 +235,28 @@
                                 android:id="@+id/linearLayout3_4"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:orientation="vertical" >
+                                android:orientation="vertical">
 
                                 <TextView
                                     android:id="@+id/textView3_2"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_margin="10dp"
-                                    android:text="예시1111111111111111111111111111111111111111111111111111111"/>
+                                    android:text="예시1111111111111111111111111111111111111111111111111111111" />
 
                                 <TextView
                                     android:id="@+id/textView3_3"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_margin="10dp"
-                                    android:text="예시222222222222222222222222222222222222222222222222222222"/>
+                                    android:text="예시222222222222222222222222222222222222222222222222222222" />
 
                                 <TextView
                                     android:id="@+id/textView3_4"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_margin="10dp"
-                                    android:text="예시333333333333333333333333333333333333333333333333333333"/>
+                                    android:text="예시333333333333333333333333333333333333333333333333333333" />
                             </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>
@@ -274,26 +271,25 @@
                     android:fadeScrollbars="false"
                     android:scrollbarSize="10dp"
                     android:scrollbarStyle="outsideInset"
-                    android:scrollbarThumbHorizontal="@drawable/scrollbar_btn"
-                    android:scrollbarTrackHorizontal="@drawable/scrollbar_bg">
+                    android:scrollbarThumbHorizontal="@drawable/scrollbar_btn">
 
                     <LinearLayout
                         android:id="@+id/linearLayout4_1"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="horizontal" >
+                        android:orientation="horizontal">
 
                         <LinearLayout
                             android:id="@+id/linearLayout4_2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical" >
+                            android:orientation="vertical">
 
                             <LinearLayout
                                 android:id="@+id/linearLayout4_3"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:orientation="horizontal" >
+                                android:orientation="horizontal">
 
                                 <TextView
                                     android:id="@+id/textView4_1"
@@ -314,14 +310,14 @@
                                 android:id="@+id/linearLayout4_4"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:orientation="horizontal" >
+                                android:orientation="horizontal">
 
                                 <TextView
                                     android:id="@+id/textView4_2"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_margin="10dp"
-                                    android:text="명지전문대학 전자공학과 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~"/>
+                                    android:text="명지전문대학 전자공학과 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~" />
 
                             </LinearLayout>
                         </LinearLayout>

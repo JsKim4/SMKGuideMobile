@@ -80,7 +80,7 @@ public class SmokeAreaFragment extends Fragment implements OnMapReadyCallback{
                     Address address = adressList.get(0);
                     LatLng latLng = new LatLng(address.getLatitude(),address.getLongitude());
                     map.addMarker(new MarkerOptions().position(latLng).title(location));
-                    map.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,10));
+                    map.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,17));
                 }
 
                 return false;
