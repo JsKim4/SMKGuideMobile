@@ -1,42 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:gravity="center_horizontal">
 
-    <LinearLayout
+    <fragment
+
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:gravity="right"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="212dp"
-            android:layout_height="match_parent"
-            android:background="@drawable/edge"
-            android:text="" />
-
-        <Button
-            android:id="@+id/Search"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="검색" />
-
-    </LinearLayout>
-    <com.google.android.gms.maps.MapView
-        android:id="@+id/map"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:name="com.google.android.gms.maps.MapFragment"
+        android:layout_height="wrap_content"
+        android:id="@+id/google_map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
         />
 
+    <SearchView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/sv_location"
+        android:queryHint="Search"
+        android:iconifiedByDefault="false"
+        android:layout_margin="10dp"
+        android:elevation="5dp"
+        android:background="@drawable/smokearea_searchbar_bg"/>
 
 
 
 
 
-</LinearLayout>
+
+
+
+
+
+</RelativeLayout>

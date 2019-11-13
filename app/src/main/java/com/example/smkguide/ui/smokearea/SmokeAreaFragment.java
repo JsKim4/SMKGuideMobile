@@ -1,31 +1,42 @@
 package com.example.smkguide.ui.smokearea;
 
+import android.location.Address;
+import android.location.Geocoder;
+
 import android.os.Bundle;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
+
 import androidx.annotation.NonNull;
 
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
 import com.example.smkguide.R;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
 
 
 public class SmokeAreaFragment extends Fragment implements OnMapReadyCallback{
 
     private MapView mapView = null;
-
-
-
+    SupportMapFragment mapFragment;
+    SearchView searchView;
+    GoogleMap map;
 
 
     public static SmokeAreaFragment newInstance(){
@@ -39,73 +50,61 @@ public class SmokeAreaFragment extends Fragment implements OnMapReadyCallback{
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
-                             @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+                             @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_smokearea, container, false);
 
+        searchView = (SearchView)root.findViewById(R.id.sv_location);
+        SupportMapFragment mapFragment = (SupportMapFragment) this.getChildFragmentManager()
+                .findFragmentById(R.id.google_map);
+        mapFragment.getMapAsync(this);
 
-        mapView =(MapView)root.findViewById(R.id.map);
-        mapView.getMapAsync(this);
+
+
+
+
+
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                String location = searchView.getQuery().toString();
+                List<Address> adressList = null;
+
+                if(location != null || !location.equals("")){
+                    Geocoder geocoder = new Geocoder(getActivity(),Locale.getDefault());
+                    try {
+                        adressList = geocoder.getFromLocationName(location,1);
+                    }catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    Address address = adressList.get(0);
+                    LatLng latLng = new LatLng(address.getLatitude(),address.getLongitude());
+                    map.addMarker(new MarkerOptions().position(latLng).title(location));
+                    map.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,10));
+                }
+
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                return false;
+            }
+        });
+        mapFragment.getMapAsync(this);
+
+
+
 
         return root;
 
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        mapView.onStart();
-    }
 
-    @Override
-    public void onStop() {
-        super.onStop();
-        mapView.onStop();
-    }
-
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        mapView.onSaveInstanceState(outState);
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        mapView.onResume();
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        mapView.onPause();
-    }
-
-    @Override
-    public void onLowMemory() {
-        super.onLowMemory();
-        mapView.onLowMemory();
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        mapView.onLowMemory();
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
-        //액티비티가 처음 생성될 때 실행되는 함수
-
-        if(mapView != null)
-        {
-            mapView.onCreate(savedInstanceState);
-        }
-    }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
+        map = googleMap;
         LatLng SEOUL = new LatLng(37.584678, 126.925189);
 
         MarkerOptions markerOptions = new MarkerOptions();
@@ -120,7 +119,9 @@ public class SmokeAreaFragment extends Fragment implements OnMapReadyCallback{
 
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(SEOUL));
 
-        googleMap.animateCamera(CameraUpdateFactory.zoomTo(13));
+        googleMap.animateCamera(CameraUpdateFactory.zoomTo(17));
+
+
     }
 
 
