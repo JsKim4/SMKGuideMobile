@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical"> <!-- 배경사진 추가 -->
+    android:orientation="vertical">
 
     <FrameLayout
         android:id="@+id/fragment"
@@ -21,21 +21,15 @@
                 android:gravity="center_horizontal"
                 android:orientation="vertical">
 
-                <TextView
+                <!--TextView
                     android:id="@+id/mainText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:text="Info 메인화면 입니다."
+                    android:textStyle="bold"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="#000000" />
-
-                <!--ImageView
-                    android:id="@+id/imageView1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:src="@drawable/~~~~" /-->
+                    android:textColor="#ffffffff" /-->
 
                 <HorizontalScrollView
                     android:id="@+id/horizontalScrollView1"
@@ -71,6 +65,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_margin="10dp"
+                                    android:textStyle="bold"
                                     android:text="공지사항"
                                     android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -146,6 +141,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_margin="10dp"
+                                    android:textStyle="bold"
                                     android:text="뉴스"
                                     android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -221,7 +217,8 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_margin="10dp"
-                                    android:text="법률"
+                                    android:textStyle="bold"
+                                    android:text="게시판"
                                     android:textAppearance="?android:attr/textAppearanceLarge" />
 
                                 <Button
@@ -296,14 +293,10 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_margin="10dp"
-                                    android:text="제작자"
+                                    android:textStyle="bold"
+                                    android:text="개발자"
                                     android:textAppearance="?android:attr/textAppearanceLarge" />
 
-                                <Button
-                                    android:id="@+id/btn_fourth"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="더보기" />
                             </LinearLayout>
 
                             <LinearLayout
@@ -317,7 +310,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_margin="10dp"
-                                    android:text="명지전문대학 전자공학과 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~" />
+                                    android:text="명지전문대학 전자공학과" />
 
                             </LinearLayout>
                         </LinearLayout>

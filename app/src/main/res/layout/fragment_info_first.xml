@@ -2,14 +2,30 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FF0000">
+    android:orientation="vertical"
+    android:background="#ffffffff">
 
     <TextView
+        android:id="@+id/mainTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
+        android:drawableLeft="@drawable/ic_notifications_active_black_24dp"
+        android:text="  공지사항"
+        android:textColor="@color/highlightColorLight"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <ListView
+        android:id="@+id/listView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:textSize="30dp"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:text="첫번째 페이지" />
+        android:layout_margin="10dp"
+        android:divider="#ffffff"
+        android:dividerHeight="10dp"
+        android:padding="5dp">
 
+    </ListView>
 </LinearLayout>
