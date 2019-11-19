@@ -1,5 +1,7 @@
 package com.example.smkguide.domain;
 
+import org.json.JSONObject;
+
 import lombok.Data;
 
 @Data
@@ -9,7 +11,15 @@ public class AttachVO {
     private String fileName;
 
     private Long tobaccoId;
-
+    public AttachVO(JSONObject jObject){
+        try{
+            this.setUuid(jObject.getString("uuid"));
+            this.setFileName(jObject.getString("fileName"));
+            this.setUploadPath(jObject.getString("uploadPath"));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
     public String getAttachFileName() {
         if(uuid!=null&&uuid.length()>0) {
             return this.uploadPath.replace("\\", "/")+"/"+this.uuid+"_"+this.fileName;

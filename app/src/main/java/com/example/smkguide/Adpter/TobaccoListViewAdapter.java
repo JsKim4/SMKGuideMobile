@@ -1,32 +1,19 @@
-package com.example.smkguide.ListViewAdapter;
+package com.example.smkguide.Adpter;
 
-import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Context;
-import android.os.AsyncTask;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.smkguide.R;
 import com.example.smkguide.domain.Criteria;
 import com.example.smkguide.domain.TobaccoVO;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-import org.w3c.dom.Text;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 
 import lombok.NoArgsConstructor;
@@ -35,7 +22,7 @@ import lombok.NoArgsConstructor;
 public class TobaccoListViewAdapter extends BaseAdapter {
     private ArrayList<TobaccoVO> list = new ArrayList<TobaccoVO>();
     private Criteria cri = new Criteria();
-
+    private final String URL="http://ggi4111.cafe24.com/display?fileName=";
     public TobaccoListViewAdapter(ArrayList<TobaccoVO>list){
         this.list = list;
         Log.i("list",list.toString());
@@ -79,6 +66,7 @@ public class TobaccoListViewAdapter extends BaseAdapter {
         TextView type = (TextView)convertView.findViewById(R.id.tvType);
         TextView nicotine = (TextView)convertView.findViewById(R.id.tvNicotine);
         TextView tar = (TextView)convertView.findViewById(R.id.tvTar);
+        ImageView img = (ImageView)convertView.findViewById(R.id.imgTobacco);
         // Data Set(listViewItemList)에서 position에 위치한 데이터 참조 획득
         TobaccoVO listViewItem = list.get(position);
 
@@ -88,6 +76,8 @@ public class TobaccoListViewAdapter extends BaseAdapter {
         type.setText(listViewItem.getType().getName());
         nicotine.setText(String.valueOf(listViewItem.getNicotine()));
         tar.setText(String.valueOf(listViewItem.getTar()));
+        Log.d("url : ",URL+listViewItem);
+        Glide.with(convertView).load(URL+listViewItem.getAttach().getAttachFileName()).into(img);
 
         return convertView;
     }

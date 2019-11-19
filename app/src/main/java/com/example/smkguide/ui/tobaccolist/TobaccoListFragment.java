@@ -1,131 +1,146 @@
 package com.example.smkguide.ui.tobaccolist;
 
-import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.example.smkguide.ListViewAdapter.TobaccoListViewAdapter;
 import com.example.smkguide.R;
+import com.example.smkguide.domain.ComponentVO;
 import com.example.smkguide.domain.Criteria;
 import com.example.smkguide.domain.TobaccoVO;
+import com.example.smkguide.task.ComponentTask;
+import com.example.smkguide.task.TobaccoTask;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.ArrayList;
-
-import lombok.Data;
 
 public class TobaccoListFragment extends Fragment {
 
-    public static TobaccoListFragment newInstance(){
-        return  new TobaccoListFragment();
+    public static TobaccoListFragment newInstance() {
+        return new TobaccoListFragment();
     }
-    TobaccoListViewAdapter adapter;
 
-    ListView tobaccoListView ;
-    TobaccoTask task;
+    TobaccoTask tobaccoTask;
+    ComponentTask brandTask;
+    ComponentTask typeTask;
+    ComponentTask countryTask;
+    View root;
+    ListView tobaccoListView;
+    Spinner spBrand;
+    Spinner spType;
+    Spinner spCountry;
+    Button btnSearch;
+    EditText etSearchTobacco;
+    Criteria cri = new Criteria();
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_tobaccolist, container, false);
-
-        tobaccoListView = (ListView)root.findViewById(R.id.listTobacco);
+        root = inflater.inflate(R.layout.fragment_tobaccolist, container, false);
+        Init();
         return root;
+    }
+    public void Init(){
+        tobaccoListView = root.findViewById(R.id.listTobacco);
+        spBrand = root.findViewById(R.id.spBrand);
+        spType = root.findViewById(R.id.spType);
+        spCountry = root.findViewById(R.id.spCountry);
+        btnSearch = root.findViewById(R.id.btnSearchTobacco);
+        etSearchTobacco = root.findViewById(R.id.etSearchTobacco);
+        setEvent();
+    }
+    public void setEvent(){
+        btnSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cri.setKeyword(etSearchTobacco.getText().toString());
+                search();
+            }
+        });
+
+        tobaccoListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                TobaccoVO vo = (TobaccoVO) parent.getAdapter().getItem(position);
+            }
+        });
+        spBrand.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                ComponentVO vo = (ComponentVO) parent.getAdapter().getItem(position);
+                cri.setBId(vo.getId());
+                search();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        spType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                ComponentVO vo = (ComponentVO) parent.getAdapter().getItem(position);
+                cri.setTId(vo.getId());
+                search();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        spCountry.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                ComponentVO vo = (ComponentVO) parent.getAdapter().getItem(position);
+                cri.setNId(vo.getId());
+                search();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+    }
+    public void search(){
+        cri.setType("");
+        if(cri.getBId()!=null&&cri.getBId()!=0L)
+            cri.setType(cri.getType()+"B");
+        if(cri.getTId()!=null&&cri.getTId()!=0L)
+            cri.setType(cri.getType()+"T");
+        if(cri.getNId()!=null&&cri.getNId()!=0L)
+            cri.setType(cri.getType()+"N");
+        Toast.makeText(root.getContext(),cri.toString(),Toast.LENGTH_LONG).show();
+        tobaccoTask = new TobaccoTask(getActivity(), root, cri);
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        task.cancel(true);
+        tobaccoTask.cancel(true);
+        brandTask.cancel(true);
+        typeTask.cancel(true);
+        countryTask.cancel(true);
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        task = new TobaccoTask(getActivity(),new Criteria());
-        task.execute("http://ggi4111.cafe24.com/mobile/tobacco/list.json");
-    }
-
-    @Data
-    @SuppressLint("NewApi")
-    public class TobaccoTask extends AsyncTask<String,Void, ArrayList<TobaccoVO>> {
-        private Activity context;
-
-        private Criteria cri;
-        private String str, receiveMsg;
-        public TobaccoTask(Activity context,Criteria cri){
-            this.context = context;
-            this.cri = cri;
-        }
-        @Override
-        protected ArrayList<TobaccoVO> doInBackground(String... urls) {
-            URL url=null;
-            try{
-                url =  new URL(urls[0]);
-                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                conn.setRequestProperty("Content-Type","application/json");
-                conn.setRequestMethod("POST");
-
-                if (conn.getResponseCode() == conn.HTTP_OK) {
-                    InputStreamReader tmp = new InputStreamReader(conn.getInputStream(), "UTF-8");
-                    BufferedReader reader = new BufferedReader(tmp);
-                    StringBuffer buffer = new StringBuffer();
-                    while ((str = reader.readLine()) != null) {
-                        buffer.append(str);
-                    }
-                    receiveMsg = buffer.toString();
-                    receiveMsg = receiveMsg.substring(1);
-
-                    receiveMsg = "{\"tobaccoList\":["+receiveMsg;
-                    receiveMsg+="}";
-                    Log.i("receiveMsg : ", receiveMsg);
-
-                    ArrayList<TobaccoVO> list = new ArrayList<TobaccoVO>();
-
-                    JSONObject jsonObject = new JSONObject(receiveMsg);
-
-                    JSONArray array = jsonObject.getJSONArray("tobaccoList");
-
-                    for(int i=0; i<array.length(); i++)
-                    {
-                        JSONObject tobaccoObject = array.getJSONObject(i);
-                        Log.i("tobaccoVV",tobaccoObject.toString());
-                        list.add(new TobaccoVO(tobaccoObject));
-
-                    }
-
-                    return list;
-                } else {
-                    Log.i("통신 결과", conn.getResponseCode() + "에러");
-                }
-
-
-            }catch(Exception e){
-                Log.d("error","error");
-                e.printStackTrace();
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(ArrayList<TobaccoVO> tobaccoVOS) {
-            super.onPostExecute(tobaccoVOS);
-            Log.i("list accepted",tobaccoVOS.toString());
-            adapter = new TobaccoListViewAdapter(tobaccoVOS);
-            tobaccoListView.setAdapter(adapter);
-        }
+        tobaccoTask = new TobaccoTask(getActivity(), root, cri);
+        tobaccoTask.execute("http://ggi4111.cafe24.com/mobile/tobacco/list.json");
+        brandTask = new ComponentTask(getActivity(), root, "brand");
+        brandTask.execute("http://ggi4111.cafe24.com/mobile/component/list/brand.json");
+        typeTask = new ComponentTask(getActivity(), root, "type");
+        typeTask.execute("http://ggi4111.cafe24.com/mobile/component/list/type.json");
+        countryTask = new ComponentTask(getActivity(), root, "country");
+        countryTask.execute("http://ggi4111.cafe24.com/mobile/component/list/country.json");
     }
 }
