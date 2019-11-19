@@ -7,30 +7,37 @@
 
     <fragment
         android:id="@+id/nav_home"
+        android:name="com.example.smkguide.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+
+    <fragment
+        android:id="@+id/nav_area"
         android:name="com.example.smkguide.ui.smokearea.SmokeAreaFragment"
         android:label="@string/menu_area"
         tools:layout="@layout/fragment_smokearea" />
 
     <fragment
-        android:id="@+id/nav_gallery"
+        android:id="@+id/nav_tobaccoList"
         android:name="com.example.smkguide.ui.tobaccolist.TobaccoListFragment"
         android:label="@string/menu_tobacco_list"
         tools:layout="@layout/fragment_tobaccolist" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
+        android:id="@+id/nav_info"
         android:name="com.example.smkguide.ui.info.InfoFragment"
         android:label="@string/menu_info"
         tools:layout="@layout/fragment_info" />
 
     <fragment
-        android:id="@+id/nav_share"
+        android:id="@+id/nav_myPage"
         android:name="com.example.smkguide.ui.mypage.MyPageFragment"
         android:label="@string/menu_mypage"
         tools:layout="@layout/fragment_mypage" />
 
     <fragment
-        android:id="@+id/nav_send"
+        android:id="@+id/nav_setting"
         android:name="com.example.smkguide.ui.setting.SettingFragment"
         android:label="@string/menu_setting"
         tools:layout="@layout/fragment_setting" />
