@@ -23,13 +23,4 @@
         android:elevation="5dp"
         android:background="@drawable/smokearea_searchbar_bg"/>
 
-
-
-
-
-
-
-
-
-
 </RelativeLayout>
