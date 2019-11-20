@@ -1,5 +1,8 @@
 package com.example.smkguide.domain;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -29,6 +32,23 @@ public class Criteria {			//담배 검색용 객체
         this.pageNum = pageNum;
         this.amount = amount;
         startIndex = (pageNum - 1) * amount;
+        type="NB";
+    }
+
+    public JSONObject toJson(){
+        JSONObject json = new JSONObject();
+        try {
+            json.put("type",type);
+            json.put("keyword",keyword);
+            json.put("bId",bId);
+            json.put("nId",nId);
+            json.put("tId",tId);
+            json.put("mId",mId);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return json;
     }
 
     public String[] getTypeArr() {

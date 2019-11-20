@@ -48,12 +48,16 @@ public class TobaccoVO {        //담배
             this.setCompany(getComponent(jObject.getJSONObject("company")));
             this.setCountry(getComponent(jObject.getJSONObject("country")));
             this.setCommentCnt(jObject.getInt("commentCnt"));
-            this.setCommentCnt(jObject.getInt("commentCnt"));
+            this.setAttach(getAttach(jObject.getJSONObject("attach")));
         }
         catch ( Exception e){
             e.printStackTrace();
         }
 
+    }
+    public AttachVO getAttach(JSONObject jObject){
+        AttachVO vo = new AttachVO(jObject);
+        return vo;
     }
     public ComponentVO getComponent(JSONObject jObject){
         ComponentVO vo = new ComponentVO(jObject);

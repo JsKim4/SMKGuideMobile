@@ -7,13 +7,17 @@
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_menu_camera"
+            android:title="@string/menu_home" />
+        <item
+            android:id="@+id/nav_area"
+            android:icon="@drawable/ic_menu_camera"
             android:title="@string/menu_area" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/nav_tobaccoList"
             android:icon="@drawable/ic_menu_gallery"
             android:title="@string/menu_tobacco_list" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/nav_info"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="@string/menu_info" />
     </group>
@@ -21,11 +25,11 @@
     <item android:title="User Menu">
         <menu>
             <item
-                android:id="@+id/nav_share"
+                android:id="@+id/nav_myPage"
                 android:icon="@drawable/ic_menu_share"
                 android:title="@string/menu_mypage" />
             <item
-                android:id="@+id/nav_send"
+                android:id="@+id/nav_setting"
                 android:icon="@drawable/ic_menu_send"
                 android:title="@string/menu_setting" />
         </menu>

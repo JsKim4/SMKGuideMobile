@@ -10,18 +10,22 @@
         android:orientation="horizontal">
         <Button
             android:id="@+id/btnMost"
-            android:layout_width="55dp"
+            android:layout_width="70dp"
             android:layout_height="40dp"
-            android:text="Most"
             android:textSize="8dp"
-            android:layout_gravity="center"></Button>
+            android:layout_gravity="center"
+            android:background="@drawable/most_btn"
+            android:layout_marginRight="10dp"></Button>
         <Button
             android:id="@+id/btnBest"
-            android:layout_width="55dp"
+            android:layout_width="70dp"
             android:layout_height="40dp"
-            android:text="BEST"
+            android:text=""
             android:textSize="8dp"
-            android:layout_gravity="center"></Button>
+            android:layout_gravity="center"
+            android:background="@drawable/best_btn"
+            android:layout_marginRight="20dp"
+            ></Button>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -29,8 +33,12 @@
             android:gravity="right">
             <EditText
                 android:id="@+id/etSearchTobacco"
-                android:layout_width="120dp"
-                android:layout_height="match_parent"></EditText>
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:background="@drawable/smokearea_searchbar_bg"
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp"></EditText>
             <Button
                 android:id="@+id/btnSearchTobacco"
                 android:layout_width="30dp"
@@ -42,48 +50,36 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="15dp">
         <Spinner
             android:id="@+id/spBrand"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"></Spinner>
-        <Spinner
-            android:id="@+id/spCompany"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"></Spinner>
-        <Spinner
-            android:id="@+id/spCountry"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"></Spinner>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:orientation="horizontal">
+            android:layout_weight="1"
+            android:background="@drawable/spinner_component"
+            android:layout_marginRight="10dp"></Spinner>
         <Spinner
             android:id="@+id/spType"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"></Spinner>
+            android:layout_weight="1"
+            android:background="@drawable/spinner_component"
+            android:layout_marginRight="10dp"></Spinner>
         <Spinner
+            android:id="@+id/spCountry"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"></Spinner>
-        <Spinner
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"></Spinner>
+            android:layout_weight="1"
+            android:background="@drawable/spinner_component"></Spinner>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="10"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginTop="50dp">
         <ListView
             android:id="@+id/listTobacco"
             android:layout_width="match_parent"
