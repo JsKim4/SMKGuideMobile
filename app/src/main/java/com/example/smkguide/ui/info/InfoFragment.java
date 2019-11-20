@@ -105,7 +105,7 @@ public class InfoFragment extends Fragment {
                         builder.setTitle("게시글 3").setMessage("3-3");
                         break;
                     case R.id.textView4_2:
-                        builder.setTitle("명지전문대학 전자공학과").setMessage("2015041000 김준섭\n2015041010 이근수\n2015041000 박성종\n2015041000 이승혁");
+                        builder.setTitle("명지전문대학 전자공학과").setMessage("2015041001 김준섭\n2015041010 이근수\n2015041050 박성종\n2011041068 이승혁");
                         break;
                 }
                 builder.setPositiveButton("닫기", new DialogInterface.OnClickListener() {
