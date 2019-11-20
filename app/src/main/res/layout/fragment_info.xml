@@ -227,10 +227,14 @@
                         android:id="@+id/textView4_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:textStyle="bold"
-                        android:text="개발자"
-                        android:textAppearance="?android:attr/textAppearanceLarge" />
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="15dp"
+                        android:drawableLeft="@drawable/ic_android_black_24dp"
+                        android:text="  개발자"
+                        android:textColor="@color/highlightColorLight"
+                        android:textSize="20dp"
+                        android:textStyle="bold"/>
 
                 </LinearLayout>
 
