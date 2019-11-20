@@ -14,7 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.smkguide.ListViewAdapter.InfoListViewAdapter;
+import com.example.smkguide.Adpter.InfoListViewAdapter;
 import com.example.smkguide.R;
 import com.example.smkguide.domain.InfoVO;
 

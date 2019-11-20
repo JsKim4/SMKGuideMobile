@@ -1,4 +1,4 @@
-package com.example.smkguide.ListViewAdapter;
+package com.example.smkguide.Adpter;
 
 import android.content.Context;
 import android.view.View;
