@@ -2,17 +2,20 @@ package com.example.smkguide.ui.tobaccolist;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.smkguide.R;
 import com.example.smkguide.domain.ComponentVO;
@@ -33,6 +36,7 @@ public class TobaccoListFragment extends Fragment {
     ComponentTask typeTask;
     ComponentTask countryTask;
     View root;
+    Fragment fragmentView;
     ListView tobaccoListView;
     Spinner spBrand;
     Spinner spType;
@@ -68,6 +72,7 @@ public class TobaccoListFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 TobaccoVO vo = (TobaccoVO) parent.getAdapter().getItem(position);
+                setTobaccoVIew(vo);
             }
         });
         spBrand.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -118,8 +123,18 @@ public class TobaccoListFragment extends Fragment {
             cri.setType(cri.getType()+"T");
         if(cri.getNId()!=null&&cri.getNId()!=0L)
             cri.setType(cri.getType()+"N");
-        Toast.makeText(root.getContext(),cri.toString(),Toast.LENGTH_LONG).show();
         tobaccoTask = new TobaccoTask(getActivity(), root, cri);
+        tobaccoTask.execute("http://ggi4111.cafe24.com/mobile/tobacco/list.json");
+    }
+
+    private void setTobaccoVIew(TobaccoVO vo) {
+        fragmentView = TobaccoViewFragment.newInstance(vo);
+        FragmentTransaction childFt = getChildFragmentManager().beginTransaction();
+        if (!fragmentView.isAdded()) {
+            childFt.replace(R.id.fragmentTobaccoList, fragmentView);
+            childFt.addToBackStack(null);
+            childFt.commit();
+        }
     }
 
     @Override
@@ -134,8 +149,7 @@ public class TobaccoListFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        tobaccoTask = new TobaccoTask(getActivity(), root, cri);
-        tobaccoTask.execute("http://ggi4111.cafe24.com/mobile/tobacco/list.json");
+        search();
         brandTask = new ComponentTask(getActivity(), root, "brand");
         brandTask.execute("http://ggi4111.cafe24.com/mobile/component/list/brand.json");
         typeTask = new ComponentTask(getActivity(), root, "type");

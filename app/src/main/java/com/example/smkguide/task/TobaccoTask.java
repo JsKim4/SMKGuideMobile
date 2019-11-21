@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.smkguide.Adpter.TobaccoListViewAdapter;
 import com.example.smkguide.R;
@@ -18,6 +19,7 @@ import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -36,6 +38,7 @@ public class TobaccoTask extends AsyncTask<String,Void, ArrayList<TobaccoVO>>  {
     TobaccoListViewAdapter adapter;
     ListView tobaccoListView;
     public TobaccoTask(Activity context,View root,Criteria cri){
+        Log.d("taskStart",cri.toString());
         this.context = context;
         this.cri = cri;
         this.root = root;
@@ -48,7 +51,12 @@ public class TobaccoTask extends AsyncTask<String,Void, ArrayList<TobaccoVO>>  {
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestProperty("Content-Type","application/json");
             conn.setRequestMethod("POST");
-            conn.setRequestProperty("cri",cri.toJson().toString());
+            OutputStream os = conn.getOutputStream();
+            Log.d("criInfo",cri.toString());
+            os.write(cri.toJson().toString().getBytes("UTF-8"));
+            os.flush();
+            os.close();
+            //conn.setRequestProperty("cri",cri.toJson().toString());
             if (conn.getResponseCode() == conn.HTTP_OK) {
                 InputStreamReader tmp = new InputStreamReader(conn.getInputStream(), "UTF-8");
                 BufferedReader reader = new BufferedReader(tmp);
