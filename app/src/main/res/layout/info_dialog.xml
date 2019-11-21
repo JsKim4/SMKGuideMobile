@@ -8,8 +8,8 @@
     <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fadeScrollbars="false"
-        android:scrollbarSize="10dp"
+        android:fadeScrollbars="true"
+        android:scrollbarSize="2dp"
         android:scrollbarStyle="outsideInset"
         android:scrollbarThumbHorizontal="@drawable/scrollbar_btn">
 
@@ -61,7 +61,7 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="350dp">
             <TextView
                 android:id="@+id/content"
                 android:layout_width="match_parent"

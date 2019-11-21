@@ -5,12 +5,13 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:background="@drawable/round_box_bg">
+
     <TextView
+        android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="공지사항"
         android:padding="10dp"
-        android:id="@+id/title"
         android:textStyle="bold"
         android:layout_marginLeft="1dp"
         />

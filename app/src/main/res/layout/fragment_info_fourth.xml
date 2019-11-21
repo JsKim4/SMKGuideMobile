@@ -12,8 +12,8 @@
         android:layout_gravity="center"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="15dp"
-        android:drawableLeft="@drawable/ic_forum_black_24dp"
-        android:text="  게시판"
+        android:drawableLeft="@drawable/ic_warning_black_24dp"
+        android:text="  개발자 게시판"
         android:textColor="@color/highlightColorLight"
         android:textSize="20dp"
         android:textStyle="bold" />
