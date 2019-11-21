@@ -76,6 +76,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:layout_marginLeft="11dp"
+                            android:layout_marginRight="11dp"
                             android:textSize="15dp"
                             android:text="예시11" />
 
@@ -85,6 +86,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:layout_marginLeft="11dp"
+                            android:layout_marginRight="11dp"
                             android:textSize="15dp"
                             android:text="예시22222222" />
 
@@ -94,6 +96,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:layout_marginLeft="11dp"
+                            android:layout_marginRight="11dp"
                             android:textSize="15dp"
                             android:text="예시3333333333333333333333333333333333333333333333333333333333333" />
 
@@ -103,6 +106,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:layout_marginLeft="11dp"
+                            android:layout_marginRight="11dp"
                             android:layout_marginBottom="7dp"
                             android:textSize="15dp"
                             android:text="예시 444444444444444444444" />
@@ -164,6 +168,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:layout_marginLeft="11dp"
+                            android:layout_marginRight="11dp"
                             android:textSize="15dp"
                             android:text="예시111" />
 
@@ -173,6 +178,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:layout_marginLeft="11dp"
+                            android:layout_marginRight="11dp"
                             android:textSize="15dp"
                             android:text="예시22" />
 
@@ -182,6 +188,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:layout_marginLeft="11dp"
+                            android:layout_marginRight="11dp"
                             android:textSize="15dp"
                             android:text="예시333333" />
 
@@ -191,6 +198,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:layout_marginLeft="11dp"
+                            android:layout_marginRight="11dp"
                             android:layout_marginBottom="7dp"
                             android:textSize="15dp"
                             android:text="예시444444444444444" />
@@ -253,6 +261,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:layout_marginLeft="11dp"
+                            android:layout_marginRight="11dp"
                             android:textSize="15dp"
                             android:text="예시1111111111111111111111111111111111111111111111111111111" />
 
@@ -262,6 +271,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:layout_marginLeft="11dp"
+                            android:layout_marginRight="11dp"
                             android:textSize="15dp"
                             android:text="예시222222222222222222222222222222" />
 
@@ -271,6 +281,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:layout_marginLeft="11dp"
+                            android:layout_marginRight="11dp"
                             android:textSize="15dp"
                             android:text="예시3333" />
 
@@ -280,6 +291,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:layout_marginLeft="11dp"
+                            android:layout_marginRight="11dp"
                             android:layout_marginBottom="7dp"
                             android:textSize="15dp"
                             android:text="예시    4444444444" />
@@ -342,6 +354,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:layout_marginLeft="11dp"
+                            android:layout_marginRight="11dp"
                             android:layout_marginBottom="7dp"
                             android:textSize="15dp"
                             android:text="명지전문대학 전자공학과" />
