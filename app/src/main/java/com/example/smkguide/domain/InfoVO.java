@@ -6,8 +6,10 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class InfoVO {
-    String notice;
+    String infoId;
+    String title;
     String content;
     String name;
     String date;
+    String board;
 }

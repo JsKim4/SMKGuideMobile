@@ -39,32 +39,31 @@ public class InfoFragmentThird extends Fragment {
 
         ListView listView = (ListView) view.findViewById(R.id.listView);
         List<InfoVO> list = new ArrayList<InfoVO>();
-        list.add(new InfoVO("게시글 111111111111111111111111111111111","관리자","2019-11-01"));
-        list.add(new InfoVO("게시글 2222222222222222222222222","관리자","2019-11-02"));
-        list.add(new InfoVO("게시글 333333333333333333333333333","관리자","2019-11-03"));
-        list.add(new InfoVO("게시글 44444444444","관리자","2019-11-04"));
-        list.add(new InfoVO("게시글 555","관리자","2019-11-05"));
-        list.add(new InfoVO("게시글 6666666666666666666666","관리자","2019-11-06"));
-        list.add(new InfoVO("게시글 7","관리자","2019-11-07"));
-        list.add(new InfoVO("게시글 8","관리자","2019-11-08"));
-        list.add(new InfoVO("게시글 9","관리자","2019-11-09"));
-        list.add(new InfoVO("게시글 10","관리자","2019-11-10"));
-        list.add(new InfoVO("게시글 11","관리자","2019-11-11"));
-        list.add(new InfoVO("게시글 12","관리자","2019-11-12"));
+        list.add(new InfoVO("1","게시글 111111111111111111111111111111111","내용1","관리자","2019-11-01","3"));
+        list.add(new InfoVO("2","게시글 2222222222222222222222222","내용2","관리자","2019-11-02","3"));
+        list.add(new InfoVO("3","게시글 333333333333333333333333333","내용3","관리자","2019-11-03","3"));
+        list.add(new InfoVO("4","게시글 44444444444","내용4","관리자","2019-11-04","3"));
+        list.add(new InfoVO("5","게시글 555","내용5","관리자","2019-11-05","3"));
+        list.add(new InfoVO("6","게시글 6666666666666666666666","내용6","관리자","2019-11-06","3"));
+        list.add(new InfoVO("7","게시글 7","내용7","관리자","2019-11-07","3"));
+        list.add(new InfoVO("8","게시글 8","내용8","관리자","2019-11-08","3"));
+        list.add(new InfoVO("9","게시글 9","내용9","관리자","2019-11-09","3"));
+        list.add(new InfoVO("10","게시글 10","내용10","관리자","2019-11-10","3"));
+        list.add(new InfoVO("11","게시글 11","내용11","관리자","2019-11-11","3"));
+        list.add(new InfoVO("12","게시글 12","내용12","관리자","2019-11-12","3"));
         ListAdapter adapter = new InfoListViewAdapter(getContext(),list);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                String title, content, name, date;
                 InfoVO info = (InfoVO) parent.getAdapter().getItem(position);
-                builder.setTitle(info.getNotice()).setMessage(info.getContent());
-                builder.setPositiveButton("닫기", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) { }
-                });
-                AlertDialog alertDialog = builder.create();
-                alertDialog.show();
+                InfoDialog customDialog = new InfoDialog(getContext());
+                title=info.getTitle();
+                content=info.getContent();
+                name=info.getName();
+                date=info.getDate();
+                customDialog.call(title, content, name, date);
             }
         });
 

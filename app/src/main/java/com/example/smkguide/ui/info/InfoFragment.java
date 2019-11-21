@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.smkguide.R;
+import com.example.smkguide.domain.InfoVO;
 
 public class InfoFragment extends Fragment {
 
@@ -75,10 +76,17 @@ public class InfoFragment extends Fragment {
         View.OnClickListener dialog = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String title, content, name, date;
+                InfoDialog customDialog = new InfoDialog(getContext());
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                 switch(view.getId()) {
                     case R.id.textView1_2:
-                        builder.setTitle("공지사항 1").setMessage("1-111111111111111111111111111111111111111111111111");
+                        //builder.setTitle("공지사항 1").setMessage("1-111111111111111111111111111111111111111111111111");
+                        //title=info.getTitle();
+                        //content=info.getContent();
+                        //name=info.getName();
+                        //date=info.getDate();
+                        //customDialog.call(title, content, name, date);
                         break;
                     case R.id.textView1_3:
                         builder.setTitle("공지사항 2").setMessage("1-2");

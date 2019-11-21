@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical">
 
     <FrameLayout
@@ -32,19 +32,26 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginLeft="15dp"
-                        android:layout_marginTop="15dp"
+                        android:layout_marginTop="10dp"
                         android:drawableLeft="@drawable/ic_notifications_active_black_24dp"
                         android:text="  공지사항"
-                        android:textColor="@color/highlightColorLight"
                         android:textSize="20dp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:layout_marginBottom="3dp"/>
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"/>
 
                     <Button
                         android:id="@+id/btn_first"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:text="더보기" />
+                        android:layout_width="60dp"
+                        android:layout_height="26dp"
+                        android:text="더보기"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="13dp"
+                        android:background="@drawable/read_more_box"/>
                 </LinearLayout>
 
                 <HorizontalScrollView
@@ -97,19 +104,26 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginLeft="15dp"
-                        android:layout_marginTop="15dp"
+                        android:layout_marginTop="10dp"
                         android:drawableLeft="@drawable/ic_library_books_black_24dp"
                         android:text="  뉴스"
-                        android:textColor="@color/highlightColorLight"
                         android:textSize="20dp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:layout_marginBottom="3dp"/>
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"/>
 
                     <Button
                         android:id="@+id/btn_second"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:text="더보기" />
+                        android:layout_width="60dp"
+                        android:layout_height="26dp"
+                        android:text="더보기"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="13dp"
+                        android:background="@drawable/read_more_box"/>
                 </LinearLayout>
 
                 <HorizontalScrollView
@@ -162,19 +176,26 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginLeft="15dp"
-                        android:layout_marginTop="15dp"
+                        android:layout_marginTop="10dp"
                         android:drawableLeft="@drawable/ic_forum_black_24dp"
                         android:text="  게시판"
-                        android:textColor="@color/highlightColorLight"
                         android:textSize="20dp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:layout_marginBottom="3dp"/>
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"/>
 
                     <Button
                         android:id="@+id/btn_third"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:text="더보기" />
+                        android:layout_width="60dp"
+                        android:layout_height="26dp"
+                        android:text="더보기"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="13dp"
+                        android:background="@drawable/read_more_box"/>
                 </LinearLayout>
 
                 <HorizontalScrollView
@@ -229,12 +250,12 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginLeft="15dp"
-                        android:layout_marginTop="15dp"
+                        android:layout_marginTop="10dp"
                         android:drawableLeft="@drawable/ic_android_black_24dp"
                         android:text="  개발자"
-                        android:textColor="@color/highlightColorLight"
                         android:textSize="20dp"
-                        android:textStyle="bold"/>
+                        android:textStyle="bold"
+                        android:layout_marginBottom="3dp"/>
 
                 </LinearLayout>
 
