@@ -22,7 +22,7 @@
                    android:layout_height="40dp"
                    android:textSize="8dp"
                    android:layout_gravity="center"
-                   android:background="@drawable/most_btn"
+                   android:background="@drawable/most_btn_main"
                    android:layout_marginRight="10dp"></Button>
                <Button
                    android:id="@+id/btnBest"
@@ -31,7 +31,7 @@
                    android:text=""
                    android:textSize="8dp"
                    android:layout_gravity="center"
-                   android:background="@drawable/best_btn"
+                   android:background="@drawable/best_btn_main"
                    android:layout_marginRight="20dp"
                    ></Button>
                <LinearLayout
