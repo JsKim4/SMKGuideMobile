@@ -32,7 +32,6 @@ public class Criteria {			//담배 검색용 객체
         this.pageNum = pageNum;
         this.amount = amount;
         startIndex = (pageNum - 1) * amount;
-        type="NB";
     }
 
     public JSONObject toJson(){
@@ -40,10 +39,10 @@ public class Criteria {			//담배 검색용 객체
         try {
             json.put("type",type);
             json.put("keyword",keyword);
-            json.put("bId",bId);
-            json.put("nId",nId);
-            json.put("tId",tId);
-            json.put("mId",mId);
+            json.put("bid",bId);
+            json.put("nid",nId);
+            json.put("tid",tId);
+            json.put("mid",mId);
 
         } catch (JSONException e) {
             e.printStackTrace();

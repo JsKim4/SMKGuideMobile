@@ -30,6 +30,7 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import com.example.smkguide.R;
 
+import com.example.smkguide.task.MapTask;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
@@ -64,7 +65,7 @@ public class SmokeAreaFragment extends Fragment implements OnMapReadyCallback,
     SearchView searchView;
     GoogleMap map;
     View mLayout;
-
+    View root;
 
     private static final String TAG = "googlemap_currentMarker";
     private static final int GPS_ENABLE_REQUEST_CODE = 2001;
@@ -98,7 +99,7 @@ public class SmokeAreaFragment extends Fragment implements OnMapReadyCallback,
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_smokearea, container, false);
+        root = inflater.inflate(R.layout.fragment_smokearea, container, false);
 
 
 
@@ -187,21 +188,10 @@ public class SmokeAreaFragment extends Fragment implements OnMapReadyCallback,
     public void onMapReady(GoogleMap googleMap) {
 
         map = googleMap;
-
-
         LatLng SEOUL = new LatLng(37.584678, 126.925189);
-
-        MarkerOptions markerOptions = new MarkerOptions();
-
-        markerOptions.position(SEOUL);
-
-        markerOptions.title("명지전문대");
-
-        markerOptions.snippet("학교");
-
-        googleMap.addMarker(markerOptions);
-
-        googleMap.moveCamera(CameraUpdateFactory.newLatLng(SEOUL));
+        MapTask a= new MapTask(getActivity(),root,googleMap);
+        a.execute("http://ggi4111.cafe24.com/mobile/smokearea/list.json");
+        map.moveCamera(CameraUpdateFactory.newLatLng(SEOUL));
 
         googleMap.animateCamera(CameraUpdateFactory.zoomTo(17));
 

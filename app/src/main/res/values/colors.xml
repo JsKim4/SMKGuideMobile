@@ -5,5 +5,5 @@
     <color name = "highlightColor">@android:color/holo_orange_dark</color>
     <color name = "highlightColorLight">@android:color/holo_orange_light</color>
     <color name="colorAccent">#D81B60</color>
-    <color name="backgroundDefault">#fe2e2e</color>
+    <color name="backgroundDefault">#f9f9f9</color>
 </resources>
