@@ -26,6 +26,5 @@
         android:divider="#ffffff"
         android:dividerHeight="10dp"
         android:padding="5dp">
-
     </ListView>
 </LinearLayout>
