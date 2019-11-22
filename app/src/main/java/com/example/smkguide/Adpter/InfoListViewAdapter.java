@@ -38,13 +38,13 @@ public class InfoListViewAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View view = View.inflate(context, R.layout.fragment_info_list,null);
-        TextView notice = (TextView) view.findViewById(R.id.notice);
+        TextView title = (TextView) view.findViewById(R.id.title);
         TextView name = (TextView) view.findViewById(R.id.name);
         TextView date = (TextView) view.findViewById(R.id.date);
-        notice.setText(list.get(position).getNotice());
+        title.setText(list.get(position).getTitle());
         name.setText(list.get(position).getName());
         date.setText(list.get(position).getDate());
-        view.setTag(list.get(position).getNotice());
+        view.setTag(list.get(position).getTitle());
         return view;
     }
 }

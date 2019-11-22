@@ -15,8 +15,6 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 
-import com.example.smkguide.ui.smokearea.SmokeAreaFragment;
-
 import com.google.android.material.navigation.NavigationView;
 
 
@@ -50,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+
 
 
     @Override
