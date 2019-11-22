@@ -2,14 +2,18 @@ package com.example.smkguide.domain;
 
 import android.util.Log;
 
+import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.io.Serializable;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class TobaccoVO {        //담배
+@SuppressWarnings("serial")
+public class TobaccoVO implements Serializable {        //담배
     private Long tobaccoId;                //담배고유번호
     private String tobaccoName;            //담배이름
     private Boolean deleteFlag;            //삭제여부
@@ -34,8 +38,7 @@ public class TobaccoVO {        //담배
         this.setTobaccoId(tobaccoId);
     }
 
-    public TobaccoVO(JSONObject jObject){
-        try {
+    public TobaccoVO(JSONObject jObject) throws JSONException {
             Log.d("tobaccoVo json", jObject.toString());
             this.setTobaccoId(jObject.getLong("tobaccoId"));
             this.setTobaccoName(jObject.getString("tobaccoName"));
@@ -43,17 +46,13 @@ public class TobaccoVO {        //담배
             this.setTar(jObject.getDouble("tar"));
             this.setNicotine(jObject.getDouble("nicotine"));
             this.setPrice(jObject.getLong("price"));
+            this.setQuantity(jObject.getDouble("quantity"));
             this.setType(getComponent(jObject.getJSONObject("type")));
             this.setBrand(getComponent(jObject.getJSONObject("brand")));
             this.setCompany(getComponent(jObject.getJSONObject("company")));
             this.setCountry(getComponent(jObject.getJSONObject("country")));
             this.setCommentCnt(jObject.getInt("commentCnt"));
             this.setAttach(getAttach(jObject.getJSONObject("attach")));
-        }
-        catch ( Exception e){
-            e.printStackTrace();
-        }
-
     }
     public AttachVO getAttach(JSONObject jObject){
         AttachVO vo = new AttachVO(jObject);

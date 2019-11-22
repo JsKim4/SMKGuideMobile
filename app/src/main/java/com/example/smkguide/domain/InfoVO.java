@@ -11,5 +11,4 @@ public class InfoVO {
     String content;
     String name;
     String date;
-    String board;
 }
