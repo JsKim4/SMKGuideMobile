@@ -5,9 +5,7 @@ import android.app.Activity;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.example.smkguide.Adpter.TobaccoListViewAdapter;
 import com.example.smkguide.R;
@@ -20,10 +18,8 @@ import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 
 import lombok.Data;
@@ -33,14 +29,12 @@ import lombok.Data;
 public class TobaccoTask extends AsyncTask<String,Void, ArrayList<TobaccoVO>>  {
     private Activity context;
     private View root;
-    private Criteria cri;
     private String str, receiveMsg;
     TobaccoListViewAdapter adapter;
     ListView tobaccoListView;
-    public TobaccoTask(Activity context,View root,Criteria cri){
-        Log.d("taskStart",cri.toString());
+    public TobaccoTask(Activity context,View root){
         this.context = context;
-        this.cri = cri;
+
         this.root = root;
     }
     @Override
@@ -50,13 +44,7 @@ public class TobaccoTask extends AsyncTask<String,Void, ArrayList<TobaccoVO>>  {
             url =  new URL(urls[0]);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestProperty("Content-Type","application/json");
-            conn.setRequestMethod("POST");
-            OutputStream os = conn.getOutputStream();
-            Log.d("criInfo",cri.toString());
-            os.write(cri.toJson().toString().getBytes("UTF-8"));
-            os.flush();
-            os.close();
-            //conn.setRequestProperty("cri",cri.toJson().toString());
+            conn.setRequestMethod("GET");
             if (conn.getResponseCode() == conn.HTTP_OK) {
                 InputStreamReader tmp = new InputStreamReader(conn.getInputStream(), "UTF-8");
                 BufferedReader reader = new BufferedReader(tmp);
@@ -69,7 +57,6 @@ public class TobaccoTask extends AsyncTask<String,Void, ArrayList<TobaccoVO>>  {
 
                 receiveMsg = "{\"tobaccoList\":["+receiveMsg;
                 receiveMsg+="}";
-                Log.i("receiveMsg : ", receiveMsg);
 
                 ArrayList<TobaccoVO> list = new ArrayList<TobaccoVO>();
 
@@ -80,7 +67,6 @@ public class TobaccoTask extends AsyncTask<String,Void, ArrayList<TobaccoVO>>  {
                 for(int i=0; i<array.length(); i++)
                 {
                     JSONObject tobaccoObject = array.getJSONObject(i);
-                    Log.i("tobaccoVV",tobaccoObject.toString());
                     list.add(new TobaccoVO(tobaccoObject));
 
                 }
@@ -101,9 +87,9 @@ public class TobaccoTask extends AsyncTask<String,Void, ArrayList<TobaccoVO>>  {
     @Override
     protected void onPostExecute(ArrayList<TobaccoVO> tobaccoVOS) {
         super.onPostExecute(tobaccoVOS);
-        Log.i("list accepted",tobaccoVOS.toString());
         adapter = new TobaccoListViewAdapter(tobaccoVOS);
         tobaccoListView = (ListView)root.findViewById(R.id.listTobacco);
         tobaccoListView.setAdapter(adapter);
+
     }
 }

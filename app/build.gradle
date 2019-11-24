@@ -48,4 +48,5 @@ repositories {
 dependencies {
     compileOnly 'org.projectlombok:lombok:1.18.10'
     annotationProcessor 'org.projectlombok:lombok:1.18.10'
+    implementation 'com.android.support:recyclerview-v7:29.0.0'
 }

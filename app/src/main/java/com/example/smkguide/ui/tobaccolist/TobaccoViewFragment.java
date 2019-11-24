@@ -12,10 +12,17 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.smkguide.R;
 import com.example.smkguide.domain.TobaccoVO;
+import com.example.smkguide.task.CommentTask;
+
+import org.w3c.dom.Comment;
+
+import java.util.ArrayList;
 
 public class TobaccoViewFragment extends Fragment {
     public static TobaccoViewFragment newInstance(TobaccoVO vo) {
@@ -30,7 +37,10 @@ public class TobaccoViewFragment extends Fragment {
     View root;
     LinearLayout topLayout;
     TextView tvTobaccoName, tvPrice, tvQuantity, tvTar, tvNicotine, tvCountry, tvCompany, tvBrand, tvType;
+    RecyclerView recyclerPagination;
     ImageView imgTobacco;
+    CommentTask commentTask;
+    TobaccoVO vo;
     private final String URL="http://ggi4111.cafe24.com/display?fileName=";
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -41,7 +51,7 @@ public class TobaccoViewFragment extends Fragment {
     }
 
     public void init() {
-        TobaccoVO vo = (TobaccoVO) getArguments().get("TobaccoView");
+        vo = (TobaccoVO) getArguments().get("TobaccoView");
         topLayout = root.findViewById(R.id.tobaccoViewTopLayout);
         tvTar = root.findViewById(R.id.tvTar);tvTar.setText(String.valueOf(vo.getTar()));
         tvPrice = root.findViewById(R.id.tvPrice);tvPrice.setText(String.valueOf(vo.getPrice()));
@@ -53,7 +63,9 @@ public class TobaccoViewFragment extends Fragment {
         tvBrand = root.findViewById(R.id.tvBrand);tvBrand.setText(vo.getBrand().getName());
         tvType = root.findViewById(R.id.tvType);
         imgTobacco = root.findViewById(R.id.imgTobacco);  Glide.with(root).load(URL+vo.getAttach().getAttachFileName()).into(imgTobacco);
+        recyclerPagination = root.findViewById(R.id.recyclePagination);
         setEvent();
+        getComment(vo,"1");
     }
 
     public void setEvent() {
@@ -64,5 +76,12 @@ public class TobaccoViewFragment extends Fragment {
             }
         });
     }
+    public void getComment(TobaccoVO vo,String page){
+        commentTask = new CommentTask(getActivity(),root);
+        commentTask.execute("/"+vo.getTobaccoId()+"/"+page+".json");
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+        recyclerPagination.setLayoutManager(layoutManager);
+    }
+
 
 }

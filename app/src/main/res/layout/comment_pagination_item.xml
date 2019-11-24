@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tvPagenation"
+    android:layout_width="27dp"
+    android:layout_height="30dp"
+    android:gravity="center"
+    android:text="100"
+    android:textColor="@color/colorPrimary"
+    android:background="@drawable/pagination_btn"
+    android:layout_margin="1dp">
+</TextView>

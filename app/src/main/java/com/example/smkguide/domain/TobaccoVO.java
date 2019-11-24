@@ -2,6 +2,8 @@ package com.example.smkguide.domain;
 
 import android.util.Log;
 
+import androidx.annotation.Nullable;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -13,9 +15,10 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 @SuppressWarnings("serial")
-public class TobaccoVO implements Serializable {        //담배
+public class TobaccoVO implements Serializable,Comparable  {        //담배
     private Long tobaccoId;                //담배고유번호
     private String tobaccoName;            //담배이름
+    @Nullable
     private Boolean deleteFlag;            //삭제여부
     private ComponentVO country;        //국가
     private ComponentVO company;        //회사
@@ -28,6 +31,8 @@ public class TobaccoVO implements Serializable {        //담배
     private int commentCnt;                //comment 개수
     private AttachVO attach;            //첨부 이미지
 
+
+
     public TobaccoVO() {
         this(-1L);
     }
@@ -36,12 +41,11 @@ public class TobaccoVO implements Serializable {        //담배
         this.setQuantity(20D);
         this.setPrice(4500L);
         this.setTobaccoId(tobaccoId);
+        this.setDeleteFlag(false);
     }
 
-    public TobaccoVO(JSONObject jObject) throws JSONException {
-            Log.d("tobaccoVo json", jObject.toString());
-            this.setTobaccoId(jObject.getLong("tobaccoId"));
-            this.setTobaccoName(jObject.getString("tobaccoName"));
+    public TobaccoVO(JSONObject jObject){
+        try {
             this.setDeleteFlag(jObject.getBoolean("deleteFlag"));
             this.setTar(jObject.getDouble("tar"));
             this.setNicotine(jObject.getDouble("nicotine"));
@@ -53,6 +57,17 @@ public class TobaccoVO implements Serializable {        //담배
             this.setCountry(getComponent(jObject.getJSONObject("country")));
             this.setCommentCnt(jObject.getInt("commentCnt"));
             this.setAttach(getAttach(jObject.getJSONObject("attach")));
+        } catch (JSONException e) {
+           // e.printStackTrace();
+        } finally {
+            try {
+                this.setTobaccoId(jObject.getLong("tobaccoId"));
+                this.setTobaccoName(jObject.getString("tobaccoName"));
+            } catch (JSONException e) {
+              //  e.printStackTrace();
+            }
+        }
+
     }
     public AttachVO getAttach(JSONObject jObject){
         AttachVO vo = new AttachVO(jObject);
@@ -63,4 +78,9 @@ public class TobaccoVO implements Serializable {        //담배
         return vo;
     }
 
+    @Override
+    public int compareTo(Object o) {
+        TobaccoVO vo = (TobaccoVO)o;
+        return vo.getCommentCnt()>this.getCommentCnt()? 1:vo.getCommentCnt() == this.getCommentCnt()?0:-1;
+    }
 }

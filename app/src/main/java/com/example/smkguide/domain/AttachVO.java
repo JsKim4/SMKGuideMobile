@@ -3,8 +3,10 @@ package com.example.smkguide.domain;
 import org.json.JSONObject;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
 public class AttachVO {
     private String uuid;
     private String uploadPath;

@@ -47,12 +47,6 @@
                        android:background="@drawable/smokearea_searchbar_bg"
                        android:paddingRight="10dp"
                        android:paddingLeft="10dp"></EditText>
-                   <Button
-                       android:id="@+id/btnSearchTobacco"
-                       android:layout_width="30dp"
-                       android:layout_height="30dp"
-                       android:text="S"
-                       android:textSize="10dp"></Button>
                </LinearLayout>
            </LinearLayout>
            <LinearLayout

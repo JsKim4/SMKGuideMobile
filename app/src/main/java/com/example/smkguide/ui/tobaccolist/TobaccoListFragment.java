@@ -1,6 +1,9 @@
 package com.example.smkguide.ui.tobaccolist;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -17,12 +20,15 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.smkguide.Adpter.TobaccoListViewAdapter;
 import com.example.smkguide.R;
 import com.example.smkguide.domain.ComponentVO;
 import com.example.smkguide.domain.Criteria;
 import com.example.smkguide.domain.TobaccoVO;
 import com.example.smkguide.task.ComponentTask;
 import com.example.smkguide.task.TobaccoTask;
+
+import org.w3c.dom.Text;
 
 
 public class TobaccoListFragment extends Fragment {
@@ -38,32 +44,58 @@ public class TobaccoListFragment extends Fragment {
     View root;
     Fragment fragmentView;
     ListView tobaccoListView;
-    Spinner spBrand;
-    Spinner spType;
-    Spinner spCountry;
-    Button btnSearch;
+    Spinner spBrand, spType, spCountry;
+    Button btnMost,btnBest;
     EditText etSearchTobacco;
     Criteria cri = new Criteria();
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         root = inflater.inflate(R.layout.fragment_tobaccolist, container, false);
         Init();
         return root;
     }
-    public void Init(){
+
+    public void Init() {
         tobaccoListView = root.findViewById(R.id.listTobacco);
         spBrand = root.findViewById(R.id.spBrand);
         spType = root.findViewById(R.id.spType);
         spCountry = root.findViewById(R.id.spCountry);
-        btnSearch = root.findViewById(R.id.btnSearchTobacco);
         etSearchTobacco = root.findViewById(R.id.etSearchTobacco);
+        btnMost = root.findViewById(R.id.btnMost);
+        btnBest = root.findViewById(R.id.btnBest);
         setEvent();
     }
-    public void setEvent(){
-        btnSearch.setOnClickListener(new View.OnClickListener() {
+
+    public void setEvent() {
+        etSearchTobacco.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                cri.setKeyword(String.valueOf(s));
+                search();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+        btnMost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cri.setKeyword(etSearchTobacco.getText().toString());
+                cri.setOrder("MOST");
+                search();
+            }
+        });
+        btnBest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cri.setOrder("");
                 search();
             }
         });
@@ -115,16 +147,10 @@ public class TobaccoListFragment extends Fragment {
             }
         });
     }
-    public void search(){
-        cri.setType("");
-        if(cri.getBId()!=null&&cri.getBId()!=0L)
-            cri.setType(cri.getType()+"B");
-        if(cri.getTId()!=null&&cri.getTId()!=0L)
-            cri.setType(cri.getType()+"T");
-        if(cri.getNId()!=null&&cri.getNId()!=0L)
-            cri.setType(cri.getType()+"N");
-        tobaccoTask = new TobaccoTask(getActivity(), root, cri);
-        tobaccoTask.execute("http://ggi4111.cafe24.com/mobile/tobacco/list.json");
+
+    public void search() {
+        TobaccoListViewAdapter adapter = (TobaccoListViewAdapter) tobaccoListView.getAdapter();
+        adapter.filter(cri);
     }
 
     private void setTobaccoVIew(TobaccoVO vo) {
@@ -149,7 +175,8 @@ public class TobaccoListFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        search();
+        tobaccoTask = new TobaccoTask(getActivity(), root);
+        tobaccoTask.execute("http://ggi4111.cafe24.com/mobile/tobacco/list.json");
         brandTask = new ComponentTask(getActivity(), root, "brand");
         brandTask.execute("http://ggi4111.cafe24.com/mobile/component/list/brand.json");
         typeTask = new ComponentTask(getActivity(), root, "type");
