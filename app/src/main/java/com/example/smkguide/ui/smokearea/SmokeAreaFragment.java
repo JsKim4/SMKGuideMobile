@@ -315,8 +315,11 @@ public class SmokeAreaFragment extends Fragment implements OnMapReadyCallback,
 
             mFusedLocationClient.requestLocationUpdates(locationRequest, locationCallback, Looper.myLooper());
 
-            if (checkPermission())
+            if (checkPermission()){
                 map.setMyLocationEnabled(true);
+                Log.d("startLocationUpdates","move");
+            }
+
 
         }
 

@@ -1,6 +1,9 @@
 package com.example.smkguide.ui.info;
 
+import android.annotation.SuppressLint;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,17 +17,28 @@ import androidx.fragment.app.Fragment;
 
 import com.example.smkguide.Adpter.InfoListViewAdapter;
 import com.example.smkguide.R;
+import com.example.smkguide.domain.Criteria;
 import com.example.smkguide.domain.InfoVO;
+import com.example.smkguide.task.InfoTask;
 
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+
+import lombok.Data;
 
 public class InfoFragmentSecond extends Fragment {
 
     public static InfoFragmentSecond newInstance(){
         return new InfoFragmentSecond();
     }
-
+    InfoVO vo;
+    Criteria cri = new Criteria();
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,34 +51,67 @@ public class InfoFragmentSecond extends Fragment {
 
         ListView listView = (ListView) view.findViewById(R.id.listView);
         List<InfoVO> list = new ArrayList<InfoVO>();
-        list.add(new InfoVO("1","뉴스 111111111111111111111111111111111","내용1","관리자","2019-11-01","2"));
-        list.add(new InfoVO("2","뉴스 2222222222222222222222222","내용2","관리자","2019-11-02","2"));
-        list.add(new InfoVO("3","뉴스 333333333333333333333333333","내용3","관리자","2019-11-03","2"));
-        list.add(new InfoVO("4","뉴스 44444444444","내용4","관리자","2019-11-04","2"));
-        list.add(new InfoVO("5","뉴스 555","내용5","관리자","2019-11-05","2"));
-        list.add(new InfoVO("6","뉴스 6666666666666666666666","내용6","관리자","2019-11-06","2"));
-        list.add(new InfoVO("7","뉴스 7","내용7","관리자","2019-11-07","2"));
-        list.add(new InfoVO("8","뉴스 8","내용8","관리자","2019-11-08","2"));
-        list.add(new InfoVO("9","뉴스 9","내용9","관리자","2019-11-09","2"));
-        list.add(new InfoVO("10","뉴스 10","내용10","관리자","2019-11-10","2"));
-        list.add(new InfoVO("11","뉴스 11","내용11","관리자","2019-11-11","2"));
-        list.add(new InfoVO("12","뉴스 12","내용12","관리자","2019-11-12","2"));
-        ListAdapter adapter = new InfoListViewAdapter(getContext(),list);
-        listView.setAdapter(adapter);
+        cri.setType("NEWS");
+        cri.setAmount(1000);
+        InfoTask task = new InfoTask(getActivity(), view,cri);
+        task.execute("");
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
-                String title, content, name, date;
-                InfoVO info = (InfoVO) parent.getAdapter().getItem(position);
-                InfoDialog customDialog = new InfoDialog(getContext());
-                title=info.getTitle();
-                content=info.getContent();
-                name=info.getName();
-                date=info.getDate();
-                customDialog.call(title, content, name, date);
+              InfoFragmentSecond.InfoViewTask t  = new InfoFragmentSecond.InfoViewTask();
+              vo= (InfoVO)parent.getItemAtPosition(position);
+              t.execute(vo.getInfoId());
             }
         });
 
         return view;
+    }
+
+    @Data
+    @SuppressLint("NewApi")
+    public class InfoViewTask extends AsyncTask<String, Void, InfoVO> {
+        private String str, receiveMsg;
+        private final static String InfoURL = "http://ggi4111.cafe24.com/info/";
+
+        @Override
+        protected InfoVO doInBackground(String... urls) {
+            URL url = null;
+            try {
+                url = new URL(InfoURL+urls[0]+".json");
+                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                conn.setRequestProperty("Content-Type", "application/json");
+                conn.setRequestMethod("GET");
+                if (conn.getResponseCode() == conn.HTTP_OK) {
+                    InputStreamReader tmp = new InputStreamReader(conn.getInputStream(), "UTF-8");
+                    BufferedReader reader = new BufferedReader(tmp);
+                    StringBuffer buffer = new StringBuffer();
+                    while ((str = reader.readLine()) != null) {
+                        buffer.append(str);
+                    }
+                    receiveMsg = buffer.toString();
+
+                    JSONObject jsonObject = new JSONObject(receiveMsg);
+
+                    return new InfoVO(jsonObject);
+                } else {
+                    Log.i("통신 결과", conn.getResponseCode() + "에러");
+                }
+
+
+            } catch (Exception e) {
+                Log.d("error", "error");
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(InfoVO infoVO) {
+            super.onPostExecute(infoVO);
+            vo = infoVO;
+            Log.d("WhatDoesInfo",infoVO.toString());
+            InfoDialog customDialog = new InfoDialog(getContext());
+            customDialog.call(vo.getTitle(), vo.getContent(), vo.getName(), vo.getDate());
+        }
     }
 }

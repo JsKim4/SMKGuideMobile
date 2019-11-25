@@ -12,10 +12,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.smkguide.R;
+import com.example.smkguide.task.InfoTask;
 
 public class InfoFragment extends Fragment {
 
-    public static InfoFragment newInstance(){
+    public static InfoFragment newInstance() {
         return new InfoFragment();
     }
 
@@ -24,11 +25,14 @@ public class InfoFragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
+    View view;
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_info, container, false);
-
+        view = inflater.inflate(R.layout.fragment_info, container, false);
+        //InfoTask task = new InfoTask(getActivity(), view);
+       // task.execute("INFO");
         Button btn_first = (Button) view.findViewById(R.id.btn_first);
         Button btn_second = (Button) view.findViewById(R.id.btn_second);
         Button btn_third = (Button) view.findViewById(R.id.btn_third);
@@ -47,8 +51,7 @@ public class InfoFragment extends Fragment {
         TextView textView3_5 = (TextView) view.findViewById(R.id.textView3_5);
         TextView textView4_2 = (TextView) view.findViewById(R.id.textView4_2);
 
-        View.OnClickListener listener = new View.OnClickListener()
-        {
+        View.OnClickListener listener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Fragment fg;
@@ -83,90 +86,90 @@ public class InfoFragment extends Fragment {
             public void onClick(View view) {
                 String title, content, name, date;
                 InfoDialog customDialog = new InfoDialog(getContext());
-                switch(view.getId()) {
+                switch (view.getId()) {
                     case R.id.textView1_2:
-                        title="공지사항 1";    // 파싱 데이터 넣어야됨
-                        content="내용1\n11111\n1\n111\n1\n11111";
-                        name="관리자A";
-                        date="2000-01-01 AM 03:30";
+                        title = "공지사항 1";    // 파싱 데이터 넣어야됨
+                        content = "내용1\n11111\n1\n111\n1\n11111";
+                        name = "관리자A";
+                        date = "2000-01-01 AM 03:30";
                         break;
                     case R.id.textView1_3:
-                        title="공지사항 22222222";
-                        content="내용22222\n2222\n22\n2\n2\n2\n2\n2\n222\n222\n2\n222\n222\n2\n222\n222\n2\n222\n222\n2\n222\n222";
-                        name="관리자BBBBB";
-                        date="2000-01-01 AM 03:30";
+                        title = "공지사항 22222222";
+                        content = "내용22222\n2222\n22\n2\n2\n2\n2\n2\n222\n222\n2\n222\n222\n2\n222\n222\n2\n222\n222\n2\n222\n222";
+                        name = "관리자BBBBB";
+                        date = "2000-01-01 AM 03:30";
                         break;
                     case R.id.textView1_4:
-                        title="공지사항 333333333333333333333333333333333333333333";
-                        content="내용3\n33\n3\n3\n3\n3\n3\n3333333\n3\n3\n3333\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n33333333n3\n3\n3\n3\n3\n3\n3\n3\n3\n33333333";
-                        name="관리자C";
-                        date="2000-01-01 AM 03:30";
+                        title = "공지사항 333333333333333333333333333333333333333333";
+                        content = "내용3\n33\n3\n3\n3\n3\n3\n3333333\n3\n3\n3333\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n33333333n3\n3\n3\n3\n3\n3\n3\n3\n3\n33333333";
+                        name = "관리자C";
+                        date = "2000-01-01 AM 03:30";
                         break;
                     case R.id.textView1_5:
-                        title="공지사항 4444444444444444444";
-                        content="내용4\n44\n4\n4\n4\n44444\n4\n344443\n4444444\n4\n4\n444\n4\n4\n4\n44\n44\n4444444";
-                        name="관리자C";
-                        date="2000-01-01 AM 03:30";
+                        title = "공지사항 4444444444444444444";
+                        content = "내용4\n44\n4\n4\n4\n44444\n4\n344443\n4444444\n4\n4\n444\n4\n4\n4\n44\n44\n4444444";
+                        name = "관리자C";
+                        date = "2000-01-01 AM 03:30";
                         break;
                     case R.id.textView2_2:
-                        title="뉴스 1";
-                        content="내용1\n11111\n1\n111\n1\n11111";
-                        name="관리자A";
-                        date="2000-01-01 AM 03:30";
+                        title = "뉴스 1";
+                        content = "내용1\n11111\n1\n111\n1\n11111";
+                        name = "관리자A";
+                        date = "2000-01-01 AM 03:30";
                         break;
                     case R.id.textView2_3:
-                        title="뉴스 2";
-                        content="내용22222\n2222\n22\n2\n2\n2\n2\n2\n2222222\n2";
-                        name="관리자BBBBB";
-                        date="2000-01-01 AM 03:30";
+                        title = "뉴스 2";
+                        content = "내용22222\n2222\n22\n2\n2\n2\n2\n2\n2222222\n2";
+                        name = "관리자BBBBB";
+                        date = "2000-01-01 AM 03:30";
                         break;
                     case R.id.textView2_4:
-                        title="뉴스 3333333333333333333333333333333333333333333";
-                        content="내용3\n33\n3\n3\n3\n3\n3\n3333333\n3\n3\n3333\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n33333333";
-                        name="관리자C";
-                        date="2000-01-01 AM 03:30";
+                        title = "뉴스 3333333333333333333333333333333333333333333";
+                        content = "내용3\n33\n3\n3\n3\n3\n3\n3333333\n3\n3\n3333\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n33333333";
+                        name = "관리자C";
+                        date = "2000-01-01 AM 03:30";
                         break;
                     case R.id.textView2_5:
-                        title="뉴스 4444444444444444444";
-                        content="내용4\n44\n4\n4\n4\n44444\n4\n344443\n4444444\n4\n4\n444\n4\n4\n4\n44\n44\n4444444";
-                        name="관리자C";
-                        date="2000-01-01 AM 03:30";
+                        title = "뉴스 4444444444444444444";
+                        content = "내용4\n44\n4\n4\n4\n44444\n4\n344443\n4444444\n4\n4\n444\n4\n4\n4\n44\n44\n4444444";
+                        name = "관리자C";
+                        date = "2000-01-01 AM 03:30";
                         break;
                     case R.id.textView3_2:
-                        title="게시판 1";
-                        content="내용1\n11111\n1\n111\n1\n11111";
-                        name="관리자A";
-                        date="2000-01-01 AM 03:30";
+                        title = "게시판 1";
+                        content = "내용1\n11111\n1\n111\n1\n11111";
+                        name = "관리자A";
+                        date = "2000-01-01 AM 03:30";
                         break;
                     case R.id.textView3_3:
-                        title="게시판 2";
-                        content="내용22222\n2222\n22\n2\n2\n2\n2\n2\n22222222";
-                        name="관리자BBBBB";
-                        date="2000-01-01 AM 03:30";
+                        title = "게시판 2";
+                        content = "내용22222\n2222\n22\n2\n2\n2\n2\n2\n22222222";
+                        name = "관리자BBBBB";
+                        date = "2000-01-01 AM 03:30";
                         break;
                     case R.id.textView3_4:
-                        title="게시판 3333333333333333333333333333333333333333";
-                        content="내용3\n33\n3\n3\n3\n3\n3\n3333333\n3\n3\n3333\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n33333333";
-                        name="관리자C";
-                        date="2000-01-01 AM 03:30";
+                        title = "게시판 3333333333333333333333333333333333333333";
+                        content = "내용3\n33\n3\n3\n3\n3\n3\n3333333\n3\n3\n3333\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n33333333";
+                        name = "관리자C";
+                        date = "2000-01-01 AM 03:30";
                         break;
                     case R.id.textView3_5:
-                        title="게시판 4444444444444444444";
-                        content="내용4\n44\n4\n4\n4\n44444\n4\n344443\n4444444\n4\n4\n444\n4\n4\n4\n44\n44\n4444444";
-                        name="관리자C";
-                        date="2000-01-01 AM 03:30";
+                        title = "게시판 4444444444444444444";
+                        content = "내용4\n44\n4\n4\n4\n44444\n4\n344443\n4444444\n4\n4\n444\n4\n4\n4\n44\n44\n4444444";
+                        name = "관리자C";
+                        date = "2000-01-01 AM 03:30";
                         break;
                     case R.id.textView4_2:
-                        title="명지전문대 전자공학과";
-                        content="2015041001 김준섭\n2015041010 이근수\n2015041050 박성종\n2011041068 이승혁";
-                        name="Admin";
-                        date="2000-01-01 AM 03:30";
+                        title = "명지전문대 전자공학과";
+                        content = "2015041001 김준섭\n2015041010 이근수\n2015041050 박성종\n2011041068 이승혁";
+                        name = "Admin";
+                        date = "2000-01-01 AM 03:30";
                         break;
                     default:
-                        title="";
-                        content="";
-                        name="";
-                        date="";
+                        title = "";
+                        content = "";
+                        name = "";
+                        date = "";
                 }
                 customDialog.call(title, content, name, date);
             }

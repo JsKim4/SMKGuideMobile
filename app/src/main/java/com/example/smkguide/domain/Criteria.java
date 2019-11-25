@@ -45,6 +45,7 @@ public class Criteria {			//담배 검색용 객체
             json.put("tid",tId);
             json.put("mid",mId);
             json.put("order",order);
+            json.put("amount",amount);
 
 
         } catch (JSONException e) {
