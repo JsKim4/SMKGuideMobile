@@ -6,11 +6,13 @@ import android.util.Log;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
-import java.util.Locale;
+import java.util.TimeZone;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -36,10 +38,17 @@ public class CommentVO {		//담배의 comment
         try {
             this.setCommentId(jObject.getLong("commentId"));
             this.setContent(jObject.getString("content"));
-            this.setCdate(new Date(jObject.getInt("cdate")));
+            Date date = new Date(Long.valueOf(jObject.getString("cdate")));
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); // the format of your date
+            sdf.setTimeZone(TimeZone.getTimeZone("GMT+9")); // give a timezone reference for formating (see comment at the bottom
+            String formattedDate = sdf.format(date);
+            Log.d(formattedDate,formattedDate);
+            this.setCdate(sdf.parse(formattedDate));
             this.setTobacco(getTobacco(jObject.getJSONObject("tobacco")));
             this.setMember(getMember(jObject.getJSONObject("member")));
         } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
             e.printStackTrace();
         }
     }

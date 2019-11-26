@@ -8,10 +8,12 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -30,6 +32,8 @@ import com.example.smkguide.task.TobaccoTask;
 
 import org.w3c.dom.Text;
 
+import static android.content.Context.INPUT_METHOD_SERVICE;
+
 
 public class TobaccoListFragment extends Fragment {
 
@@ -37,15 +41,15 @@ public class TobaccoListFragment extends Fragment {
         return new TobaccoListFragment();
     }
 
+    InputMethodManager imm;
     TobaccoTask tobaccoTask;
-    ComponentTask brandTask;
-    ComponentTask typeTask;
-    ComponentTask countryTask;
+    ComponentTask brandTask, typeTask, countryTask;
     View root;
     Fragment fragmentView;
     ListView tobaccoListView;
     Spinner spBrand, spType, spCountry;
-    Button btnMost,btnBest;
+    Button btnMost, btnBest;
+    LinearLayout linearLayout;
     EditText etSearchTobacco;
     Criteria cri = new Criteria();
 
@@ -57,6 +61,8 @@ public class TobaccoListFragment extends Fragment {
     }
 
     public void Init() {
+        imm = (InputMethodManager) getActivity().getSystemService(INPUT_METHOD_SERVICE);
+        linearLayout = root.findViewById(R.id.tobaccoListLayout);
         tobaccoListView = root.findViewById(R.id.listTobacco);
         spBrand = root.findViewById(R.id.spBrand);
         spType = root.findViewById(R.id.spType);
@@ -68,6 +74,14 @@ public class TobaccoListFragment extends Fragment {
     }
 
     public void setEvent() {
+        linearLayout.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                closeSearchText();
+                return false;
+            }
+        });
+
         etSearchTobacco.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -149,11 +163,15 @@ public class TobaccoListFragment extends Fragment {
     }
 
     public void search() {
+        closeSearchText();
         TobaccoListViewAdapter adapter = (TobaccoListViewAdapter) tobaccoListView.getAdapter();
         adapter.filter(cri);
     }
-
+    public void closeSearchText(){
+        imm.hideSoftInputFromWindow(etSearchTobacco.getWindowToken(), 0);
+    }
     private void setTobaccoVIew(TobaccoVO vo) {
+        closeSearchText();
         fragmentView = TobaccoViewFragment.newInstance(vo);
         FragmentTransaction childFt = getChildFragmentManager().beginTransaction();
         if (!fragmentView.isAdded()) {

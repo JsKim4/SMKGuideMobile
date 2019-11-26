@@ -2,12 +2,14 @@ package com.example.smkguide.domain;
 
 import org.json.JSONObject;
 
+import java.io.Serializable;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class AttachVO {
+public class AttachVO implements Serializable{
     private String uuid;
     private String uploadPath;
     private String fileName;
@@ -35,4 +37,5 @@ public class AttachVO {
         }
         return "";
     }
+
 }
