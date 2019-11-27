@@ -291,12 +291,12 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:gravity="left">
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="right">
+                android:orientation="horizontal">
                 <LinearLayout
                     android:id="@+id/addWriting"
                     android:layout_width="wrap_content"
@@ -315,14 +315,33 @@
                         android:src="@drawable/img_arrow_down">
                     </ImageView>
                 </LinearLayout>
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"/>
+                    <Button
+                        android:id="@+id/btnCommentSubmit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="18dp"
+                        android:text="Submit"
+                        android:visibility="gone"
+                        android:background="@drawable/read_more_box"></Button>
             </LinearLayout>
-            <EditText android:id="@+id/EditText02"
-
-                android:layout_width="match_parent" android:layout_height="wrap_content"
-
-                android:lines="5" android:gravity="top|left" android:inputType="textMultiLine"
-
-                android:scrollHorizontally="false"/>
+           <LinearLayout
+               android:id="@+id/layoutComment"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:orientation="vertical"
+               android:gravity="right"
+               android:visibility="gone">
+               <EditText android:id="@+id/etCommentBox"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:lines="5"
+                   android:gravity="top|left"
+                   android:inputType="textMultiLine"
+                   android:scrollHorizontally="false"/>
+           </LinearLayout>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
