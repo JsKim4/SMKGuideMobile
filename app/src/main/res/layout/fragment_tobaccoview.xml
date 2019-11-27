@@ -1,278 +1,348 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+    android:id="@+id/tobaccoViewTopLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/backgroundDefault"
-    android:id="@+id/tobaccoViewTopLayout">
+    android:orientation="vertical">
+
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
-        <TextView
-            android:id="@+id/tvTobaccoName"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:text="말보로 아이스 블라스트"
-            android:textSize="30dp"
-            android:textColor="#000000"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            android:background="@drawable/tobacco_view_background"
-            android:layout_marginBottom="10dp"></TextView>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
             android:orientation="vertical">
-            <LinearLayout
+
+            <TextView
+                android:id="@+id/tvTobaccoName"
                 android:layout_width="match_parent"
-                android:layout_height="160dp"
+                android:layout_height="40dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:orientation="horizontal"
-                android:background="@drawable/tobacco_view_background">
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/tobacco_view_background"
+                android:text="말보로 아이스 블라스트"
+                android:textColor="#000000"
+                android:textSize="30dp"></TextView>
 
-                <ImageView
-                    android:id="@+id/imgTobacco"
-                    android:layout_width="160dp"
-                    android:layout_height="160dp"
-                    android:padding="10dp"></ImageView>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="160dp"
-                    android:orientation="vertical">
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/tobacco_view_background"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imgTobacco"
+                        android:layout_width="160dp"
+                        android:layout_height="160dp"
+                        android:padding="10dp"></ImageView>
+
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:orientation="horizontal">
+                        android:layout_height="160dp"
+                        android:orientation="vertical">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:gravity="center_vertical"
-                            android:text="Price : "
-                            android:textColor="@color/highlightColor"></TextView>
-
-                        <TextView
-                            android:id="@+id/tvPrice"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
                             android:layout_weight="1"
-                            android:gravity="center_vertical|right"
-                            android:textColor="#000000"
-                            android:text="가격"></TextView>
+                            android:orientation="horizontal">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:gravity="center_vertical"
-                            android:text=" 원"
-                            android:textColor="@color/highlightColor">
-                        </TextView>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:gravity="center_vertical"
+                                android:text="Price : "
+                                android:textColor="@color/highlightColor"></TextView>
+
+                            <TextView
+                                android:id="@+id/tvPrice"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="center_vertical|right"
+                                android:text="가격"
+                                android:textColor="#000000"></TextView>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:gravity="center_vertical"
+                                android:text=" 원"
+                                android:textColor="@color/highlightColor"></TextView>
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:gravity="center_vertical"
+                                android:text="Amount : "
+                                android:textColor="@color/highlightColor"></TextView>
+
+                            <TextView
+                                android:id="@+id/tvQuantity"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="center_vertical|right"
+                                android:text="일반형"
+                                android:textColor="#000000"></TextView>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:gravity="center_vertical"
+                                android:text=" 개"
+                                android:textColor="@color/highlightColor"></TextView>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:gravity="center_vertical"
+                                android:text="Tar : "
+                                android:textColor="@color/highlightColor"></TextView>
+
+                            <TextView
+                                android:id="@+id/tvTar"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="center_vertical|right"
+                                android:text="Number"
+                                android:textColor="#000000"></TextView>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:gravity="center_vertical"
+                                android:text=" mg"
+                                android:textColor="@color/highlightColor"></TextView>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:gravity="center_vertical"
+                                android:text="Nicotine : "
+                                android:textColor="@color/highlightColor"></TextView>
+
+                            <TextView
+                                android:id="@+id/tvNicotine"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="center_vertical|right"
+                                android:text="Number"
+                                android:textColor="#000000"></TextView>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:gravity="center_vertical"
+                                android:text=" mg"
+                                android:textColor="@color/highlightColor"></TextView>
+                        </LinearLayout>
                     </LinearLayout>
+                </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:orientation="horizontal">
 
                     <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:gravity="center_vertical"
-                            android:text="Amount : "
-                            android:textColor="@color/highlightColor"></TextView>
-
-                        <TextView
-                            android:id="@+id/tvQuantity"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:gravity="center_vertical|right"
-                            android:textColor="#000000"
-                            android:text="일반형"></TextView>
-                        <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:gravity="center_vertical"
-                        android:text=" 개"
-                        android:textColor="@color/highlightColor"></TextView>
+                        android:layout_weight="1"
+                        android:background="@drawable/tobacco_view_background"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="Brand"
+                            android:textColor="@color/highlightColor"></TextView>
+
+                        <TextView
+                            android:id="@+id/tvBrand"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="말보로"
+                            android:textColor="#000000"></TextView>
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1">
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/tobacco_view_background"
+                        android:orientation="vertical">
 
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:gravity="center_vertical"
-                            android:text="Tar : "
-                            android:textColor="@color/highlightColor"></TextView>
-
-                        <TextView
-                            android:id="@+id/tvTar"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
                             android:layout_weight="1"
-                            android:gravity="center_vertical|right"
-                            android:textColor="#000000"
-                            android:text="Number"></TextView>
+                            android:gravity="center"
+                            android:text="Country"
+                            android:textColor="@color/highlightColor"></TextView>
 
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:gravity="center_vertical"
-                            android:text=" mg"
-                            android:textColor="@color/highlightColor"></TextView>
+                            android:id="@+id/tvCountry"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="미국"
+                            android:textColor="#000000"></TextView>
                     </LinearLayout>
+
                     <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1">
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/tobacco_view_background"
+                        android:orientation="vertical">
 
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:gravity="center_vertical"
-                            android:text="Nicotine : "
-                            android:textColor="@color/highlightColor"></TextView>
-
-                        <TextView
-                            android:id="@+id/tvNicotine"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
                             android:layout_weight="1"
-                            android:gravity="center_vertical|right"
-                            android:textColor="#000000"
-                            android:text="Number"></TextView>
+                            android:gravity="center"
+                            android:text="Company"
+                            android:textColor="@color/highlightColor"></TextView>
 
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:gravity="center_vertical"
-                            android:text=" mg"
+                            android:id="@+id/tvCompany"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="필립모리스"
+                            android:textColor="#000000"></TextView>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/tobacco_view_background"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="Type"
                             android:textColor="@color/highlightColor"></TextView>
+
+                        <TextView
+                            android:id="@+id/tvType"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="일반형"
+                            android:textColor="#000000"></TextView>
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
+        </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:background="@drawable/background_comment">
             <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="28dp"
+                android:orientation="horizontal"
+                android:background="#e1e1e1"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/speech_bubble">
+                </ImageView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="25dp"
+                    android:gravity="center_vertical"
+                    android:text="Comment"
+                    android:textColor="@color/colorPrimary"></TextView>
+                <TextView
+                    android:id="@+id/tvCommentPage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="1"
+                    android:textColor="@color/colorPrimary"></TextView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/colorPrimary"
+                    android:gravity="center_vertical"
+                    android:text=" Page"></TextView>
+
+            </LinearLayout>
+            <ListView
+                android:layout_margin="1dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:id="@+id/listComment"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal">
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/tobacco_view_background"
-                    android:orientation="vertical">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:text="Brand"
-                        android:textColor="@color/highlightColor"
-                        android:gravity="center"></TextView>
-                    <TextView
-                        android:id="@+id/tvBrand"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:textColor="#000000"
-                        android:text="말보로"
-                        android:gravity="center">
-                    </TextView>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/tobacco_view_background"
-                    android:orientation="vertical">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:text="Country"
-                        android:textColor="@color/highlightColor"
-                        android:gravity="center"></TextView>
-                    <TextView
-                        android:id="@+id/tvCountry"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:textColor="#000000"
-                        android:text="미국"
-                        android:gravity="center">
-                    </TextView>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/tobacco_view_background"
-                    android:orientation="vertical">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:text="Company"
-                        android:textColor="@color/highlightColor"
-                        android:gravity="center"></TextView>
-                    <TextView
-                        android:id="@+id/tvCompany"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:textColor="#000000"
-                        android:text="필립모리스"
-                        android:gravity="center">
-                    </TextView>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/tobacco_view_background"
-                    android:orientation="vertical">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:text="Type"
-                        android:textColor="@color/highlightColor"
-                        android:gravity="center"></TextView>
-                    <TextView
-                        android:id="@+id/tvType"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:textColor="#000000"
-                        android:text="일반형"
-                        android:gravity="center">
-                    </TextView>
-                </LinearLayout>
-
-
-
-            </LinearLayout>
+                android:layout_marginBottom="5dp"
+                android:background="#ffffff"
+                ></ListView>
         </LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclePagination"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </androidx.recyclerview.widget.RecyclerView>
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="3"
-        android:orientation="vertical">
-    </LinearLayout>
+
 </LinearLayout>

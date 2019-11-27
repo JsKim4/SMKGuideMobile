@@ -58,7 +58,6 @@ public class ComponentTask extends AsyncTask<String,Void, ArrayList<ComponentVO>
 
                 receiveMsg = "{\"componentList\":["+receiveMsg;
                 receiveMsg+="}";
-                Log.i("receiveMsg : ", receiveMsg);
 
                 ArrayList<ComponentVO> list = new ArrayList<ComponentVO>();
                 list.add(new ComponentVO(0L,type,type));
@@ -69,7 +68,6 @@ public class ComponentTask extends AsyncTask<String,Void, ArrayList<ComponentVO>
                 for(int i=0; i<array.length(); i++)
                 {
                     JSONObject componentObject = array.getJSONObject(i);
-                    Log.i("component",componentObject.toString());
                     list.add(new ComponentVO(componentObject));
                 }
 

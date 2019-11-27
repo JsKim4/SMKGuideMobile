@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tobaccoListLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -47,12 +48,6 @@
                        android:background="@drawable/smokearea_searchbar_bg"
                        android:paddingRight="10dp"
                        android:paddingLeft="10dp"></EditText>
-                   <Button
-                       android:id="@+id/btnSearchTobacco"
-                       android:layout_width="30dp"
-                       android:layout_height="30dp"
-                       android:text="S"
-                       android:textSize="10dp"></Button>
                </LinearLayout>
            </LinearLayout>
            <LinearLayout

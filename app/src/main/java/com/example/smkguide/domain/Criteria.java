@@ -15,6 +15,7 @@ public class Criteria {			//담배 검색용 객체
 
     private String type;		//검색 타입
     private String keyword;		//검색 키워드
+    private String order;
     private Long bId;
     private Long nId;
     private Long mId;
@@ -43,6 +44,9 @@ public class Criteria {			//담배 검색용 객체
             json.put("nid",nId);
             json.put("tid",tId);
             json.put("mid",mId);
+            json.put("order",order);
+            json.put("amount",amount);
+
 
         } catch (JSONException e) {
             e.printStackTrace();

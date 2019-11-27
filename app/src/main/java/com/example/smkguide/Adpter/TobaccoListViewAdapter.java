@@ -15,21 +15,34 @@ import com.example.smkguide.domain.Criteria;
 import com.example.smkguide.domain.TobaccoVO;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Locale;
 
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 public class TobaccoListViewAdapter extends BaseAdapter {
     private ArrayList<TobaccoVO> list = new ArrayList<TobaccoVO>();
+    private ArrayList<TobaccoVO> searchList = new ArrayList<TobaccoVO>();
+    private ArrayList<TobaccoVO> tempList = new ArrayList<TobaccoVO>();
     private Criteria cri = new Criteria();
     private final String URL="http://ggi4111.cafe24.com/display?fileName=";
     public TobaccoListViewAdapter(ArrayList<TobaccoVO>list){
         this.list = list;
+        this.tempList.addAll(list);
+        this.searchList.addAll(list);
         Log.i("list",list.toString());
     }
     public TobaccoListViewAdapter(Criteria cri){
         this.cri = cri;
 
+    }
+    public TobaccoListViewAdapter(ArrayList<TobaccoVO>list,Criteria cri){
+        this.list = list;
+        this.tempList.addAll(list);
+        this.searchList.addAll(list);
+        this.cri = cri;
+        Log.i("list",list.toString());
     }
 
 
@@ -76,10 +89,94 @@ public class TobaccoListViewAdapter extends BaseAdapter {
         type.setText(listViewItem.getType().getName());
         nicotine.setText(String.valueOf(listViewItem.getNicotine()));
         tar.setText(String.valueOf(listViewItem.getTar()));
-        Log.d("url : ",URL+listViewItem);
         Glide.with(convertView).load(URL+listViewItem.getAttach().getAttachFileName()).into(img);
 
         return convertView;
+    }
+    public void filter(Criteria cri){
+        searchList.clear();
+        searchList.addAll(tempList);
+        filterName(cri.getKeyword());
+        filterBrand(cri.getBId());
+        filterCountry(cri.getNId());
+        filterType(cri.getTId());
+        filterOrder(cri.getOrder());
+        notifyDataSetChanged();
+    }
+    public void filterName(String charText) {
+        if(charText==null)
+            return;
+        charText = charText.toLowerCase(Locale.getDefault());
+        list.clear();
+        if (charText.length() == 0) {
+            list.addAll(searchList);
+        } else {
+            for (TobaccoVO vo: searchList) {
+                if (vo.getTobaccoName().toLowerCase().contains(charText)) {
+                    list.add(vo);
+                }
+            }
+            searchList.clear();
+            searchList.addAll(list);
+        }
+    }
+    public void filterBrand(Long brandId) {
+        if(brandId==null)
+            return;
+        list.clear();
+        if (brandId == 0) {
+            list.addAll(searchList);
+        } else {
+            Log.d("filtering","brand");
+            for (TobaccoVO vo: searchList) {
+                if (vo.getBrand().getId()==brandId) {
+                    list.add(vo);
+                    Log.d("filtering",vo.toString());
+                }
+            }
+            searchList.clear();
+            searchList.addAll(list);
+        }
+    }
+    public void filterType(Long typeId) {
+        if(typeId==null)
+            return;
+        list.clear();
+        if (typeId == 0) {
+            list.addAll(searchList);
+        } else {
+            for (TobaccoVO vo: searchList) {
+                if (vo.getType().getId()==typeId) {
+                    list.add(vo);
+                }
+            }
+            searchList.clear();
+            searchList.addAll(list);
+        }
+    }
+    public void filterCountry(Long countryId) {
+        if(countryId==null)
+            return;
+        list.clear();
+        if (countryId == 0) {
+            list.addAll(searchList);
+        } else {
+            for (TobaccoVO vo: searchList) {
+                if (vo.getBrand().getId()==countryId) {
+                    list.add(vo);
+                }
+            }
+            searchList.clear();
+            searchList.addAll(list);
+        }
+    }
+    public void filterOrder(String order) {
+        if(order==null)
+            return;
+        if(order.equals("MOST"))
+            Collections.sort(list);
+       // else
+        //    filter(cri);
     }
 
 }

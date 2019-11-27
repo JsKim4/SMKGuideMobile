@@ -1,6 +1,10 @@
 package com.example.smkguide.ui.info;
 
+import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,13 +18,24 @@ import androidx.fragment.app.Fragment;
 
 import com.example.smkguide.Adpter.InfoListViewAdapter;
 import com.example.smkguide.R;
+import com.example.smkguide.domain.Criteria;
 import com.example.smkguide.domain.InfoVO;
+import com.example.smkguide.task.InfoTask;
 
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-public class InfoFragmentFirst extends Fragment {
+import lombok.Data;
 
+public class InfoFragmentFirst extends Fragment {
+    InfoVO vo;
+    Criteria cri = new Criteria();
     public static InfoFragmentFirst newInstance(){
         return new InfoFragmentFirst();
     }
@@ -37,34 +52,67 @@ public class InfoFragmentFirst extends Fragment {
 
         ListView listView = (ListView) view.findViewById(R.id.listView);
         List<InfoVO> list = new ArrayList<InfoVO>();
-        list.add(new InfoVO("1","공지사항 1","내용1111111\n1\n1\n1\n1\n11111\n1111111\n1\n111\n11\n1\n1\n1\n1\n1\n1\n1\n1\n\n1\n1\n11111111\n111111111111\n1\n11111111111111\n1111111111\n111111111\n111111111111111111111111","관리자","2019-11-01","1"));
-        list.add(new InfoVO("2","공지사항 22222222222222222222222222222222222222222222222222222","내용2\n2\n2\n2\n2\n2\n222222222222","관리자","2019-11-02","1"));
-        list.add(new InfoVO("3","공지사항 3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333","내용3","관리자","2019-11-03","1"));
-        list.add(new InfoVO("4","공지사항 44444444444","내용4","관리자","2019-11-04","1"));
-        list.add(new InfoVO("5","공지사항 555","내용5","관리자","2019-11-05","1"));
-        list.add(new InfoVO("6","공지사항 6666666666666666666666","내용6","관리자","2019-11-06","1"));
-        list.add(new InfoVO("7","공지사항 7","내용7","관리자","2019-11-07","1"));
-        list.add(new InfoVO("8","공지사항 8","내용8","관리자","2019-11-08","1"));
-        list.add(new InfoVO("9","공지사항 9","내용9","관리자","2019-11-09","1"));
-        list.add(new InfoVO("10","공지사항 10","내용10","관리자","2019-11-10","1"));
-        list.add(new InfoVO("11","공지사항 11","내용11","관리자","2019-11-11","1"));
-        list.add(new InfoVO("12,", "공지사항 12","내용12","관리자","2019-11-12","1"));
-        ListAdapter adapter = new InfoListViewAdapter(getContext(),list);
-        listView.setAdapter(adapter);
+        cri.setType("NOTICE");
+        cri.setAmount(1000);
+        InfoTask task = new InfoTask(getActivity(), view,cri);
+        task.execute("");
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
-                String title, content, name, date;
-                InfoVO info = (InfoVO) parent.getAdapter().getItem(position);
-                InfoDialog customDialog = new InfoDialog(getContext());
-                title=info.getTitle();
-                content=info.getContent();
-                name=info.getName();
-                date=info.getDate();
-                customDialog.call(title, content, name, date);
+                InfoViewTask t  = new InfoViewTask();
+                vo= (InfoVO)parent.getItemAtPosition(position);
+                t.execute(vo.getInfoId());
             }
         });
 
         return view;
+    }
+
+    @Data
+    @SuppressLint("NewApi")
+    public class InfoViewTask extends AsyncTask<String, Void, InfoVO> {
+        private String str, receiveMsg;
+        private final static String InfoURL = "http://ggi4111.cafe24.com/info/";
+
+        @Override
+        protected InfoVO doInBackground(String... urls) {
+            URL url = null;
+            try {
+                url = new URL(InfoURL+urls[0]+".json");
+                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                conn.setRequestProperty("Content-Type", "application/json");
+                conn.setRequestMethod("GET");
+                if (conn.getResponseCode() == conn.HTTP_OK) {
+                    InputStreamReader tmp = new InputStreamReader(conn.getInputStream(), "UTF-8");
+                    BufferedReader reader = new BufferedReader(tmp);
+                    StringBuffer buffer = new StringBuffer();
+                    while ((str = reader.readLine()) != null) {
+                        buffer.append(str);
+                    }
+                    receiveMsg = buffer.toString();
+
+                    JSONObject jsonObject = new JSONObject(receiveMsg);
+
+                    return new InfoVO(jsonObject);
+                } else {
+                    Log.i("통신 결과", conn.getResponseCode() + "에러");
+                }
+
+
+            } catch (Exception e) {
+                Log.d("error", "error");
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(InfoVO infoVO) {
+            super.onPostExecute(infoVO);
+            vo = infoVO;
+            Log.d("WhatDoesInfo",infoVO.toString());
+            InfoDialog customDialog = new InfoDialog(getContext());
+            customDialog.call(vo.getTitle(), vo.getContent(), vo.getName(), vo.getDate());
+        }
     }
 }
