@@ -6,11 +6,9 @@ import android.util.Log;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
 
@@ -26,13 +24,7 @@ public class CommentVO {		//담배의 comment
     TobaccoVO tobacco;			//작성된 담배
     MemberVO member;			//작성 사용자
     String content;				//내용
-    Date cdate;					//작성일
-
-    public String getCdateToString(){
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
-        String strDate = dateFormat.format(this.getCdate());
-        return strDate;
-    }
+    String cdate;					//작성일
     public CommentVO(JSONObject jObject) {
         Log.d("commentjson",jObject.toString());
         try {
@@ -43,12 +35,10 @@ public class CommentVO {		//담배의 comment
             sdf.setTimeZone(TimeZone.getTimeZone("GMT+9")); // give a timezone reference for formating (see comment at the bottom
             String formattedDate = sdf.format(date);
             Log.d(formattedDate,formattedDate);
-            this.setCdate(sdf.parse(formattedDate));
+            this.setCdate(formattedDate);
             this.setTobacco(getTobacco(jObject.getJSONObject("tobacco")));
             this.setMember(getMember(jObject.getJSONObject("member")));
         } catch (JSONException e) {
-            e.printStackTrace();
-        } catch (ParseException e) {
             e.printStackTrace();
         }
     }

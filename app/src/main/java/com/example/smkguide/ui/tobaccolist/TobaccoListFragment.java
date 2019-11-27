@@ -119,6 +119,7 @@ public class TobaccoListFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 TobaccoVO vo = (TobaccoVO) parent.getAdapter().getItem(position);
                 setTobaccoVIew(vo);
+                closeSearchText();
             }
         });
         spBrand.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -127,6 +128,7 @@ public class TobaccoListFragment extends Fragment {
                 ComponentVO vo = (ComponentVO) parent.getAdapter().getItem(position);
                 cri.setBId(vo.getId());
                 search();
+                closeSearchText();
             }
 
             @Override
@@ -140,6 +142,7 @@ public class TobaccoListFragment extends Fragment {
                 ComponentVO vo = (ComponentVO) parent.getAdapter().getItem(position);
                 cri.setTId(vo.getId());
                 search();
+                closeSearchText();
             }
 
             @Override
@@ -153,6 +156,7 @@ public class TobaccoListFragment extends Fragment {
                 ComponentVO vo = (ComponentVO) parent.getAdapter().getItem(position);
                 cri.setNId(vo.getId());
                 search();
+                closeSearchText();
             }
 
             @Override
@@ -163,7 +167,6 @@ public class TobaccoListFragment extends Fragment {
     }
 
     public void search() {
-        closeSearchText();
         TobaccoListViewAdapter adapter = (TobaccoListViewAdapter) tobaccoListView.getAdapter();
         adapter.filter(cri);
     }
