@@ -162,7 +162,7 @@ public class TobaccoListViewAdapter extends BaseAdapter {
             list.addAll(searchList);
         } else {
             for (TobaccoVO vo: searchList) {
-                if (vo.getBrand().getId()==countryId) {
+                if (vo.getCountry().getId()==countryId) {
                     list.add(vo);
                 }
             }

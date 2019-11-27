@@ -40,7 +40,7 @@ public class CommentListViewAdapter  extends BaseAdapter {
         TextView date = (TextView) view.findViewById(R.id.tvDate);
         TextView email = (TextView) view.findViewById(R.id.tvEmail);
         content.setText(list.get(position).getContent());
-        date.setText(list.get(position).getCdateToString());
+        date.setText(list.get(position).getCdate());
         email.setText(list.get(position).getMember().getEmail());
         return view;
     }
