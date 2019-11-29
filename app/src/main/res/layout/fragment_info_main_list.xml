@@ -8,8 +8,8 @@
             android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="공지사항"
+            android:text="공지사항1111111111111111111111111111111111111111111111111111111111111111111111111"
             android:textSize="15dp"
-            android:layout_marginRight="10dp"
-            />
+            android:maxLines="1"
+            android:ellipsize="end"/>
 </LinearLayout>

@@ -2,13 +2,16 @@ package com.example.smkguide.ui.info;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.HorizontalScrollView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -59,7 +62,7 @@ public class InfoFragment extends Fragment {
         ListAdapter adapter3 = new InfoMainListViewAdapter(getContext(),list3);
         list1.add(new InfoVO("1","공지사항 11111111111111111111","내용2\n2\n2\n2\n2\n2\n222222222222","관리자","2019-11-02","1"));    // 테스트용 데이터
         list1.add(new InfoVO("2","공지사항 22222222222222222222222","내용2\n2\n2\n2\n2\n2\n222222222222","관리자","2019-11-02","1"));
-        list1.add(new InfoVO("3","공지사항 33333333333333333333333333333","내용2\n2\n2\n2\n2\n2\n222222222222","관리자","2019-11-02","1"));
+        list1.add(new InfoVO("3","공지사항 33333333333333333333333333333333333333333333333","내용2\n2\n2\n2\n2\n2\n222222222222","관리자","2019-11-02","1"));
         list1.add(new InfoVO("4","공지사항 444444444444444","내용2\n2\n2\n2\n2\n2\n222222222222","관리자","2019-11-02","1"));
         listView1.setAdapter(adapter1);
         listView2.setAdapter(adapter2);
@@ -133,19 +136,10 @@ public class InfoFragment extends Fragment {
             public void onClick(View view) {
                 String title, content, name, date;
                 InfoDialog customDialog = new InfoDialog(getContext());
-                switch (view.getId()) {
-                    case R.id.textView:
-                        title = "명지전문대 전자공학과";
-                        content = "2015041001 김준섭\n2015041010 이근수\n2015041050 박성종\n2011041068 이승혁";
-                        name = "관리자";
-                        date = "2000-01-01 AM 03:30";
-                        break;
-                    default:
-                        title = "";
-                        content = "";
-                        name = "";
-                        date = "";
-                }
+                title = "명지전문대 전자공학과";
+                content = "2015041001 김준섭\n2015041010 이근수\n2015041050 박성종\n2011041068 이승혁";
+                name = "관리자";
+                date = "2000-01-01 AM 03:30";
                 customDialog.call(title, content, name, date);
             }
         };
