@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -41,6 +42,10 @@ public class TobaccoViewFragment extends Fragment {
     ImageView imgTobacco;
     CommentTask commentTask;
     TobaccoVO vo;
+    LinearLayout addWriting, layoutComment;
+    ImageView upDownArrow;
+    boolean upDownStatus = false;
+    Button btnCommentSubmit;
     private final String URL="http://ggi4111.cafe24.com/display?fileName=";
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -64,6 +69,10 @@ public class TobaccoViewFragment extends Fragment {
         tvType = root.findViewById(R.id.tvType);
         imgTobacco = root.findViewById(R.id.imgTobacco);  Glide.with(root).load(URL+vo.getAttach().getAttachFileName()).into(imgTobacco);
         recyclerPagination = root.findViewById(R.id.recyclePagination);
+        addWriting = root.findViewById(R.id.addWriting);
+        layoutComment = root.findViewById(R.id.layoutComment);
+        upDownArrow = root.findViewById(R.id.imgDownUp);
+        btnCommentSubmit = root.findViewById(R.id.btnCommentSubmit);
         setEvent();
         getComment(vo,"1");
     }
@@ -73,6 +82,29 @@ public class TobaccoViewFragment extends Fragment {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 return true;
+            }
+        });
+        addWriting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(upDownStatus){
+                    btnCommentSubmit.setVisibility(View.GONE);
+                    layoutComment.setVisibility(View.GONE);
+                    upDownArrow.setImageResource(R.drawable.img_arrow_down);
+                }else{
+                    btnCommentSubmit.setVisibility(View.VISIBLE);
+                    layoutComment.setVisibility(View.VISIBLE);
+                    upDownArrow.setImageResource(R.drawable.img_arrow_up);
+                }
+                upDownStatus=!upDownStatus;
+            }
+        });
+
+        btnCommentSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                getComment(vo,"1");
             }
         });
     }
