@@ -17,7 +17,6 @@ public class SettingFragment extends Fragment {
         return  new SettingFragment();
     }
 
-
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_setting, container, false);

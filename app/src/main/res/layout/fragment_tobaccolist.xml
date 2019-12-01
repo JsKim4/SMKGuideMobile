@@ -4,19 +4,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:layout_margin="30dp">
+    android:background="#ffffff">
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/fragmentTobaccoList">
+
        <LinearLayout
            android:layout_width="match_parent"
            android:layout_height="match_parent"
            android:orientation="vertical">
+
            <LinearLayout
                android:layout_width="match_parent"
                android:layout_height="40dp"
-               android:orientation="horizontal">
+               android:orientation="horizontal"
+               android:layout_marginTop="20dp"
+               android:layout_marginLeft="24dp"
+               android:layout_marginRight="24dp">
+
                <Button
                    android:id="@+id/btnMost"
                    android:layout_width="70dp"
@@ -24,7 +31,8 @@
                    android:textSize="8dp"
                    android:layout_gravity="center"
                    android:background="@drawable/most_btn_main"
-                   android:layout_marginRight="10dp"></Button>
+                   android:layout_marginRight="10dp" />
+
                <Button
                    android:id="@+id/btnBest"
                    android:layout_width="70dp"
@@ -33,13 +41,14 @@
                    android:textSize="8dp"
                    android:layout_gravity="center"
                    android:background="@drawable/best_btn_main"
-                   android:layout_marginRight="20dp"
-                   ></Button>
+                   android:layout_marginRight="15dp" />
+
                <LinearLayout
                    android:layout_width="match_parent"
                    android:layout_height="match_parent"
                    android:orientation="horizontal"
                    android:gravity="right">
+
                    <EditText
                        android:id="@+id/etSearchTobacco"
                        android:layout_width="0dp"
@@ -47,34 +56,41 @@
                        android:layout_height="match_parent"
                        android:background="@drawable/smokearea_searchbar_bg"
                        android:paddingRight="10dp"
-                       android:paddingLeft="10dp"></EditText>
+                       android:paddingLeft="10dp"
+                       android:hint="  검색"/>
                </LinearLayout>
            </LinearLayout>
+
            <LinearLayout
                android:layout_width="match_parent"
                android:layout_height="40dp"
                android:orientation="horizontal"
-               android:layout_marginTop="15dp">
+               android:layout_marginTop="15dp"
+               android:layout_marginLeft="24dp"
+               android:layout_marginRight="24dp">
+
                <Spinner
                    android:id="@+id/spBrand"
                    android:layout_width="0dp"
                    android:layout_height="match_parent"
                    android:layout_weight="1"
                    android:background="@drawable/spinner_component"
-                   android:layout_marginRight="10dp"></Spinner>
+                   android:layout_marginRight="10dp"/>
+
                <Spinner
                    android:id="@+id/spType"
                    android:layout_width="0dp"
                    android:layout_height="match_parent"
                    android:layout_weight="1"
                    android:background="@drawable/spinner_component"
-                   android:layout_marginRight="10dp"></Spinner>
+                   android:layout_marginRight="10dp" />
+
                <Spinner
                    android:id="@+id/spCountry"
                    android:layout_width="0dp"
                    android:layout_height="match_parent"
                    android:layout_weight="1"
-                   android:background="@drawable/spinner_component"></Spinner>
+                   android:background="@drawable/spinner_component" />
            </LinearLayout>
 
            <LinearLayout
@@ -82,7 +98,10 @@
                android:layout_height="0dp"
                android:layout_weight="10"
                android:orientation="vertical"
-               android:layout_marginTop="50dp">
+               android:layout_marginTop="30dp"
+               android:layout_marginLeft="30dp"
+               android:layout_marginRight="30dp">
+
                <ListView
                    android:id="@+id/listTobacco"
                    android:layout_width="match_parent"

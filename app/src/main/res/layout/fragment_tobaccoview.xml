@@ -10,25 +10,27 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_margin="15dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="10dp"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/tvTobaccoName"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/tobacco_view_background"
                 android:text="말보로 아이스 블라스트"
                 android:textColor="#000000"
-                android:textSize="30dp"></TextView>
+                android:padding="7dp"
+                android:textSize="23dp"></TextView>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -65,6 +67,7 @@
                                 android:layout_height="match_parent"
                                 android:gravity="center_vertical"
                                 android:text="Price : "
+                                android:textSize="16dp"
                                 android:textColor="@color/highlightColor"></TextView>
 
                             <TextView
@@ -74,6 +77,8 @@
                                 android:layout_weight="1"
                                 android:gravity="center_vertical|right"
                                 android:text="가격"
+                                android:textSize="12dp"
+                                android:layout_marginRight="1dp"
                                 android:textColor="#000000"></TextView>
 
                             <TextView
@@ -81,7 +86,9 @@
                                 android:layout_height="match_parent"
                                 android:gravity="center_vertical"
                                 android:text=" 원"
-                                android:textColor="@color/highlightColor"></TextView>
+                                android:textSize="16dp"
+                                android:textColor="@color/highlightColor"
+                                android:layout_marginRight="5dp"></TextView>
                         </LinearLayout>
 
 
@@ -95,6 +102,7 @@
                                 android:layout_height="match_parent"
                                 android:gravity="center_vertical"
                                 android:text="Amount : "
+                                android:textSize="16dp"
                                 android:textColor="@color/highlightColor"></TextView>
 
                             <TextView
@@ -104,6 +112,8 @@
                                 android:layout_weight="1"
                                 android:gravity="center_vertical|right"
                                 android:text="일반형"
+                                android:textSize="12dp"
+                                android:layout_marginRight="1dp"
                                 android:textColor="#000000"></TextView>
 
                             <TextView
@@ -111,7 +121,9 @@
                                 android:layout_height="match_parent"
                                 android:gravity="center_vertical"
                                 android:text=" 개"
-                                android:textColor="@color/highlightColor"></TextView>
+                                android:textSize="16dp"
+                                android:textColor="@color/highlightColor"
+                                android:layout_marginRight="5dp"></TextView>
                         </LinearLayout>
 
                         <LinearLayout
@@ -124,6 +136,7 @@
                                 android:layout_height="match_parent"
                                 android:gravity="center_vertical"
                                 android:text="Tar : "
+                                android:textSize="16dp"
                                 android:textColor="@color/highlightColor"></TextView>
 
                             <TextView
@@ -133,6 +146,8 @@
                                 android:layout_weight="1"
                                 android:gravity="center_vertical|right"
                                 android:text="Number"
+                                android:textSize="12dp"
+                                android:layout_marginRight="1dp"
                                 android:textColor="#000000"></TextView>
 
                             <TextView
@@ -140,7 +155,9 @@
                                 android:layout_height="match_parent"
                                 android:gravity="center_vertical"
                                 android:text=" mg"
-                                android:textColor="@color/highlightColor"></TextView>
+                                android:textSize="16dp"
+                                android:textColor="@color/highlightColor"
+                                android:layout_marginRight="5dp"></TextView>
                         </LinearLayout>
 
                         <LinearLayout
@@ -153,6 +170,7 @@
                                 android:layout_height="match_parent"
                                 android:gravity="center_vertical"
                                 android:text="Nicotine : "
+                                android:textSize="16dp"
                                 android:textColor="@color/highlightColor"></TextView>
 
                             <TextView
@@ -162,6 +180,8 @@
                                 android:layout_weight="1"
                                 android:gravity="center_vertical|right"
                                 android:text="Number"
+                                android:textSize="12dp"
+                                android:layout_marginRight="1dp"
                                 android:textColor="#000000"></TextView>
 
                             <TextView
@@ -169,7 +189,9 @@
                                 android:layout_height="match_parent"
                                 android:gravity="center_vertical"
                                 android:text=" mg"
-                                android:textColor="@color/highlightColor"></TextView>
+                                android:textSize="16dp"
+                                android:textColor="@color/highlightColor"
+                                android:layout_marginRight="5dp"></TextView>
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
@@ -195,6 +217,7 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:text="Brand"
+                            android:textSize="16dp"
                             android:textColor="@color/highlightColor"></TextView>
 
                         <TextView
@@ -204,7 +227,7 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:text="말보로"
-                            android:textSize="15dp"
+                            android:textSize="13dp"
                             android:textColor="#000000"></TextView>
                     </LinearLayout>
 
@@ -221,6 +244,7 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:text="Country"
+                            android:textSize="16dp"
                             android:textColor="@color/highlightColor"></TextView>
 
                         <TextView
@@ -230,7 +254,7 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:text="미국"
-                            android:textSize="15dp"
+                            android:textSize="13dp"
                             android:textColor="#000000"></TextView>
                     </LinearLayout>
 
@@ -247,6 +271,7 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:text="Company"
+                            android:textSize="16dp"
                             android:textColor="@color/highlightColor"></TextView>
 
                         <TextView
@@ -256,7 +281,7 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:text="필립모리스"
-                            android:textSize="8dp"
+                            android:textSize="10dp"
                             android:textColor="#000000"></TextView>
                     </LinearLayout>
 
@@ -273,6 +298,7 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:text="Type"
+                            android:textSize="16dp"
                             android:textColor="@color/highlightColor"></TextView>
 
                         <TextView
@@ -282,7 +308,7 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:text="일반형"
-                            android:textSize="15dp"
+                            android:textSize="13dp"
                             android:textColor="#000000"></TextView>
                     </LinearLayout>
                 </LinearLayout>
@@ -296,7 +322,10 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp">
                 <LinearLayout
                     android:id="@+id/addWriting"
                     android:layout_width="wrap_content"
@@ -319,36 +348,41 @@
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_weight="1"/>
-                    <Button
-                        android:id="@+id/btnCommentSubmit"
-                        android:layout_width="wrap_content"
-                        android:layout_height="18dp"
-                        android:text="Submit"
-                        android:visibility="gone"
-                        android:background="@drawable/read_more_box"></Button>
+                <Button
+                    android:id="@+id/btnCommentSubmit"
+                    android:layout_width="60dp"
+                    android:layout_height="20dp"
+                    android:text="Submit"
+                    android:visibility="gone"
+                    android:background="@drawable/read_more_box"></Button>
             </LinearLayout>
-           <LinearLayout
-               android:id="@+id/layoutComment"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:orientation="vertical"
-               android:gravity="right"
-               android:visibility="gone">
-               <EditText android:id="@+id/etCommentBox"
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:lines="5"
-                   android:gravity="top|left"
-                   android:inputType="textMultiLine"
-                   android:scrollHorizontally="false"/>
-           </LinearLayout>
+            <LinearLayout
+                android:id="@+id/layoutComment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="right"
+                android:visibility="gone"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp">
+                <EditText android:id="@+id/etCommentBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lines="4"
+                    android:gravity="top|left"
+                    android:inputType="textMultiLine"
+                    android:scrollHorizontally="false"/>
+            </LinearLayout>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:orientation="vertical"
-            android:background="@drawable/background_comment">
+            android:background="@drawable/background_comment"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="3dp">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
@@ -367,7 +401,7 @@
                     android:layout_weight="1"
                     android:layout_height="25dp"
                     android:gravity="center_vertical"
-                    android:text="Comment"
+                    android:text=" Comment"
                     android:textColor="@color/colorPrimary"></TextView>
                 <TextView
                     android:id="@+id/tvCommentPage"
@@ -392,15 +426,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:layout_marginBottom="5dp"
+                android:layout_marginBottom="7dp"
                 android:background="#ffffff"
                 ></ListView>
         </LinearLayout>
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclePagination"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_gravity="center_horizontal">
         </androidx.recyclerview.widget.RecyclerView>
-    </LinearLayout>
-
+        </LinearLayout>
 </LinearLayout>

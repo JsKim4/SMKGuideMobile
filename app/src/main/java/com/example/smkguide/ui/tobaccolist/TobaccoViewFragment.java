@@ -139,8 +139,9 @@ public class TobaccoViewFragment extends Fragment {
                 btnCommentSubmit.setVisibility(View.GONE);
                 layoutComment.setVisibility(View.GONE);
                 upDownArrow.setImageResource(R.drawable.img_arrow_down);
+                Toast.makeText(getContext(),"작성하였습니다.",Toast.LENGTH_SHORT).show();
                 closeSearchText();
-
+                etCommentBox.setText("");
             }
         });
     }

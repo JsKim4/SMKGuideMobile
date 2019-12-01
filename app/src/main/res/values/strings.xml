@@ -13,4 +13,6 @@
     <string name="menu_info">Info</string>
     <string name="menu_mypage">MyPage</string>
     <string name="menu_setting">Setting</string>
+    <string name="menu_MemberRegistration">Member Registration</string>
+    <string name="menu_Login">Login</string>
 </resources>

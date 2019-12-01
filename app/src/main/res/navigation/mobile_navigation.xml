@@ -40,4 +40,16 @@
         android:name="com.example.smkguide.ui.setting.SettingFragment"
         android:label="@string/menu_setting"
         tools:layout="@layout/fragment_setting" />
+
+    <fragment
+        android:id="@+id/nav_MemberRegistration"
+        android:name="com.example.smkguide.ui.home.MemberRegistrationFragment"
+        android:label="@string/menu_MemberRegistration"
+        tools:layout="@layout/fragment_member_registration" />
+
+    <fragment
+        android:id="@+id/nav_Login"
+        android:name="com.example.smkguide.ui.home.LoginFragment"
+        android:label="@string/menu_Login"
+        tools:layout="@layout/fragment_login" />
 </navigation>
