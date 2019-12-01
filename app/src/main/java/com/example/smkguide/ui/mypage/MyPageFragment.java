@@ -6,48 +6,75 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TabHost;
-
-
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
+import androidx.viewpager.widget.ViewPager;
+import com.example.smkguide.Adpter.SectionPagerAdapter;
 import com.example.smkguide.R;
-
+import com.google.android.material.tabs.TabLayout;
 
 
 public class MyPageFragment extends Fragment {
-    View view;
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_mypage, container, false);
+
+    View myFragment;
+    ViewPager viewPager;
+    TabLayout tabLayout;
 
 
-        TabHost host=(TabHost)getActivity().findViewById(R.id.host);
-        host.setup();
+    public MyPageFragment() {
 
-        TabHost.TabSpec spec = host.newTabSpec("log");
-        spec.setIndicator("log");
-        host.addTab(spec);
+    }
 
-
-        spec = host.newTabSpec("comment");
-        spec.setIndicator("comment");
-        host.addTab(spec);
-
-
-        spec = host.newTabSpec("grade");
-        spec.setIndicator("grade");
-        host.addTab(spec);
-
-        return view;
+    public static MyPageFragment getInstance()    {
+        return new MyPageFragment();
     }
 
 
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        myFragment = inflater.inflate(R.layout.fragment_mypage, container, false);
+
+        viewPager = myFragment.findViewById(R.id.viewPager);
+        tabLayout = myFragment.findViewById(R.id.tabLayout);
+
+        return myFragment;
+    }
+
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        setUpViewPager(viewPager);
+        tabLayout.setupWithViewPager(viewPager);
+
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+    }
+
+    private void setUpViewPager(ViewPager viewPager) {
+        SectionPagerAdapter adapter = new SectionPagerAdapter(getChildFragmentManager());
+
+        adapter.addFragment(new LogFragment(), "LOG");
+        adapter.addFragment(new CommentFragment(), "COMMENT");
+        adapter.addFragment(new LikeFragment(),"LIKE");
+
+        viewPager.setAdapter(adapter);
+    }
 }
-
-
-
-
