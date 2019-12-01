@@ -1,5 +1,6 @@
 package com.example.smkguide.domain;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.Serializable;
@@ -21,9 +22,11 @@ public class ComponentVO implements Serializable {	//company, country, brand, ty
     public ComponentVO(JSONObject jObject){
         try{
             this.setName(jObject.getString("name"));
-            this.setId(jObject.getLong("id"));
         }catch (Exception e){
-            e.printStackTrace();
+        }
+        try {
+            this.setId(jObject.getLong("id"));
+        } catch (JSONException e) {
         }
     }
 }

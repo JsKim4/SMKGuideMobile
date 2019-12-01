@@ -22,14 +22,14 @@ public class MemberVO {
         try {
             this.setMemberName(jObject.getString("memberName"));
         } catch (JSONException e) {
-            e.printStackTrace();
-        }finally {
-            try {
-                this.setMemberId(jObject.getLong("memberId"));
-                this.setEmail(jObject.getString("email"));
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
+        }
+        try {
+            this.setEmail(jObject.getString("email"));
+        } catch (JSONException e) {
+        }
+        try {
+            this.setMemberId(jObject.getLong("memberId"));
+        } catch (JSONException e) {
         }
     }
 
@@ -38,8 +38,10 @@ public class MemberVO {
         try {
             object.put("email",this.getEmail());
             object.put("password",this.getPassword());
+            object.put("memberName",this.getMemberName());
+            object.put("address",this.getAddress());
+            object.put("telephone",this.getTelephone());
         } catch (JSONException e) {
-            e.printStackTrace();
         }
         return object;
     }
@@ -48,7 +50,6 @@ public class MemberVO {
         try {
             object.put("token",this.getToken());
         } catch (JSONException e) {
-            e.printStackTrace();
         }
         return object;
     }

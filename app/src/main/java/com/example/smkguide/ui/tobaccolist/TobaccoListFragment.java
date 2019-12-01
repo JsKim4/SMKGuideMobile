@@ -58,8 +58,6 @@ public class TobaccoListFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         root = inflater.inflate(R.layout.fragment_tobaccolist, container, false);
         Init();
-        LoginTask task = new LoginTask(getActivity(),root);
-        task.execute();
         return root;
     }
 

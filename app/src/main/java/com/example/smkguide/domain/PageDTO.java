@@ -43,7 +43,6 @@ public class PageDTO {				//페이지 처리를 위한 DTO
             this.setNext(jsonObject.getBoolean("next"));
             this.setTotal(jsonObject.getInt("total"));
         } catch (JSONException e) {
-            e.printStackTrace();
         }
 
     }

@@ -47,25 +47,56 @@ public class TobaccoVO implements Serializable,Comparable  {        //담배
     public TobaccoVO(JSONObject jObject){
         try {
             this.setDeleteFlag(jObject.getBoolean("deleteFlag"));
+        } catch (JSONException e) {
+        }
+        try {
             this.setTar(jObject.getDouble("tar"));
+        } catch (JSONException e) {
+        }
+        try {
             this.setNicotine(jObject.getDouble("nicotine"));
+        } catch (JSONException e) {
+        }
+        try {
             this.setPrice(jObject.getLong("price"));
+        } catch (JSONException e) {
+        }
+        try {
             this.setQuantity(jObject.getDouble("quantity"));
+        } catch (JSONException e) {
+        }
+        try {
             this.setType(getComponent(jObject.getJSONObject("type")));
+        } catch (JSONException e) {
+        }
+        try {
             this.setBrand(getComponent(jObject.getJSONObject("brand")));
+        } catch (JSONException e) {
+        }
+        try {
             this.setCompany(getComponent(jObject.getJSONObject("company")));
+        } catch (JSONException e) {
+        }
+        try {
             this.setCountry(getComponent(jObject.getJSONObject("country")));
+        } catch (JSONException e) {
+        }
+        try {
             this.setCommentCnt(jObject.getInt("commentCnt"));
+        } catch (JSONException e) {
+        }
+        try {
             this.setAttach(getAttach(jObject.getJSONObject("attach")));
         } catch (JSONException e) {
-           // e.printStackTrace();
-        } finally {
-            try {
-                this.setTobaccoId(jObject.getLong("tobaccoId"));
-                this.setTobaccoName(jObject.getString("tobaccoName"));
-            } catch (JSONException e) {
-              //  e.printStackTrace();
-            }
+        }
+
+        try {
+            this.setTobaccoId(jObject.getLong("tobaccoId"));
+        } catch (JSONException e) {
+        }
+        try {
+            this.setTobaccoName(jObject.getString("tobaccoName"));
+        } catch (JSONException e) {
         }
 
     }
@@ -75,7 +106,6 @@ public class TobaccoVO implements Serializable,Comparable  {        //담배
         try{
             jsonObject.put("tobaccoId",tobaccoId);
         }catch (Exception e){
-            e.printStackTrace();
         }
         return jsonObject;
     }

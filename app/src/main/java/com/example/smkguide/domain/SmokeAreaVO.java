@@ -16,10 +16,22 @@ public class SmokeAreaVO {
     private double latitude;
     private double longitude;
 
-    public SmokeAreaVO(JSONObject jObject) throws JSONException {
-        this.setAreaId(jObject.getLong("areaId"));
-        this.setAreaName(jObject.getString("areaName"));
-        this.setLatitude(jObject.getDouble("latitude"));
-        this.setLongitude(jObject.getDouble("longitude"));
+    public SmokeAreaVO(JSONObject jObject){
+        try {
+            this.setAreaId(jObject.getLong("areaId"));
+        } catch (JSONException e) {
+        }
+        try {
+            this.setAreaName(jObject.getString("areaName"));
+        } catch (JSONException e) {
+        }
+        try {
+            this.setLatitude(jObject.getDouble("latitude"));
+        } catch (JSONException e) {
+        }
+        try {
+            this.setLongitude(jObject.getDouble("longitude"));
+        } catch (JSONException e) {
+        }
     }
 }

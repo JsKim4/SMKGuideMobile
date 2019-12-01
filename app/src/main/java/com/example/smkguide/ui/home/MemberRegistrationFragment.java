@@ -15,6 +15,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.smkguide.R;
+import com.example.smkguide.domain.MemberVO;
+import com.example.smkguide.task.member.RegisterTask;
 
 public class MemberRegistrationFragment extends Fragment {
 
@@ -22,18 +24,17 @@ public class MemberRegistrationFragment extends Fragment {
         return  new MemberRegistrationFragment();
     }
 
+
+    View root;
+    EditText edtId,edtPassword,edtName,edtTelephone,edtAddress;
+    Button registerButton;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_member_registration, container, false);
+        root = inflater.inflate(R.layout.fragment_member_registration, container, false);
+        init();
+        setEvent();
 
         Button register_ok= (Button) view.findViewById(R.id.registerButton);
-
-        // 서버에 데이터 송신 필요
-        EditText id = (EditText) view.findViewById(R.id.id);
-        EditText pw = (EditText) view.findViewById(R.id.password);
-        EditText name = (EditText) view.findViewById(R.id.name);
-        EditText phone = (EditText) view.findViewById(R.id.phone_num);
-        EditText add = (EditText) view.findViewById(R.id.address);
 
         View.OnClickListener fragment = new View.OnClickListener() {
             @Override
@@ -50,7 +51,7 @@ public class MemberRegistrationFragment extends Fragment {
         };
         register_ok.setOnClickListener(fragment);
 
-        LinearLayout main = view.findViewById(R.id.registrationMain);
+        LinearLayout main = root.findViewById(R.id.registrationMain);
         main.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -58,7 +59,7 @@ public class MemberRegistrationFragment extends Fragment {
             }
         });
 
-        return view;
+        return root;
     }
 
     private void setFragment(Fragment child) {
@@ -69,5 +70,28 @@ public class MemberRegistrationFragment extends Fragment {
             childFt.addToBackStack(null);
             childFt.commit();
         }
+    }
+    public void init(){
+        edtId = root.findViewById(R.id.edtRegisterId);
+        edtPassword = root.findViewById(R.id.edtRegisterPassword);
+        edtName = root.findViewById(R.id.edtRegisterName);
+        edtTelephone = root.findViewById(R.id.edtRegisterTelephone);
+        edtAddress = root.findViewById(R.id.edtRegisterAddress);
+        registerButton = root.findViewById(R.id.registerButton);
+    }
+    public void setEvent(){
+        registerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MemberVO vo = new MemberVO();
+                vo.setEmail(edtId.getText().toString());
+                vo.setMemberName(edtName.getText().toString());
+                vo.setPassword(edtPassword.getText().toString());
+                vo.setTelephone(edtTelephone.getText().toString());
+                vo.setAddress(edtAddress.getText().toString());
+                RegisterTask task = new RegisterTask(getActivity(),root,getChildFragmentManager());
+                task.execute(vo);
+            }
+        });
     }
 }

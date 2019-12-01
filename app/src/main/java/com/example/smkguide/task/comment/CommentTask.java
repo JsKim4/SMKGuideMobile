@@ -1,4 +1,4 @@
-package com.example.smkguide.task;
+package com.example.smkguide.task.comment;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;

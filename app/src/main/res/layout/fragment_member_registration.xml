@@ -17,7 +17,7 @@
             android:orientation="vertical">
 
                 <EditText
-                    android:id="@+id/id"
+                    android:id="@+id/edtRegisterId"
                     android:layout_width="280dp"
                     android:layout_height="wrap_content"
                     android:hint=" ID"
@@ -30,7 +30,7 @@
                     android:background="@color/colorPrimary" />
 
                 <EditText
-                    android:id="@+id/password"
+                    android:id="@+id/edtRegisterPassword"
                     android:inputType="textPassword"
                     android:layout_width="280dp"
                     android:layout_height="wrap_content"
@@ -44,7 +44,7 @@
                     android:background="@color/colorPrimary" />
 
                 <EditText
-                    android:id="@+id/name"
+                    android:id="@+id/edtRegisterName"
                     android:inputType="text"
                     android:layout_width="280dp"
                     android:layout_height="wrap_content"
@@ -57,7 +57,7 @@
                     android:background="@color/colorPrimary" />
 
                 <EditText
-                    android:id="@+id/phone_num"
+                    android:id="@+id/edtRegisterTelephone"
                     android:inputType="text"
                     android:layout_width="280dp"
                     android:layout_height="wrap_content"
@@ -70,7 +70,7 @@
                     android:background="@color/colorPrimary" />
 
                 <EditText
-                    android:id="@+id/address"
+                    android:id="@+id/edtRegisterAddress"
                     android:inputType="text"
                     android:layout_width="280dp"
                     android:layout_height="wrap_content"

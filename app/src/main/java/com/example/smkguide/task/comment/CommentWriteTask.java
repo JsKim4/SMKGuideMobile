@@ -1,4 +1,4 @@
-package com.example.smkguide.task;
+package com.example.smkguide.task.comment;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
@@ -37,7 +37,6 @@ public class CommentWriteTask extends AsyncTask<CommentVO, Void, Void> {
             conn.setRequestProperty("Content-Type", "application/json");
             conn.setRequestMethod("POST");
             OutputStream os = conn.getOutputStream();
-            Log.d("comment", vo[0].commentToJson().toString());
             os.write(vo[0].commentToJson().toString().getBytes("UTF-8"));
             os.flush();
             os.close();
@@ -52,7 +51,6 @@ public class CommentWriteTask extends AsyncTask<CommentVO, Void, Void> {
                 Log.d("receiveMsg", receiveMsg);
             }
         }catch(Exception e){
-            e.printStackTrace();
         }
         return null;
     }
