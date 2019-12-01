@@ -104,7 +104,7 @@ public class InfoFragmentFirst extends Fragment {
                 e.printStackTrace();
             }
             return null;
-        }
+    }
 
         @Override
         protected void onPostExecute(InfoVO infoVO) {
