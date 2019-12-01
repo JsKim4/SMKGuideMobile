@@ -6,9 +6,11 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
@@ -62,6 +64,14 @@ public class InfoFragmentFirst extends Fragment {
                 InfoViewTask t  = new InfoViewTask();
                 vo= (InfoVO)parent.getItemAtPosition(position);
                 t.execute(vo.getInfoId());
+            }
+        });
+
+        LinearLayout main = view.findViewById(R.id.infoFirstMain);
+        main.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                return true;
             }
         });
 

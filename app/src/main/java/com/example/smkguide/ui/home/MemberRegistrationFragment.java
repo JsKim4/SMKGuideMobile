@@ -2,13 +2,17 @@ package com.example.smkguide.ui.home;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.smkguide.R;
 import com.example.smkguide.domain.MemberVO;
@@ -29,7 +33,43 @@ public class MemberRegistrationFragment extends Fragment {
         root = inflater.inflate(R.layout.fragment_member_registration, container, false);
         init();
         setEvent();
+
+        Button register_ok= (Button) view.findViewById(R.id.registerButton);
+
+        View.OnClickListener fragment = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Fragment fg;
+                switch (view.getId()) {
+                    case R.id.registerButton:
+                        fg = HomeFragment.newInstance();
+                        setFragment(fg);
+                        Toast.makeText(getContext(),"가입하였습니다.", Toast.LENGTH_SHORT).show(); // 파싱 후 try catch에 추가
+                        break;
+                }
+            }
+        };
+        register_ok.setOnClickListener(fragment);
+
+        LinearLayout main = root.findViewById(R.id.registrationMain);
+        main.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                return true;
+            }
+        });
+
         return root;
+    }
+
+    private void setFragment(Fragment child) {
+        FragmentTransaction childFt = getChildFragmentManager().beginTransaction();
+
+        if (!child.isAdded()) {
+            childFt.replace(R.id.fragment, child);
+            childFt.addToBackStack(null);
+            childFt.commit();
+        }
     }
     public void init(){
         edtId = root.findViewById(R.id.edtRegisterId);
