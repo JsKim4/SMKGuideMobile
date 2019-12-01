@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,6 +15,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.smkguide.R;
+import com.example.smkguide.domain.MemberVO;
 import com.example.smkguide.task.member.LoginTask;
 
 public class HomeFragment extends Fragment {
@@ -22,22 +24,25 @@ public class HomeFragment extends Fragment {
         return  new HomeFragment();
     }
 
+
+
+    EditText idEdt,passwordEdt;
+    View root;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_home, container, false);
-
+        root = inflater.inflate(R.layout.fragment_home, container, false);
 
         Button login= (Button) root.findViewById(R.id.loginBtn);
         TextView register = (TextView) root.findViewById(R.id.registerText);
         TextView guestLogin = (TextView) root.findViewById(R.id.guestLoginText);
-
+        idEdt = root.findViewById(R.id.idEdt);
+        passwordEdt = root.findViewById(R.id.passwordEdt);
         View.OnClickListener fragment = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Fragment fg;
                 switch (view.getId()) {
                     case R.id.guestLoginText:
-                    case R.id.loginBtn:
                         fg = CategoryFragment.newInstance();
                         setFragment(fg);
                         break;
@@ -48,7 +53,16 @@ public class HomeFragment extends Fragment {
                 }
             }
         };
-        login.setOnClickListener(fragment);
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MemberVO vo = new MemberVO();
+                vo.setPassword(passwordEdt.getText().toString());
+                vo.setEmail(idEdt.getText().toString());
+                LoginTask task = new LoginTask(getActivity(),root,getChildFragmentManager());
+                task.execute(vo);
+            }
+        });
         register.setOnClickListener(fragment);
         guestLogin.setOnClickListener(fragment);
 
@@ -57,7 +71,6 @@ public class HomeFragment extends Fragment {
 
     private void setFragment(Fragment child) {
         FragmentTransaction childFt = getChildFragmentManager().beginTransaction();
-
         if (!child.isAdded()) {
             childFt.replace(R.id.fragment, child);
             childFt.addToBackStack(null);

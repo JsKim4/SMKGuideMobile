@@ -11,34 +11,26 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.smkguide.Adpter.PaginationViewAdapter;
 import com.example.smkguide.R;
-import com.example.smkguide.domain.CommentVO;
 import com.example.smkguide.domain.MemberVO;
-import com.example.smkguide.domain.PageDTO;
 import com.example.smkguide.ui.home.CategoryFragment;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.example.smkguide.ui.home.HomeFragment;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLEncoder;
-import java.util.ArrayList;
 
-public class LoginTask extends AsyncTask<MemberVO, Void, String> {
+public class RegisterTask extends AsyncTask<MemberVO, Void, String> {
     private Activity context;
     private View root;
     private String str, receiveMsg;
     private FragmentManager maneger;
-    private final static String LoginURL = "http://ggi4111.cafe24.com/mobile/login";
+    private final static String LoginURL = "http://ggi4111.cafe24.com/mobile/register";
 
 
-    public LoginTask(Activity context, View root,FragmentManager manager) {
+    public RegisterTask(Activity context, View root, FragmentManager manager) {
         this.context = context;
         this.root = root;
         this.maneger = manager;
@@ -66,12 +58,6 @@ public class LoginTask extends AsyncTask<MemberVO, Void, String> {
                 }
                 receiveMsg = buffer.toString();
                 String token = receiveMsg;
-                Log.d("token", token);
-                SharedPreferences pref = context.getSharedPreferences("user-info", context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = pref.edit();
-                editor.remove("token");
-                editor.putString("token", token);
-                editor.commit();
                 return token;
             }
         } catch (Exception e) {
@@ -85,7 +71,7 @@ public class LoginTask extends AsyncTask<MemberVO, Void, String> {
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
         if(s!=null&&s.length()!=0){
-            Fragment fg = CategoryFragment.newInstance();
+            Fragment fg = HomeFragment.newInstance();
             FragmentTransaction childFt = maneger.beginTransaction();
             if (!fg.isAdded()) {
                 childFt.replace(R.id.fragment, fg);

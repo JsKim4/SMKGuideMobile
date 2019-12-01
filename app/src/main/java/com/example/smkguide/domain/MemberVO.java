@@ -38,6 +38,9 @@ public class MemberVO {
         try {
             object.put("email",this.getEmail());
             object.put("password",this.getPassword());
+            object.put("memberName",this.getMemberName());
+            object.put("address",this.getAddress());
+            object.put("telephone",this.getTelephone());
         } catch (JSONException e) {
             e.printStackTrace();
         }
