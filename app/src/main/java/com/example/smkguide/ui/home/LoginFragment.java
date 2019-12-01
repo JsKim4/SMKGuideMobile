@@ -2,9 +2,11 @@ package com.example.smkguide.ui.home;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -21,11 +23,11 @@ public class LoginFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_login, container, false);
+        View view = inflater.inflate(R.layout.fragment_login, container, false);
 
-        Button login= (Button) root.findViewById(R.id.loginBtn);
-        TextView register = (TextView) root.findViewById(R.id.registerText);
-        TextView guestLogin = (TextView) root.findViewById(R.id.guestLoginText);
+        Button login= (Button) view.findViewById(R.id.loginBtn);
+        TextView register = (TextView) view.findViewById(R.id.registerText);
+        TextView guestLogin = (TextView) view.findViewById(R.id.guestLoginText);
 
         View.OnClickListener fragment = new View.OnClickListener() {
             @Override
@@ -48,7 +50,15 @@ public class LoginFragment extends Fragment {
         register.setOnClickListener(fragment);
         guestLogin.setOnClickListener(fragment);
 
-        return root;
+        LinearLayout main = view.findViewById(R.id.loginMain);
+        main.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                return true;
+            }
+        });
+
+        return view;
     }
 
     private void setFragment(Fragment child) {
