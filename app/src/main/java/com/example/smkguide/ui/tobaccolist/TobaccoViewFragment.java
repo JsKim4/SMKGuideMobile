@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -26,7 +27,6 @@ import com.example.smkguide.domain.MemberVO;
 import com.example.smkguide.domain.TobaccoVO;
 import com.example.smkguide.task.comment.CommentTask;
 import com.example.smkguide.task.comment.CommentWriteTask;
-import com.example.smkguide.task.grade.GradeTask;
 
 import static android.content.Context.INPUT_METHOD_SERVICE;
 

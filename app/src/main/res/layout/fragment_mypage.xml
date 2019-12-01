@@ -77,7 +77,11 @@
                 android:layout_weight="1"
                 android:text="TextView" />
         </LinearLayout>
-
+        <Button
+            android:id="@+id/logoutBtn"
+            android:text="Logout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></Button>
 
         <Space
             android:layout_width="match_parent"

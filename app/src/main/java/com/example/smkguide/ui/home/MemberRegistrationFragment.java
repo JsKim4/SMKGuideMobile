@@ -34,23 +34,6 @@ public class MemberRegistrationFragment extends Fragment {
         init();
         setEvent();
 
-        Button register_ok= (Button) view.findViewById(R.id.registerButton);
-
-        View.OnClickListener fragment = new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Fragment fg;
-                switch (view.getId()) {
-                    case R.id.registerButton:
-                        fg = HomeFragment.newInstance();
-                        setFragment(fg);
-                        Toast.makeText(getContext(),"가입하였습니다.", Toast.LENGTH_SHORT).show(); // 파싱 후 try catch에 추가
-                        break;
-                }
-            }
-        };
-        register_ok.setOnClickListener(fragment);
-
         LinearLayout main = root.findViewById(R.id.registrationMain);
         main.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -91,6 +74,10 @@ public class MemberRegistrationFragment extends Fragment {
                 vo.setAddress(edtAddress.getText().toString());
                 RegisterTask task = new RegisterTask(getActivity(),root,getChildFragmentManager());
                 task.execute(vo);
+                Fragment fg;
+                fg = HomeFragment.newInstance();
+                setFragment(fg);
+                Toast.makeText(getContext(),"가입하였습니다.", Toast.LENGTH_SHORT).show(); // 파싱 후 try catch에 추가
             }
         });
     }

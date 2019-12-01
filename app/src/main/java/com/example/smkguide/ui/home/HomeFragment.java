@@ -1,5 +1,6 @@
 package com.example.smkguide.ui.home;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,17 +31,10 @@ public class HomeFragment extends Fragment {
 
 
 
-    EditText idEdt,passwordEdt;
     View root;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         root = inflater.inflate(R.layout.fragment_home, container, false);
-
-        Button login= (Button) root.findViewById(R.id.loginBtn);
-        TextView register = (TextView) root.findViewById(R.id.registerText);
-        TextView guestLogin = (TextView) root.findViewById(R.id.guestLoginText);
-        idEdt = root.findViewById(R.id.idEdt);
-        passwordEdt = root.findViewById(R.id.passwordEdt);
 
         CardView area= (CardView) root.findViewById(R.id.cardViewArea);
         CardView info= (CardView) root.findViewById(R.id.cardViewInfo);
@@ -48,15 +42,10 @@ public class HomeFragment extends Fragment {
         CardView myPage= (CardView) root.findViewById(R.id.cardViewMyPage);
         CardView register= (CardView) root.findViewById(R.id.cardViewRegister);
         CardView setting= (CardView) root.findViewById(R.id.cardViewSetting);
-
         View.OnClickListener fragment = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Fragment fg;
                 switch (view.getId()) {
-                    case R.id.guestLoginText:
-                        fg = CategoryFragment.newInstance();
-                        setFragment(fg);
                     case R.id.cardViewArea:
                         Navigation.findNavController(view).navigate(R.id.nav_area);
                         break;
@@ -78,16 +67,6 @@ public class HomeFragment extends Fragment {
                 }
             }
         };
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                MemberVO vo = new MemberVO();
-                vo.setPassword(passwordEdt.getText().toString());
-                vo.setEmail(idEdt.getText().toString());
-                LoginTask task = new LoginTask(getActivity(),root,getChildFragmentManager());
-                task.execute(vo);
-            }
-        });
         area.setOnClickListener(fragment);
         info.setOnClickListener(fragment);
         list.setOnClickListener(fragment);
@@ -95,7 +74,7 @@ public class HomeFragment extends Fragment {
         register.setOnClickListener(fragment);
         setting.setOnClickListener(fragment);
 
-        return view;
+        return root;
     }
 
     private void setFragment(Fragment child) {

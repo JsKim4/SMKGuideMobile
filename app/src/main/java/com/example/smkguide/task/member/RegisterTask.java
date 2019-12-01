@@ -13,7 +13,6 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.smkguide.R;
 import com.example.smkguide.domain.MemberVO;
-import com.example.smkguide.ui.home.CategoryFragment;
 import com.example.smkguide.ui.home.HomeFragment;
 
 import java.io.BufferedReader;

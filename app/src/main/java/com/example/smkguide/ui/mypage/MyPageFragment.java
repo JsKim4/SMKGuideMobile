@@ -8,6 +8,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
@@ -23,7 +25,7 @@ public class MyPageFragment extends Fragment {
     View myFragment;
     ViewPager viewPager;
     TabLayout tabLayout;
-
+    Button btnLogout;
     public static MyPageFragment newInstance(){
         return new MyPageFragment();
     }
@@ -45,7 +47,16 @@ public class MyPageFragment extends Fragment {
             return null;
         } else {
             myFragment = inflater.inflate(R.layout.fragment_mypage, container, false);
-
+            btnLogout = myFragment.findViewById(R.id.logoutBtn);
+            btnLogout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    SharedPreferences pref = getActivity().getSharedPreferences("user-info", getActivity().MODE_PRIVATE);
+                    SharedPreferences.Editor editor = pref.edit();
+                    editor.remove("token");
+                    editor.commit();
+                }
+            });
             viewPager = myFragment.findViewById(R.id.viewPager);
             tabLayout = myFragment.findViewById(R.id.tabLayout);
             Log.d("token",token);

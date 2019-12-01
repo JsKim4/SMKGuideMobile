@@ -15,8 +15,7 @@ import com.example.smkguide.Adpter.PaginationViewAdapter;
 import com.example.smkguide.R;
 import com.example.smkguide.domain.CommentVO;
 import com.example.smkguide.domain.MemberVO;
-import com.example.smkguide.domain.PageDTO;
-import com.example.smkguide.ui.home.CategoryFragment;
+import com.example.smkguide.ui.home.HomeFragment;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -85,7 +84,7 @@ public class LoginTask extends AsyncTask<MemberVO, Void, String> {
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
         if(s!=null&&s.length()!=0){
-            Fragment fg = CategoryFragment.newInstance();
+            Fragment fg = HomeFragment.newInstance();
             FragmentTransaction childFt = maneger.beginTransaction();
             if (!fg.isAdded()) {
                 childFt.replace(R.id.fragment, fg);
