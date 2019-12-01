@@ -2,17 +2,30 @@ package com.example.smkguide.ui.info;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.HorizontalScrollView;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.smkguide.Adpter.InfoMainListViewAdapter;
 import com.example.smkguide.R;
+import com.example.smkguide.domain.InfoVO;
 import com.example.smkguide.task.InfoTask;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class InfoFragment extends Fragment {
 
@@ -36,20 +49,63 @@ public class InfoFragment extends Fragment {
         Button btn_first = (Button) view.findViewById(R.id.btn_first);
         Button btn_second = (Button) view.findViewById(R.id.btn_second);
         Button btn_third = (Button) view.findViewById(R.id.btn_third);
-        Button btn_fourth = (Button) view.findViewById(R.id.btn_fourth);
-        TextView textView1_2 = (TextView) view.findViewById(R.id.textView1_2);
-        TextView textView1_3 = (TextView) view.findViewById(R.id.textView1_3);
-        TextView textView1_4 = (TextView) view.findViewById(R.id.textView1_4);
-        TextView textView1_5 = (TextView) view.findViewById(R.id.textView1_5);
-        TextView textView2_2 = (TextView) view.findViewById(R.id.textView2_2);
-        TextView textView2_3 = (TextView) view.findViewById(R.id.textView2_3);
-        TextView textView2_4 = (TextView) view.findViewById(R.id.textView2_4);
-        TextView textView2_5 = (TextView) view.findViewById(R.id.textView2_5);
-        TextView textView3_2 = (TextView) view.findViewById(R.id.textView3_2);
-        TextView textView3_3 = (TextView) view.findViewById(R.id.textView3_3);
-        TextView textView3_4 = (TextView) view.findViewById(R.id.textView3_4);
-        TextView textView3_5 = (TextView) view.findViewById(R.id.textView3_5);
-        TextView textView4_2 = (TextView) view.findViewById(R.id.textView4_2);
+        ListView listView1 = (ListView) view.findViewById(R.id.listView1);
+        ListView listView2 = (ListView) view.findViewById(R.id.listView2);
+        ListView listView3 = (ListView) view.findViewById(R.id.listView3);
+        TextView textView = (TextView) view.findViewById(R.id.textView);
+
+        List<InfoVO> list1 = new ArrayList<InfoVO>();
+        List<InfoVO> list2 = new ArrayList<InfoVO>();
+        List<InfoVO> list3 = new ArrayList<InfoVO>();
+        ListAdapter adapter1 = new InfoMainListViewAdapter(getContext(),list1);
+        ListAdapter adapter2 = new InfoMainListViewAdapter(getContext(),list2);
+        ListAdapter adapter3 = new InfoMainListViewAdapter(getContext(),list3);
+        list1.add(new InfoVO("1","공지사항 11111111111111111111","내용2\n2\n2\n2\n2\n2\n222222222222","관리자","2019-11-02","1"));    // 테스트용 데이터
+        list1.add(new InfoVO("2","공지사항 22222222222222222222222","내용2\n2\n2\n2\n2\n2\n222222222222","관리자","2019-11-02","1"));
+        list1.add(new InfoVO("3","공지사항 33333333333333333333333333333333333333333333333","내용2\n2\n2\n2\n2\n2\n222222222222","관리자","2019-11-02","1"));
+        list1.add(new InfoVO("4","공지사항 444444444444444","내용2\n2\n2\n2\n2\n2\n222222222222","관리자","2019-11-02","1"));
+        listView1.setAdapter(adapter1);
+        listView2.setAdapter(adapter2);
+        listView3.setAdapter(adapter3);
+
+        listView1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
+                String title, content, name, date;
+                InfoDialog customDialog = new InfoDialog(getContext());
+                title = "제목 1";     // 테스트용 커스텀 다이얼로그 데이터
+                content = "내용 1";
+                name = "관리자";
+                date = "2000-01-01 AM 00:00";
+                customDialog.call(title, content, name, date);
+            }
+        });
+
+        listView2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
+                String title, content, name, date;
+                InfoDialog customDialog = new InfoDialog(getContext());
+                title = "제목 1";     // 테스트용 커스텀 다이얼로그 데이터
+                content = "내용 1";
+                name = "관리자";
+                date = "2000-01-01 AM 00:00";
+                customDialog.call(title, content, name, date);
+            }
+        });
+
+        listView3.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
+                String title, content, name, date;
+                InfoDialog customDialog = new InfoDialog(getContext());
+                title = "제목 1";     // 테스트용 커스텀 다이얼로그 데이터
+                content = "내용 1";
+                name = "관리자";
+                date = "2000-01-01 AM 00:00";
+                customDialog.call(title, content, name, date);
+            }
+        });
 
         View.OnClickListener listener = new View.OnClickListener() {
             @Override
@@ -68,126 +124,26 @@ public class InfoFragment extends Fragment {
                         fg = InfoFragmentThird.newInstance();
                         setFragment(fg);
                         break;
-                    case R.id.btn_fourth:
-                        fg = InfoFragmentFourth.newInstance();
-                        setFragment(fg);
-                        break;
                 }
             }
         };
-
         btn_first.setOnClickListener(listener);
         btn_second.setOnClickListener(listener);
         btn_third.setOnClickListener(listener);
-        btn_fourth.setOnClickListener(listener);
 
         View.OnClickListener dialog = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String title, content, name, date;
                 InfoDialog customDialog = new InfoDialog(getContext());
-                switch (view.getId()) {
-                    case R.id.textView1_2:
-                        title = "공지사항 1";    // 파싱 데이터 넣어야됨
-                        content = "내용1\n11111\n1\n111\n1\n11111";
-                        name = "관리자A";
-                        date = "2000-01-01 AM 03:30";
-                        break;
-                    case R.id.textView1_3:
-                        title = "공지사항 22222222";
-                        content = "내용22222\n2222\n22\n2\n2\n2\n2\n2\n222\n222\n2\n222\n222\n2\n222\n222\n2\n222\n222\n2\n222\n222";
-                        name = "관리자BBBBB";
-                        date = "2000-01-01 AM 03:30";
-                        break;
-                    case R.id.textView1_4:
-                        title = "공지사항 333333333333333333333333333333333333333333";
-                        content = "내용3\n33\n3\n3\n3\n3\n3\n3333333\n3\n3\n3333\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n33333333n3\n3\n3\n3\n3\n3\n3\n3\n3\n33333333";
-                        name = "관리자C";
-                        date = "2000-01-01 AM 03:30";
-                        break;
-                    case R.id.textView1_5:
-                        title = "공지사항 4444444444444444444";
-                        content = "내용4\n44\n4\n4\n4\n44444\n4\n344443\n4444444\n4\n4\n444\n4\n4\n4\n44\n44\n4444444";
-                        name = "관리자C";
-                        date = "2000-01-01 AM 03:30";
-                        break;
-                    case R.id.textView2_2:
-                        title = "뉴스 1";
-                        content = "내용1\n11111\n1\n111\n1\n11111";
-                        name = "관리자A";
-                        date = "2000-01-01 AM 03:30";
-                        break;
-                    case R.id.textView2_3:
-                        title = "뉴스 2";
-                        content = "내용22222\n2222\n22\n2\n2\n2\n2\n2\n2222222\n2";
-                        name = "관리자BBBBB";
-                        date = "2000-01-01 AM 03:30";
-                        break;
-                    case R.id.textView2_4:
-                        title = "뉴스 3333333333333333333333333333333333333333333";
-                        content = "내용3\n33\n3\n3\n3\n3\n3\n3333333\n3\n3\n3333\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n33333333";
-                        name = "관리자C";
-                        date = "2000-01-01 AM 03:30";
-                        break;
-                    case R.id.textView2_5:
-                        title = "뉴스 4444444444444444444";
-                        content = "내용4\n44\n4\n4\n4\n44444\n4\n344443\n4444444\n4\n4\n444\n4\n4\n4\n44\n44\n4444444";
-                        name = "관리자C";
-                        date = "2000-01-01 AM 03:30";
-                        break;
-                    case R.id.textView3_2:
-                        title = "게시판 1";
-                        content = "내용1\n11111\n1\n111\n1\n11111";
-                        name = "관리자A";
-                        date = "2000-01-01 AM 03:30";
-                        break;
-                    case R.id.textView3_3:
-                        title = "게시판 2";
-                        content = "내용22222\n2222\n22\n2\n2\n2\n2\n2\n22222222";
-                        name = "관리자BBBBB";
-                        date = "2000-01-01 AM 03:30";
-                        break;
-                    case R.id.textView3_4:
-                        title = "게시판 3333333333333333333333333333333333333333";
-                        content = "내용3\n33\n3\n3\n3\n3\n3\n3333333\n3\n3\n3333\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n3\n33333333";
-                        name = "관리자C";
-                        date = "2000-01-01 AM 03:30";
-                        break;
-                    case R.id.textView3_5:
-                        title = "게시판 4444444444444444444";
-                        content = "내용4\n44\n4\n4\n4\n44444\n4\n344443\n4444444\n4\n4\n444\n4\n4\n4\n44\n44\n4444444";
-                        name = "관리자C";
-                        date = "2000-01-01 AM 03:30";
-                        break;
-                    case R.id.textView4_2:
-                        title = "명지전문대 전자공학과";
-                        content = "2015041001 김준섭\n2015041010 이근수\n2015041050 박성종\n2011041068 이승혁";
-                        name = "Admin";
-                        date = "2000-01-01 AM 03:30";
-                        break;
-                    default:
-                        title = "";
-                        content = "";
-                        name = "";
-                        date = "";
-                }
+                title = "명지전문대 전자공학과";
+                content = "2015041001 김준섭\n2015041010 이근수\n2015041050 박성종\n2011041068 이승혁";
+                name = "관리자";
+                date = "2000-01-01 AM 03:30";
                 customDialog.call(title, content, name, date);
             }
         };
-
-        textView1_2.setOnClickListener(dialog);
-        textView1_3.setOnClickListener(dialog);
-        textView1_4.setOnClickListener(dialog);
-        textView1_5.setOnClickListener(dialog);
-        textView2_2.setOnClickListener(dialog);
-        textView2_3.setOnClickListener(dialog);
-        textView2_4.setOnClickListener(dialog);
-        textView2_5.setOnClickListener(dialog);
-        textView3_2.setOnClickListener(dialog);
-        textView3_3.setOnClickListener(dialog);
-        textView3_4.setOnClickListener(dialog);
-        textView3_5.setOnClickListener(dialog);
-        textView4_2.setOnClickListener(dialog);
+        textView.setOnClickListener(dialog);
 
         return view;
     }
