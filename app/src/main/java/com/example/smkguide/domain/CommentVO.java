@@ -43,6 +43,18 @@ public class CommentVO {		//담배의 comment
         }
     }
 
+    public JSONObject commentToJson(){
+        JSONObject jsonObject = new JSONObject();
+        try{
+            jsonObject.put("content",content);
+            jsonObject.putOpt("tobacco",tobacco.tobaccoToJson());
+            jsonObject.putOpt("member",member.tokenToJson());
+        }catch (Exception e){
+
+        }
+        return jsonObject;
+    }
+
     public TobaccoVO getTobacco(JSONObject jsonObject) throws JSONException {
         TobaccoVO vo = new TobaccoVO(jsonObject);
         return vo;

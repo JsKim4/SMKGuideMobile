@@ -29,6 +29,7 @@ import com.example.smkguide.domain.Criteria;
 import com.example.smkguide.domain.TobaccoVO;
 import com.example.smkguide.task.ComponentTask;
 import com.example.smkguide.task.TobaccoTask;
+import com.example.smkguide.task.member.LoginTask;
 
 import org.w3c.dom.Text;
 
@@ -57,6 +58,8 @@ public class TobaccoListFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         root = inflater.inflate(R.layout.fragment_tobaccolist, container, false);
         Init();
+        LoginTask task = new LoginTask(getActivity(),root);
+        task.execute();
         return root;
     }
 

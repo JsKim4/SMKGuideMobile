@@ -69,6 +69,16 @@ public class TobaccoVO implements Serializable,Comparable  {        //담배
         }
 
     }
+
+    public JSONObject tobaccoToJson(){
+        JSONObject jsonObject = new JSONObject();
+        try{
+            jsonObject.put("tobaccoId",tobaccoId);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return jsonObject;
+    }
     public AttachVO getAttach(JSONObject jObject){
         AttachVO vo = new AttachVO(jObject);
         return vo;

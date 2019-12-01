@@ -14,6 +14,10 @@ public class MemberVO {
     private Long memberId;			//사용자 고유번호
     private String email;			//사용자 이메일
     private String memberName;		//사용자 이름
+    private String password;
+    private String address;
+    private String telephone;
+    private String token;
     public MemberVO(JSONObject jObject){
         try {
             this.setMemberName(jObject.getString("memberName"));
@@ -27,5 +31,25 @@ public class MemberVO {
                 e.printStackTrace();
             }
         }
+    }
+
+    public JSONObject memberToJson(){
+        JSONObject object = new JSONObject();
+        try {
+            object.put("email",this.getEmail());
+            object.put("password",this.getPassword());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return object;
+    }
+    public JSONObject tokenToJson(){
+        JSONObject object = new JSONObject();
+        try {
+            object.put("token",this.getToken());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return object;
     }
 }

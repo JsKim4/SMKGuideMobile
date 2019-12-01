@@ -1,17 +1,20 @@
 package com.example.smkguide.ui.home;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.smkguide.R;
+import com.example.smkguide.task.member.LoginTask;
 
 public class HomeFragment extends Fragment {
 
@@ -22,6 +25,7 @@ public class HomeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_home, container, false);
+
 
         Button login= (Button) root.findViewById(R.id.loginBtn);
         TextView register = (TextView) root.findViewById(R.id.registerText);
