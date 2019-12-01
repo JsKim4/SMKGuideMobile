@@ -2,6 +2,7 @@ package com.example.smkguide.ui.mypage;
 
 
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,8 +34,14 @@ public class MyPageFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        myFragment = inflater.inflate(R.layout.fragment_mypage, container, false);
+
+        SharedPreferences pref = getActivity().getSharedPreferences("user-info", myFragment.getContext().MODE_PRIVATE);
+        /*String token =pref.getString("token", null);
+        if(token == null) {
+            myFragment = inflater.inflate(R.layout.fragment_login, container, false);
+        } else {
+            myFragment = inflater.inflate(R.layout.fragment_mypage, container, false);
+        }*/
 
         viewPager = myFragment.findViewById(R.id.viewPager);
         tabLayout = myFragment.findViewById(R.id.tabLayout);

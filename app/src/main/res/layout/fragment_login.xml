@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:id="@+id/fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:orientation="vertical"
+                android:background="@color/colorPrimary"
+                >
+                <ImageView
+                    android:layout_width="175dp"
+                    android:layout_height="125dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="50dp"
+                    android:src="@drawable/ic_smoke_icon2" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="SMK Guide"
+                    android:textColor="#ffffff"
+                    android:textSize="27dp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="13dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="명지전문대 전자공학과"
+                    android:textColor="#ffffff"
+                    android:textSize="18dp"
+                    android:layout_marginTop="3dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/idEdt"
+                    android:layout_width="280dp"
+                    android:layout_height="wrap_content"
+                    android:hint=" ID"
+                    android:layout_gravity="center"
+                    android:padding="10dp"
+                    android:textColor="#ffffff"
+                    android:textColorHint="#ffffff"
+                    android:drawableLeft="@drawable/ic_lock_black_24dp"
+                    android:layout_marginTop="50dp"
+                    android:background="@color/colorPrimary" />
+
+                <EditText
+                    android:id="@+id/passwordEdt"
+                    android:inputType="textPassword"
+                    android:layout_width="280dp"
+                    android:layout_height="wrap_content"
+                    android:hint=" PASSWORD"
+                    android:layout_gravity="center"
+                    android:padding="10dp"
+                    android:textColor="#ffffff"
+                    android:textColorHint="#ffffff"
+                    android:drawableLeft="@drawable/ic_vpn_key_black_24dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/colorPrimary" />
+
+                <Button
+                    android:id="@+id/loginBtn"
+                    android:layout_width="280dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:textColor="#ffffff"
+                    android:background="@color/colorPrimary"
+                    android:text="로그인"
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center" />
+
+                <TextView
+                    android:id="@+id/registerText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textSize="16dp"
+                    android:layout_marginTop="25dp"
+                    android:text="회원가입 하기"/>
+
+                <TextView
+                    android:id="@+id/guestLoginText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textSize="16dp"
+                    android:layout_marginTop="4dp"
+                    android:text="게스트 계정으로 로그인"/>
+            </LinearLayout>
+        </LinearLayout>
+    </FrameLayout>
+</LinearLayout>
