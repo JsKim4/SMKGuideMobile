@@ -27,7 +27,7 @@ public class RegisterTask extends AsyncTask<MemberVO, Void, String> {
     private View root;
     private String str, receiveMsg;
     private FragmentManager maneger;
-    private final static String LoginURL = "http://ggi4111.cafe24.com/mobile/register";
+    private final static String LoginURL = "http://ggi4111.cafe24.com/mobile/member/register";
 
 
     public RegisterTask(Activity context, View root, FragmentManager manager) {
@@ -57,8 +57,8 @@ public class RegisterTask extends AsyncTask<MemberVO, Void, String> {
                     buffer.append(str);
                 }
                 receiveMsg = buffer.toString();
-                String token = receiveMsg;
-                return token;
+                String success = receiveMsg;
+                return success;
             }
         } catch (Exception e) {
             Log.d("error", "error");
@@ -79,7 +79,7 @@ public class RegisterTask extends AsyncTask<MemberVO, Void, String> {
                 childFt.commit();
             }
         }else{
-            Toast.makeText(context,"로그인 정보가 일치하지 않습니다",Toast.LENGTH_LONG).show();
+            Toast.makeText(context,"이미 가입된 회원이거나 양식이 올바르지 못합니다.",Toast.LENGTH_LONG).show();
         }
     }
 }

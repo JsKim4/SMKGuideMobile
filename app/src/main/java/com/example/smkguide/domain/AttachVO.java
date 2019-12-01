@@ -1,5 +1,6 @@
 package com.example.smkguide.domain;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.Serializable;
@@ -16,12 +17,17 @@ public class AttachVO implements Serializable{
 
     private Long tobaccoId;
     public AttachVO(JSONObject jObject){
-        try{
+        try {
             this.setUuid(jObject.getString("uuid"));
+        } catch (JSONException e) {
+        }
+        try {
             this.setFileName(jObject.getString("fileName"));
+        } catch (JSONException e) {
+        }
+        try {
             this.setUploadPath(jObject.getString("uploadPath"));
-        }catch (Exception e){
-            e.printStackTrace();
+        } catch (JSONException e) {
         }
     }
     public String getAttachFileName() {

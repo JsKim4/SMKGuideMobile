@@ -27,6 +27,8 @@ public class MemberRegistrationFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         root = inflater.inflate(R.layout.fragment_member_registration, container, false);
+        init();
+        setEvent();
         return root;
     }
     public void init(){
@@ -48,6 +50,7 @@ public class MemberRegistrationFragment extends Fragment {
                 vo.setTelephone(edtTelephone.getText().toString());
                 vo.setAddress(edtAddress.getText().toString());
                 RegisterTask task = new RegisterTask(getActivity(),root,getChildFragmentManager());
+                task.execute(vo);
             }
         });
     }

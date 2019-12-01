@@ -47,10 +47,16 @@ public class CommentVO {		//담배의 comment
         JSONObject jsonObject = new JSONObject();
         try{
             jsonObject.put("content",content);
-            jsonObject.putOpt("tobacco",tobacco.tobaccoToJson());
-            jsonObject.putOpt("member",member.tokenToJson());
         }catch (Exception e){
 
+        }
+        try {
+            jsonObject.putOpt("tobacco",tobacco.tobaccoToJson());
+        } catch (JSONException e) {
+        }
+        try {
+            jsonObject.putOpt("member",member.tokenToJson());
+        } catch (JSONException e) {
         }
         return jsonObject;
     }
