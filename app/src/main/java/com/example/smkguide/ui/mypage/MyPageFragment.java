@@ -35,16 +35,16 @@ public class MyPageFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        SharedPreferences pref = getActivity().getSharedPreferences("user-info", myFragment.getContext().MODE_PRIVATE);
-        /*String token =pref.getString("token", null);
+        SharedPreferences pref = getActivity().getSharedPreferences("user-info", getActivity().MODE_PRIVATE);
+        String token =pref.getString("token", null);
         if(token == null) {
             myFragment = inflater.inflate(R.layout.fragment_login, container, false);
         } else {
             myFragment = inflater.inflate(R.layout.fragment_mypage, container, false);
-        }*/
 
-        viewPager = myFragment.findViewById(R.id.viewPager);
-        tabLayout = myFragment.findViewById(R.id.tabLayout);
+            viewPager = myFragment.findViewById(R.id.viewPager);
+            tabLayout = myFragment.findViewById(R.id.tabLayout);
+        }
 
         return myFragment;
     }

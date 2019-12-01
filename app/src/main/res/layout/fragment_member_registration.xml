@@ -74,19 +74,6 @@
                     android:background="@color/colorPrimary" />
 
                 <EditText
-                    android:id="@+id/emailText"
-                    android:inputType="text"
-                    android:layout_width="280dp"
-                    android:layout_height="wrap_content"
-                    android:hint=" 이메일"
-                    android:layout_gravity="center"
-                    android:padding="10dp"
-                    android:textColor="#ffffff"
-                    android:textColorHint="#ffffff"
-                    android:layout_marginTop="10dp"
-                    android:background="@color/colorPrimary" />
-
-                <EditText
                     android:id="@+id/address"
                     android:inputType="text"
                     android:layout_width="280dp"
