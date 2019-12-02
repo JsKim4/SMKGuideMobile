@@ -91,11 +91,11 @@ public class TobaccoViewFragment extends Fragment {
             tvGrade.setText("Non Grade");
         else
             tvGrade.setText(String.valueOf(Math.ceil(((double)vo.getGradeSum()/vo.getGradeNum())*10)/10.0));
-        //spGrade = root.findViewById(R.id.spGrade);
+        spGrade = root.findViewById(R.id.spGrade);
         ArrayList<String> gradeList = new ArrayList<>(); for(int i=5;i>=1;i--)gradeList.add(String.valueOf(i));
         SpinnerAdapter gradeAdapter = new ArrayAdapter(getActivity(),R.layout.support_simple_spinner_dropdown_item,gradeList);
         spGrade.setAdapter(gradeAdapter);
-        //btnGrade = root.findViewById(R.id.btnGrade);
+        btnGrade = root.findViewById(R.id.btnGrade);
         imgTobacco = root.findViewById(R.id.imgTobacco);  Glide.with(root).load(URL+vo.getAttach().getAttachFileName()).into(imgTobacco);
         recyclerPagination = root.findViewById(R.id.recyclePagination);
         addWriting = root.findViewById(R.id.addWriting);
