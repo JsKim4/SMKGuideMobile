@@ -271,7 +271,7 @@
                         android:layout_weight="1"
                         android:background="@drawable/round_box_bg_white"
                         android:orientation="vertical"
-                        android:layout_marginRight="1dp">
+                        android:layout_marginRight="3dp">
 
                         <TextView
                             android:layout_width="match_parent"
@@ -299,7 +299,7 @@
                         android:layout_weight="1"
                         android:background="@drawable/round_box_bg_white"
                         android:orientation="vertical"
-                        android:layout_marginRight="1dp">
+                        android:layout_marginRight="3dp">
 
                         <TextView
                             android:layout_width="match_parent"
