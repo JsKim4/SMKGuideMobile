@@ -12,6 +12,7 @@ import android.widget.Button;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.viewpager.widget.ViewPager;
 import com.example.smkguide.Adpter.SectionPagerAdapter;
 import com.example.smkguide.MainActivity;
@@ -55,6 +56,7 @@ public class MyPageFragment extends Fragment {
                     SharedPreferences.Editor editor = pref.edit();
                     editor.remove("token");
                     editor.commit();
+                    Navigation.findNavController(myFragment).navigate(R.id.nav_home);
                 }
             });
             viewPager = myFragment.findViewById(R.id.viewPager);

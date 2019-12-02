@@ -1,115 +1,168 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff">
+    android:background="#ffffff"
+    android:orientation="vertical">
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="80dp" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:orientation="vertical"
+        android:background="@drawable/round_box_bg"
+        android:padding="15dp"
+        android:layout_margin="15dp">
 
         <LinearLayout
-            android:layout_width="373dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:orientation="horizontal">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="7dp">
 
             <TextView
-                android:layout_width="84dp"
-                android:layout_height="43dp"
-                android:layout_gravity="center"
-                android:ems="10"
-                android:text="Name :" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ID :  "
+                android:textSize="16dp"
+                android:textColor="@color/highlightColor"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/id_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="aaaaa123@aaaaaaa.aaa"
+                android:textSize="14dp"
+                android:textColor="#a0000000" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="7dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name :  "
+                android:textSize="16dp"
+                android:textColor="@color/highlightColor"
+                android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/name_text"
                 android:layout_width="wrap_content"
-                android:layout_height="43dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="TextView" />
-
+                android:text="관리자"
+                android:textSize="14dp"
+                android:textColor="#a0000000" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="373dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:orientation="horizontal">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="7dp">
 
             <TextView
-                android:layout_width="84dp"
-                android:layout_height="43dp"
-                android:layout_gravity="center"
-                android:ems="10"
-                android:text="Email :" />
-
-            <TextView
-                android:id="@+id/email_text"
                 android:layout_width="wrap_content"
-                android:layout_height="43dp"
+                android:layout_height="wrap_content"
+                android:text="Phone Number :  "
+                android:textSize="16dp"
+                android:textColor="@color/highlightColor"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/phoneNum_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="TextView" />
+                android:text="000-0000-0000"
+                android:textSize="14dp"
+                android:textColor="#a0000000" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="373dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="84dp"
-                android:layout_height="43dp"
-                android:layout_gravity="center"
-                android:ems="10"
-                android:text="Phone :" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Address :  "
+                android:textSize="16dp"
+                android:textColor="@color/highlightColor"
+                android:textStyle="bold"/>
 
             <TextView
-                android:id="@+id/_text"
+                android:id="@+id/address_text"
                 android:layout_width="wrap_content"
-                android:layout_height="43dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="TextView" />
+                android:text="서울특별시 서대문구 거북골로 41-1 가인하우스 504호"
+                android:textSize="14dp"
+                android:layout_marginBottom="2dp"
+                android:textColor="#a0000000" />
         </LinearLayout>
-        <Button
-            android:id="@+id/logoutBtn"
-            android:text="Logout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"></Button>
 
-        <Space
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp" />
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/logoutBtn"
+                android:text="Logout"
+                android:textSize="15dp"
+                android:layout_width="90dp"
+                android:layout_height="35dp"
+                android:background="@drawable/read_more_box"
+                android:textColor="#a0000000" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp">
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appBarLayout"
-            android:layout_width="373dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:background="@android:color/white">
 
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tabLayout"
-                android:layout_width="373dp"
-                android:layout_height="match_parent">
-
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:tabSelectedTextColor="#000000"
+                app:tabIndicatorColor="@color/highlightColorLight">
             </com.google.android.material.tabs.TabLayout>
-
         </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/viewPager"
-
-            android:layout_width="373dp"
-            android:layout_height="340dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:background="@android:color/white" />
-
+            android:background="@android:color/white"
+            android:layout_marginTop="5dp"/>
     </LinearLayout>
-</RelativeLayout>
+</LinearLayout>

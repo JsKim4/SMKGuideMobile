@@ -33,7 +33,6 @@ public class LoginFragment extends Fragment {
 
         Button login= (Button) root.findViewById(R.id.loginBtn);
         TextView register = (TextView) root.findViewById(R.id.registerText);
-        TextView guestLogin = (TextView) root.findViewById(R.id.guestLoginText);
         idEdt = root.findViewById(R.id.idEdt);
         passwordEdt = root.findViewById(R.id.passwordEdt);
 
@@ -42,10 +41,6 @@ public class LoginFragment extends Fragment {
             public void onClick(View view) {
                 Fragment fg;
                 switch (view.getId()) {
-                    case R.id.guestLoginText:
-                        fg = HomeFragment.newInstance();
-                        setFragment(fg);
-                        break;
                     case R.id.registerText:
                         fg = MemberRegistrationFragment.newInstance();
                         setFragment(fg);
@@ -65,7 +60,6 @@ public class LoginFragment extends Fragment {
         });
 
         register.setOnClickListener(fragment);
-        guestLogin.setOnClickListener(fragment);
 
         LinearLayout main = root.findViewById(R.id.loginMain);
         main.setOnTouchListener(new View.OnTouchListener() {
