@@ -313,13 +313,11 @@
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="left">
-
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -327,18 +325,16 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="5dp">
-
                 <LinearLayout
                     android:id="@+id/addWriting"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
-
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Writing"
-                        android:textColor="#000000"></TextView>
-
+                        android:textColor="#000000">
+                    </TextView>
                     <ImageView
                         android:id="@+id/imgDownUp"
                         android:layout_width="wrap_content"
@@ -347,12 +343,10 @@
                         android:src="@drawable/img_arrow_down">
                     </ImageView>
                 </LinearLayout>
-
                 <View
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_weight="1"/>
-
                 <Button
                     android:id="@+id/btnCommentSubmit"
                     android:layout_width="60dp"
@@ -361,7 +355,6 @@
                     android:visibility="gone"
                     android:background="@drawable/read_more_box"></Button>
             </LinearLayout>
-
             <LinearLayout
                 android:id="@+id/layoutComment"
                 android:layout_width="match_parent"
@@ -380,7 +373,6 @@
                     android:scrollHorizontally="false"/>
             </LinearLayout>
         </LinearLayout>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -390,7 +382,6 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="3dp">
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
@@ -398,14 +389,12 @@
                 android:background="#e1e1e1"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp">
-
                 <ImageView
                     android:layout_width="15dp"
                     android:layout_height="15dp"
                     android:layout_gravity="center"
                     android:src="@drawable/speech_bubble">
                 </ImageView>
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_weight="1"
@@ -413,7 +402,6 @@
                     android:gravity="center_vertical"
                     android:text=" Comment"
                     android:textColor="@color/colorPrimary"></TextView>
-
                 <TextView
                     android:id="@+id/tvCommentPage"
                     android:layout_width="wrap_content"
@@ -421,7 +409,6 @@
                     android:gravity="center_vertical"
                     android:text="1"
                     android:textColor="@color/colorPrimary"></TextView>
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
@@ -430,7 +417,6 @@
                     android:text=" Page"></TextView>
 
             </LinearLayout>
-
             <ListView
                 android:layout_margin="1dp"
                 android:paddingLeft="10dp"
@@ -443,7 +429,6 @@
                 android:background="#ffffff"
                 ></ListView>
         </LinearLayout>
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclePagination"
             android:layout_width="match_parent"
