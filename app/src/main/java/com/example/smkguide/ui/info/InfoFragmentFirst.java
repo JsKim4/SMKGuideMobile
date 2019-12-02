@@ -1,7 +1,6 @@
 package com.example.smkguide.ui.info;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,18 +10,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.smkguide.Adpter.InfoListViewAdapter;
 import com.example.smkguide.R;
 import com.example.smkguide.domain.Criteria;
 import com.example.smkguide.domain.InfoVO;
-import com.example.smkguide.task.InfoTask;
+import com.example.smkguide.task.info.InfoTask;
 
 import org.json.JSONObject;
 
@@ -53,7 +50,6 @@ public class InfoFragmentFirst extends Fragment {
         View view = inflater.inflate(R.layout.fragment_info_first, container, false);
 
         ListView listView = (ListView) view.findViewById(R.id.listView);
-        List<InfoVO> list = new ArrayList<InfoVO>();
         cri.setType("NOTICE");
         cri.setAmount(1000);
         InfoTask task = new InfoTask(getActivity(), view,cri);

@@ -67,6 +67,7 @@ public class TobaccoTask extends AsyncTask<String,Void, ArrayList<TobaccoVO>>  {
                 for(int i=0; i<array.length(); i++)
                 {
                     JSONObject tobaccoObject = array.getJSONObject(i);
+                    Log.d("object",tobaccoObject.toString());
                     list.add(new TobaccoVO(tobaccoObject));
 
                 }

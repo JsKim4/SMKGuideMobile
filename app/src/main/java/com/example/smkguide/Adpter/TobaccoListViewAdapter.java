@@ -14,6 +14,8 @@ import com.example.smkguide.R;
 import com.example.smkguide.domain.Criteria;
 import com.example.smkguide.domain.TobaccoVO;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Locale;
@@ -80,6 +82,7 @@ public class TobaccoListViewAdapter extends BaseAdapter {
         TextView nicotine = (TextView)convertView.findViewById(R.id.tvNicotine);
         TextView tar = (TextView)convertView.findViewById(R.id.tvTar);
         ImageView img = (ImageView)convertView.findViewById(R.id.imgTobacco);
+        TextView grade = (TextView)convertView.findViewById(R.id.tvGrade);
         // Data Set(listViewItemList)에서 position에 위치한 데이터 참조 획득
         TobaccoVO listViewItem = list.get(position);
 
@@ -87,8 +90,12 @@ public class TobaccoListViewAdapter extends BaseAdapter {
         tobaccoName.setText(listViewItem.getTobaccoName());
         price.setText(String.valueOf(listViewItem.getPrice()));
         type.setText(listViewItem.getType().getName());
-        nicotine.setText(String.valueOf(listViewItem.getNicotine()));
+        nicotine.setText(String.valueOf(Math.ceil(listViewItem.getNicotine())));
         tar.setText(String.valueOf(listViewItem.getTar()));
+        if(listViewItem.getGradeNum()==0)
+            grade.setText("Non Grade");
+        else
+            grade.setText(String.valueOf(Math.ceil(((double)listViewItem.getGradeSum()/listViewItem.getGradeNum())*10)/10.0));
         Glide.with(convertView).load(URL+listViewItem.getAttach().getAttachFileName()).into(img);
 
         return convertView;

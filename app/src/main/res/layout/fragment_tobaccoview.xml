@@ -193,6 +193,39 @@
                                 android:textColor="@color/highlightColor"
                                 android:layout_marginRight="5dp"></TextView>
                         </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:gravity="center_vertical"
+                                android:text="Grade : "
+                                android:textSize="16dp"
+                                android:textColor="@color/highlightColor"></TextView>
+
+                            <TextView
+                                android:id="@+id/tvGrade"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="center_vertical|right"
+                                android:text="Number"
+                                android:textSize="12dp"
+                                android:layout_marginRight="1dp"
+                                android:textColor="#000000"></TextView>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:gravity="center_vertical"
+                                android:text="점"
+                                android:textSize="16dp"
+                                android:textColor="@color/highlightColor"
+                                android:layout_marginRight="5dp"></TextView>
+                        </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
 
@@ -313,6 +346,25 @@
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingRight="10dp"
+            android:gravity="right"
+            android:layout_marginBottom="10dp">
+            <Spinner
+                android:id="@+id/spGrade"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp">
+            </Spinner>
+            <Button
+                android:id="@+id/btnGrade"
+                android:layout_width="100dp"
+                android:layout_height="20dp"
+                android:text="점수 주기"
+                android:background="@drawable/read_more_box"></Button>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"

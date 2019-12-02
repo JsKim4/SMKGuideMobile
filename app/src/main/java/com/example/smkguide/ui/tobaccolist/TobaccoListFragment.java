@@ -1,5 +1,6 @@
 package com.example.smkguide.ui.tobaccolist;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -26,12 +27,18 @@ import com.example.smkguide.Adpter.TobaccoListViewAdapter;
 import com.example.smkguide.R;
 import com.example.smkguide.domain.ComponentVO;
 import com.example.smkguide.domain.Criteria;
+import com.example.smkguide.domain.GradeVO;
+import com.example.smkguide.domain.MemberVO;
+import com.example.smkguide.domain.SmokelogVO;
 import com.example.smkguide.domain.TobaccoVO;
 import com.example.smkguide.task.ComponentTask;
 import com.example.smkguide.task.TobaccoTask;
 import com.example.smkguide.task.member.LoginTask;
+import com.example.smkguide.task.smokelog.AddSmokelogTask;
 
 import org.w3c.dom.Text;
+
+import java.lang.reflect.Member;
 
 import static android.content.Context.INPUT_METHOD_SERVICE;
 
@@ -121,6 +128,26 @@ public class TobaccoListFragment extends Fragment {
                 TobaccoVO vo = (TobaccoVO) parent.getAdapter().getItem(position);
                 setTobaccoVIew(vo);
                 closeSearchText();
+            }
+        });
+        tobaccoListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                SharedPreferences pref = getActivity().getSharedPreferences("user-info", getActivity().MODE_PRIVATE);
+                String token =pref.getString("token", null);
+                if(token==null||token.length()<1){
+                    Toast.makeText(getContext(),"작성 권한이 없습니다 로그인 이후 이용해주세요.",Toast.LENGTH_SHORT).show();
+                    return true;
+                }
+                SmokelogVO vo = new SmokelogVO();
+                MemberVO member = new MemberVO();
+                TobaccoVO tobacco = (TobaccoVO)parent.getItemAtPosition(position);
+                member.setToken(token);
+                vo.setMember(member);
+                vo.setTobacco(tobacco);
+                AddSmokelogTask task = new AddSmokelogTask(getActivity(),root);
+                task.execute(vo);
+                return true;
             }
         });
         spBrand.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

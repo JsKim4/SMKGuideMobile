@@ -30,6 +30,8 @@ public class TobaccoVO implements Serializable,Comparable  {        //담배
     private Long price;                    //가격
     private int commentCnt;                //comment 개수
     private AttachVO attach;            //첨부 이미지
+    private int gradeSum;
+    private int gradeNum;
 
 
 
@@ -96,6 +98,14 @@ public class TobaccoVO implements Serializable,Comparable  {        //담배
         }
         try {
             this.setTobaccoName(jObject.getString("tobaccoName"));
+        } catch (JSONException e) {
+        }
+        try {
+            this.setGradeNum(jObject.getInt("gradeNum"));
+        } catch (JSONException e) {
+        }
+        try {
+            this.setGradeSum(jObject.getInt("gradeSum"));
         } catch (JSONException e) {
         }
 

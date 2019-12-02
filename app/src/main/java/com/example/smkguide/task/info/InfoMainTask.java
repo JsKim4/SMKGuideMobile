@@ -1,4 +1,4 @@
-package com.example.smkguide.task;
+package com.example.smkguide.task.info;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -7,16 +7,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 
-import androidx.recyclerview.widget.RecyclerView;
-
-import com.example.smkguide.Adpter.CommentListViewAdapter;
 import com.example.smkguide.Adpter.InfoListViewAdapter;
-import com.example.smkguide.Adpter.PaginationViewAdapter;
+import com.example.smkguide.Adpter.InfoMainListViewAdapter;
 import com.example.smkguide.R;
-import com.example.smkguide.domain.CommentVO;
 import com.example.smkguide.domain.Criteria;
 import com.example.smkguide.domain.InfoVO;
-import com.example.smkguide.domain.PageDTO;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -33,15 +28,15 @@ import lombok.Data;
 
 @Data
 @SuppressLint("NewApi")
-public class InfoTask extends AsyncTask<String, Void, ArrayList<InfoVO>> {
+public class InfoMainTask extends AsyncTask<String, Void, ArrayList<InfoVO>> {
     private Activity context;
     private View root;
     private String str, receiveMsg;
     private ListView infoListVIew;
-    private InfoListViewAdapter adapter;
+    private InfoMainListViewAdapter adapter;
     private final static String InfoURL = "http://ggi4111.cafe24.com/info/list.json";
     private Criteria cri;
-    public InfoTask(Activity context, View root,Criteria cri) {
+    public InfoMainTask(Activity context, View root, Criteria cri) {
         this.context = context;
         this.root = root;
         this.cri = cri;
@@ -98,8 +93,16 @@ public class InfoTask extends AsyncTask<String, Void, ArrayList<InfoVO>> {
     @Override
     protected void onPostExecute(ArrayList<InfoVO> infoVOS) {
         super.onPostExecute(infoVOS);
-        infoListVIew = root.findViewById(R.id.listView);
-        adapter = new InfoListViewAdapter(context, infoVOS);
+        if(cri.getType().equals("INFO")){
+            infoListVIew = root.findViewById(R.id.listView3);
+        }
+        if(cri.getType().equals("NEWS")){
+            infoListVIew = root.findViewById(R.id.listView2);
+        }
+        if(cri.getType().equals("NOTICE")){
+            infoListVIew = root.findViewById(R.id.listView1);
+        }
+        adapter = new InfoMainListViewAdapter(context, infoVOS);
         infoListVIew.setAdapter(adapter);
     }
 }

@@ -1,19 +1,17 @@
 package com.example.smkguide.ui.info;
 
+import android.annotation.SuppressLint;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.HorizontalScrollView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.ScrollView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -21,11 +19,20 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.smkguide.Adpter.InfoMainListViewAdapter;
 import com.example.smkguide.R;
+import com.example.smkguide.domain.Criteria;
 import com.example.smkguide.domain.InfoVO;
-import com.example.smkguide.task.InfoTask;
+import com.example.smkguide.task.info.InfoMainTask;
 
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+
+import lombok.Data;
 
 public class InfoFragment extends Fragment {
 
@@ -39,7 +46,7 @@ public class InfoFragment extends Fragment {
     }
 
     View view;
-
+    InfoVO vo;
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -53,57 +60,38 @@ public class InfoFragment extends Fragment {
         ListView listView2 = (ListView) view.findViewById(R.id.listView2);
         ListView listView3 = (ListView) view.findViewById(R.id.listView3);
         TextView textView = (TextView) view.findViewById(R.id.textView);
+        Criteria cri1  = new Criteria(1,4); cri1.setType("NOTICE");
+        InfoMainTask task1 = new InfoMainTask(getActivity(),view,cri1); task1.execute();
+        Criteria cri2  = new Criteria(1,4); cri2.setType("NEWS");
+        InfoMainTask task2 = new InfoMainTask(getActivity(),view,cri2); task2.execute();
+        Criteria cri3  = new Criteria(1,4); cri3.setType("INFO");
+        InfoMainTask task3 = new InfoMainTask(getActivity(),view,cri3); task3.execute();
 
-        List<InfoVO> list1 = new ArrayList<InfoVO>();
-        List<InfoVO> list2 = new ArrayList<InfoVO>();
-        List<InfoVO> list3 = new ArrayList<InfoVO>();
-        ListAdapter adapter1 = new InfoMainListViewAdapter(getContext(),list1);
-        ListAdapter adapter2 = new InfoMainListViewAdapter(getContext(),list2);
-        ListAdapter adapter3 = new InfoMainListViewAdapter(getContext(),list3);
-        list1.add(new InfoVO("1","공지사항 11111111111111111111","내용2\n2\n2\n2\n2\n2\n222222222222","관리자","2019-11-02","1"));    // 테스트용 데이터
-        list1.add(new InfoVO("2","공지사항 22222222222222222222222","내용2\n2\n2\n2\n2\n2\n222222222222","관리자","2019-11-02","1"));
-        list1.add(new InfoVO("3","공지사항 33333333333333333333333333333333333333333333333","내용2\n2\n2\n2\n2\n2\n222222222222","관리자","2019-11-02","1"));
-        list1.add(new InfoVO("4","공지사항 444444444444444","내용2\n2\n2\n2\n2\n2\n222222222222","관리자","2019-11-02","1"));
-        listView1.setAdapter(adapter1);
-        listView2.setAdapter(adapter2);
-        listView3.setAdapter(adapter3);
 
         listView1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
-                String title, content, name, date;
-                InfoDialog customDialog = new InfoDialog(getContext());
-                title = "제목 1";     // 테스트용 커스텀 다이얼로그 데이터
-                content = "내용 1";
-                name = "관리자";
-                date = "2000-01-01 AM 00:00";
-                customDialog.call(title, content, name, date);
+                InfoViewTask t  = new InfoFragment.InfoViewTask();
+                vo= (InfoVO)parent.getItemAtPosition(position);
+                t.execute(vo.getInfoId());
             }
         });
 
         listView2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
-                String title, content, name, date;
-                InfoDialog customDialog = new InfoDialog(getContext());
-                title = "제목 1";     // 테스트용 커스텀 다이얼로그 데이터
-                content = "내용 1";
-                name = "관리자";
-                date = "2000-01-01 AM 00:00";
-                customDialog.call(title, content, name, date);
+                InfoViewTask t  = new InfoFragment.InfoViewTask();
+                vo= (InfoVO)parent.getItemAtPosition(position);
+                t.execute(vo.getInfoId());
             }
         });
 
         listView3.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
-                String title, content, name, date;
-                InfoDialog customDialog = new InfoDialog(getContext());
-                title = "제목 1";     // 테스트용 커스텀 다이얼로그 데이터
-                content = "내용 1";
-                name = "관리자";
-                date = "2000-01-01 AM 00:00";
-                customDialog.call(title, content, name, date);
+                InfoViewTask t  = new InfoFragment.InfoViewTask();
+                vo= (InfoVO)parent.getItemAtPosition(position);
+                t.execute(vo.getInfoId());
             }
         });
 
@@ -139,7 +127,7 @@ public class InfoFragment extends Fragment {
                 title = "명지전문대 전자공학과";
                 content = "2015041001 김준섭\n2015041010 이근수\n2015041050 박성종\n2011041068 이승혁";
                 name = "관리자";
-                date = "2000-01-01 AM 03:30";
+                date = "2019-12-03 PM 02:00";
                 customDialog.call(title, content, name, date);
             }
         };
@@ -155,6 +143,53 @@ public class InfoFragment extends Fragment {
             childFt.replace(R.id.fragment, child);
             childFt.addToBackStack(null);
             childFt.commit();
+        }
+    }
+    @Data
+    @SuppressLint("NewApi")
+    public class InfoViewTask extends AsyncTask<String, Void, InfoVO> {
+        private String str, receiveMsg;
+        private final static String InfoURL = "http://ggi4111.cafe24.com/info/";
+
+        @Override
+        protected InfoVO doInBackground(String... urls) {
+            URL url = null;
+            try {
+                url = new URL(InfoURL+urls[0]+".json");
+                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                conn.setRequestProperty("Content-Type", "application/json");
+                conn.setRequestMethod("GET");
+                if (conn.getResponseCode() == conn.HTTP_OK) {
+                    InputStreamReader tmp = new InputStreamReader(conn.getInputStream(), "UTF-8");
+                    BufferedReader reader = new BufferedReader(tmp);
+                    StringBuffer buffer = new StringBuffer();
+                    while ((str = reader.readLine()) != null) {
+                        buffer.append(str);
+                    }
+                    receiveMsg = buffer.toString();
+
+                    JSONObject jsonObject = new JSONObject(receiveMsg);
+
+                    return new InfoVO(jsonObject);
+                } else {
+                    Log.i("통신 결과", conn.getResponseCode() + "에러");
+                }
+
+
+            } catch (Exception e) {
+                Log.d("error", "error");
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(InfoVO infoVO) {
+            super.onPostExecute(infoVO);
+            vo = infoVO;
+            Log.d("WhatDoesInfo",infoVO.toString());
+            InfoDialog customDialog = new InfoDialog(getContext());
+            customDialog.call(vo.getTitle(), vo.getContent(), vo.getName(), vo.getDate());
         }
     }
 }
