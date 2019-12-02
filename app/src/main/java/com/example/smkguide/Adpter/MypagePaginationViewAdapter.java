@@ -2,10 +2,12 @@ package com.example.smkguide.Adpter;
 
 import android.app.Activity;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.smkguide.R;
 import com.example.smkguide.domain.MemberVO;
 import com.example.smkguide.task.comment.CommentTask;
+import com.example.smkguide.task.member.mypage.MyTask;
 
 import java.util.ArrayList;
 
@@ -21,7 +24,6 @@ public class MypagePaginationViewAdapter extends RecyclerView.Adapter<MypagePagi
     private ArrayList<String> itemList;
     private Activity context;
     private View root;
-    private AsyncTask task;
     private String keyword;
     public MypagePaginationViewAdapter(Activity context, ArrayList<String> itemList, View root, String keyword){
         this.context = context;
@@ -66,12 +68,11 @@ public class MypagePaginationViewAdapter extends RecyclerView.Adapter<MypagePagi
             textview.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //keyword+"/pages/"+getTag
-                    //task = new CommentTask(context,root);
-                    //String urls[] = url.split("/");
-                    //task.execute("/"+urls[1]+"/"+v.getTag()+".json");
-                    //TextView commentPage = root.findViewById(R.id.tvCommentPage);
-                    //commentPage.setText(v.getTag().toString());
+                    String url = keyword+"/pages/"+v.getTag().toString();
+                    AsyncTask task = new MyTask(context,root,keyword);
+                    Log.d("debugging","0");
+                    task.execute(url);
+                    Log.d("debugging","1");
                 }
             });
         }

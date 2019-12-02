@@ -5,6 +5,10 @@ import android.util.Log;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.TimeZone;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,6 +26,12 @@ public class SmokelogVO {
         try {
             this.setTobacco(getTobacco(jObject.getJSONObject("tobacco")));
             this.setMember(getMember(jObject.getJSONObject("member")));
+            Date date = new Date(Long.valueOf(jObject.getString("cdate")));
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); // the format of your date
+            sdf.setTimeZone(TimeZone.getTimeZone("GMT+9")); // give a timezone reference for formating (see comment at the bottom
+            String formattedDate = sdf.format(date);
+            Log.d(formattedDate,formattedDate);
+            this.setCdate(formattedDate);
         } catch (JSONException e) {
             Log.d("error",e.toString());
             e.printStackTrace();
