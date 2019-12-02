@@ -6,7 +6,6 @@
     android:background="@color/backgroundDefault"
     android:orientation="vertical">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -26,11 +25,12 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/tobacco_view_background"
+                android:background="@drawable/round_box_bg_white"
                 android:text="말보로 아이스 블라스트"
                 android:textColor="#000000"
                 android:padding="7dp"
-                android:textSize="23dp"></TextView>
+                android:textSize="23dp"
+                android:gravity="center_horizontal"></TextView>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -42,7 +42,7 @@
                     android:layout_height="160dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:background="@drawable/tobacco_view_background"
+                    android:background="@drawable/round_box_bg_white"
                     android:orientation="horizontal">
 
                     <ImageView
@@ -221,7 +221,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:gravity="center_vertical"
-                                android:text="점"
+                                android:text=" 점"
                                 android:textSize="16dp"
                                 android:textColor="@color/highlightColor"
                                 android:layout_marginRight="5dp"></TextView>
@@ -241,8 +241,9 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:background="@drawable/tobacco_view_background"
-                        android:orientation="vertical">
+                        android:background="@drawable/round_box_bg_white"
+                        android:orientation="vertical"
+                        android:layout_marginRight="3dp">
 
                         <TextView
                             android:layout_width="match_parent"
@@ -268,8 +269,9 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:background="@drawable/tobacco_view_background"
-                        android:orientation="vertical">
+                        android:background="@drawable/round_box_bg_white"
+                        android:orientation="vertical"
+                        android:layout_marginRight="3dp">
 
                         <TextView
                             android:layout_width="match_parent"
@@ -295,8 +297,9 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:background="@drawable/tobacco_view_background"
-                        android:orientation="vertical">
+                        android:background="@drawable/round_box_bg_white"
+                        android:orientation="vertical"
+                        android:layout_marginRight="3dp">
 
                         <TextView
                             android:layout_width="match_parent"
@@ -322,7 +325,7 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:background="@drawable/tobacco_view_background"
+                        android:background="@drawable/round_box_bg_white"
                         android:orientation="vertical">
 
                         <TextView
@@ -353,7 +356,7 @@
             android:orientation="horizontal"
             android:paddingRight="10dp"
             android:gravity="right"
-            android:layout_marginBottom="10dp">
+            android:layout_marginBottom="3dp">
             <Spinner
                 android:id="@+id/spGrade"
                 android:layout_width="wrap_content"
@@ -361,7 +364,7 @@
             </Spinner>
             <Button
                 android:id="@+id/btnGrade"
-                android:layout_width="100dp"
+                android:layout_width="80dp"
                 android:layout_height="20dp"
                 android:text="점수 주기"
                 android:background="@drawable/read_more_box"></Button>
@@ -489,5 +492,5 @@
             android:layout_marginLeft="5dp"
             android:layout_gravity="center_horizontal">
         </androidx.recyclerview.widget.RecyclerView>
-        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>
