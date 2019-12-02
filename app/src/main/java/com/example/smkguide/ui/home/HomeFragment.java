@@ -1,29 +1,16 @@
 package com.example.smkguide.ui.home;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.Navigation;
 
 import com.example.smkguide.R;
-import com.example.smkguide.domain.MemberVO;
-import com.example.smkguide.task.member.LoginTask;
-import com.example.smkguide.ui.info.InfoFragment;
-import com.example.smkguide.ui.mypage.MyPageFragment;
-import com.example.smkguide.ui.setting.SettingFragment;
-import com.example.smkguide.ui.smokearea.SmokeAreaFragment;
-import com.example.smkguide.ui.tobaccolist.TobaccoListFragment;
 public class HomeFragment extends Fragment {
     public static HomeFragment newInstance(){
         return new HomeFragment();
@@ -42,7 +29,7 @@ public class HomeFragment extends Fragment {
         CardView myPage= (CardView) root.findViewById(R.id.cardViewMyPage);
         CardView register= (CardView) root.findViewById(R.id.cardViewRegister);
         CardView setting= (CardView) root.findViewById(R.id.cardViewSetting);
-        View.OnClickListener fragment = new View.OnClickListener() {
+        View.OnClickListener navigation = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 switch (view.getId()) {
@@ -67,22 +54,13 @@ public class HomeFragment extends Fragment {
                 }
             }
         };
-        area.setOnClickListener(fragment);
-        info.setOnClickListener(fragment);
-        list.setOnClickListener(fragment);
-        myPage.setOnClickListener(fragment);
-        register.setOnClickListener(fragment);
-        setting.setOnClickListener(fragment);
+        area.setOnClickListener(navigation);
+        info.setOnClickListener(navigation);
+        list.setOnClickListener(navigation);
+        myPage.setOnClickListener(navigation);
+        register.setOnClickListener(navigation);
+        setting.setOnClickListener(navigation);
 
         return root;
-    }
-
-    private void setFragment(Fragment child) {
-        FragmentTransaction childFt = getChildFragmentManager().beginTransaction();
-        if (!child.isAdded()) {
-            childFt.replace(R.id.fragment, child);
-            childFt.addToBackStack(null);
-            childFt.commit();
-        }
     }
 }
