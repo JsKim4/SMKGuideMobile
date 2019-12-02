@@ -13,7 +13,7 @@
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:orientation="vertical"
-        android:background="@drawable/round_box_bg"
+        android:background="@drawable/round_box_bg_white"
         android:padding="15dp"
         android:layout_margin="15dp">
 
@@ -129,7 +129,7 @@
                 android:textSize="15dp"
                 android:layout_width="90dp"
                 android:layout_height="35dp"
-                android:background="@drawable/read_more_box"
+                android:background="@drawable/read_more_box_gray"
                 android:textColor="#a0000000" />
         </LinearLayout>
     </LinearLayout>

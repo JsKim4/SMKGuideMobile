@@ -4,7 +4,6 @@
     <item android:drawable="@color/backgroundDefault"/>
     <item
         android:gravity="center"
-        android:drawable="@drawable/ic_smoke_nonbackground"/>
-
+        android:drawable="@drawable/ic_smoke_icon_splash_nonbg"/>
 
 </layer-list>
