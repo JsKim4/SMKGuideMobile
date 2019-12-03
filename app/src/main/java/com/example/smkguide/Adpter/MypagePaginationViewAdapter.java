@@ -69,7 +69,7 @@ public class MypagePaginationViewAdapter extends RecyclerView.Adapter<MypagePagi
                 @Override
                 public void onClick(View v) {
                     String url = keyword+"/pages/"+v.getTag().toString();
-                    AsyncTask task = new MyTask(context,root,keyword);
+                    MyTask task = new MyTask(context,root,keyword);
                     Log.d("debugging","0");
                     task.execute(url);
                     Log.d("debugging","1");

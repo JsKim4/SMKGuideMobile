@@ -17,6 +17,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.example.smkguide.Adpter.SectionPagerAdapter;
 import com.example.smkguide.MainActivity;
 import com.example.smkguide.R;
+import com.example.smkguide.task.member.mypage.MyInfoTask;
 import com.example.smkguide.ui.home.LoginFragment;
 import com.google.android.material.tabs.TabLayout;
 
@@ -49,6 +50,8 @@ public class MyPageFragment extends Fragment {
         } else {
             myFragment = inflater.inflate(R.layout.fragment_mypage, container, false);
             btnLogout = myFragment.findViewById(R.id.logoutBtn);
+            MyInfoTask task  = new MyInfoTask(getActivity(),myFragment);
+            task.execute(token);
             btnLogout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
