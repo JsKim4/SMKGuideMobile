@@ -58,7 +58,6 @@ public class MyInfoTask extends AsyncTask<String, Void,MemberVO> {
             conn.setRequestMethod("POST");
             OutputStream os = conn.getOutputStream();
             MemberVO vo = new MemberVO();
-            SharedPreferences pref = context.getSharedPreferences("user-info", context.MODE_PRIVATE);
             vo.setToken(token[0]);
             os.write(vo.tokenToJson().toString().getBytes("UTF-8"));
             os.flush();

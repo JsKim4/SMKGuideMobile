@@ -38,6 +38,7 @@ import com.example.smkguide.task.ComponentTask;
 import com.example.smkguide.task.TobaccoTask;
 import com.example.smkguide.task.member.LoginTask;
 import com.example.smkguide.task.smokelog.AddSmokelogTask;
+import com.example.smkguide.ui.mypage.SmokeLogChartFragment;
 
 import org.w3c.dom.Text;
 
@@ -59,7 +60,7 @@ public class TobaccoListFragment extends Fragment {
     Fragment fragmentView;
     ListView tobaccoListView;
     Spinner spBrand, spType, spCountry;
-    Button btnMost, btnBest, btnReset;
+    Button btnMost, btnBest, btnReset, btnLogView;
     LinearLayout linearLayout;
     EditText etSearchTobacco;
     Criteria cri = new Criteria();
@@ -82,6 +83,7 @@ public class TobaccoListFragment extends Fragment {
         btnMost = root.findViewById(R.id.btnMost);
         btnBest = root.findViewById(R.id.btnBest);
         btnReset = root.findViewById(R.id.btnReset);
+        btnLogView = root.findViewById(R.id.btnLogVIew);
         setEvent();
     }
 
@@ -121,6 +123,19 @@ public class TobaccoListFragment extends Fragment {
                 cri = new Criteria();
                 search();
             }
+        });
+        btnLogView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fragmentView = SmokeLogChartFragment.newInstance();
+                FragmentTransaction childFt = getChildFragmentManager().beginTransaction();
+                if (!fragmentView.isAdded()) {
+                    childFt.replace(R.id.fragmentTobaccoList, fragmentView);
+                    childFt.addToBackStack(null);
+                    childFt.commit();
+                }
+            }
+
         });
         btnMost.setOnClickListener(new View.OnClickListener() {
             @Override

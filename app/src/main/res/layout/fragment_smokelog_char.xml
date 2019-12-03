@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="30dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="From "
+            android:textSize="20dp"
+            android:textColor="#000000"
+            android:layout_margin="5dp">
+
+        </TextView>
+        <TextView
+            android:id="@+id/tvFromDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textColor="@color/highlightColor"
+            android:text="-년 -월 -일"
+            android:layout_margin="5dp">
+
+        </TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="To"
+            android:textSize="20dp"
+            android:textColor="#000000"
+            android:layout_margin="5dp">
+
+        </TextView>
+        <TextView
+            android:id="@+id/tvToDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textColor="@color/highlightColor"
+            android:text="-년 -월 -일"
+            android:layout_margin="5dp">
+
+        </TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Log"
+            android:textSize="20dp"
+            android:textColor="#000000"
+            android:layout_margin="5dp">
+
+        </TextView>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/btnPrev"
+            android:layout_width="35dp"
+            android:layout_height="match_parent"
+            android:text="Prev"></Button>
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/chart"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            />
+        <Button
+            android:id="@+id/btnNext"
+            android:layout_width="35dp"
+            android:layout_height="match_parent"
+            android:text="Next"></Button>
+    </LinearLayout>
+</LinearLayout>

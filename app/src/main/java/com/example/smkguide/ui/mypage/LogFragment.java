@@ -10,7 +10,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.smkguide.R;
+import com.example.smkguide.domain.SearchDateBySmokelog;
 import com.example.smkguide.task.member.mypage.MyTask;
+import com.example.smkguide.task.smokelog.LogByDateTask;
 
 public class LogFragment extends Fragment {
     public LogFragment() {
