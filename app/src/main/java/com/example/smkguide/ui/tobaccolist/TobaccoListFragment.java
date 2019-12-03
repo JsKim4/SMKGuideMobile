@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
@@ -23,6 +24,8 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.smkguide.Adpter.CommentListViewAdapter;
+import com.example.smkguide.Adpter.ComponentSpinnerAdapter;
 import com.example.smkguide.Adpter.TobaccoListViewAdapter;
 import com.example.smkguide.R;
 import com.example.smkguide.domain.ComponentVO;
@@ -56,7 +59,7 @@ public class TobaccoListFragment extends Fragment {
     Fragment fragmentView;
     ListView tobaccoListView;
     Spinner spBrand, spType, spCountry;
-    Button btnMost, btnBest;
+    Button btnMost, btnBest, btnReset;
     LinearLayout linearLayout;
     EditText etSearchTobacco;
     Criteria cri = new Criteria();
@@ -78,6 +81,7 @@ public class TobaccoListFragment extends Fragment {
         etSearchTobacco = root.findViewById(R.id.etSearchTobacco);
         btnMost = root.findViewById(R.id.btnMost);
         btnBest = root.findViewById(R.id.btnBest);
+        btnReset = root.findViewById(R.id.btnReset);
         setEvent();
     }
 
@@ -107,6 +111,17 @@ public class TobaccoListFragment extends Fragment {
 
             }
         });
+        btnReset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                spBrand.setSelection(0);
+                spCountry.setSelection(0);
+                spType.setSelection(0);
+                etSearchTobacco.setText("");
+                cri = new Criteria();
+                search();
+            }
+        });
         btnMost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -117,7 +132,7 @@ public class TobaccoListFragment extends Fragment {
         btnBest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cri.setOrder("");
+                cri.setOrder("BEST");
                 search();
             }
         });

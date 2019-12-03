@@ -15,7 +15,7 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 @SuppressWarnings("serial")
-public class TobaccoVO implements Serializable,Comparable  {        //담배
+public class TobaccoVO implements Serializable  {        //담배
     private Long tobaccoId;                //담배고유번호
     private String tobaccoName;            //담배이름
     @Nullable
@@ -128,9 +128,4 @@ public class TobaccoVO implements Serializable,Comparable  {        //담배
         return vo;
     }
 
-    @Override
-    public int compareTo(Object o) {
-        TobaccoVO vo = (TobaccoVO)o;
-        return vo.getCommentCnt()>this.getCommentCnt()? 1:vo.getCommentCnt() == this.getCommentCnt()?0:-1;
-    }
 }

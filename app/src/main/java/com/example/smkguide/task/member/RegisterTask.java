@@ -70,6 +70,10 @@ public class RegisterTask extends AsyncTask<MemberVO, Void, String> {
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
         if(s!=null&&s.length()!=0){
+            SharedPreferences pref = context.getSharedPreferences("user-info", context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = pref.edit();
+            editor.remove("token");
+            editor.commit();
             Fragment fg = HomeFragment.newInstance();
             FragmentTransaction childFt = maneger.beginTransaction();
             if (!fg.isAdded()) {
@@ -77,6 +81,7 @@ public class RegisterTask extends AsyncTask<MemberVO, Void, String> {
                 childFt.addToBackStack(null);
                 childFt.commit();
             }
+            Toast.makeText(context,"가입하였습니다.", Toast.LENGTH_SHORT).show();
         }else{
             Toast.makeText(context,"이미 가입된 회원이거나 양식이 올바르지 못합니다.",Toast.LENGTH_LONG).show();
         }

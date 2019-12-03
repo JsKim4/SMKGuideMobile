@@ -24,6 +24,14 @@ public class MemberVO {
         } catch (JSONException e) {
         }
         try {
+            this.setAddress(jObject.getString("address"));
+        } catch (JSONException e) {
+        }
+        try {
+            this.setTelephone(jObject.getString("telephone"));
+        } catch (JSONException e) {
+        }
+        try {
             this.setEmail(jObject.getString("email"));
         } catch (JSONException e) {
         }

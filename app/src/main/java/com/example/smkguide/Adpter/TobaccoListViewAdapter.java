@@ -18,6 +18,7 @@ import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Locale;
 
 import lombok.NoArgsConstructor;
@@ -180,10 +181,31 @@ public class TobaccoListViewAdapter extends BaseAdapter {
     public void filterOrder(String order) {
         if(order==null)
             return;
-        if(order.equals("MOST"))
-            Collections.sort(list);
-       // else
-        //    filter(cri);
+        if(order.equals("MOST")){
+            Collections.sort(list, new Comparator<TobaccoVO>() {
+                @Override
+                public int compare(TobaccoVO s1, TobaccoVO s2) {
+                    if (s1.getCommentCnt() < s2.getCommentCnt()) {
+                        return 1;
+                    } else if (s1.getCommentCnt() > s2.getCommentCnt()) {
+                        return -1;
+                    }
+                    return 0;
+                }
+            });
+        }else if(order.equals("BEST")){
+            Collections.sort(list, new Comparator<TobaccoVO>() {
+                @Override
+                public int compare(TobaccoVO s1, TobaccoVO s2) {
+                    if (s1.getGradeSum() < s2.getGradeSum()) {
+                        return 1;
+                    } else if (s1.getGradeSum() > s2.getGradeSum()) {
+                        return -1;
+                    }
+                    return 0;
+                }
+            });
+        }
     }
 
 }

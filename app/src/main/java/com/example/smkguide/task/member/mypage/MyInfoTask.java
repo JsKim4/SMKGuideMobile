@@ -39,7 +39,7 @@ public class MyInfoTask extends AsyncTask<String, Void,MemberVO> {
     private Activity context;
     private View root;
     private String str, receiveMsg;
-    private final static String TaskURL = "http://ggi4111.cafe24.com/mobile/usarInfo";
+    private final static String TaskURL = "http://ggi4111.cafe24.com/mobile/userInfo";
 
     public MyInfoTask(Activity context, View root) {
         this.context = context;

@@ -21,6 +21,7 @@
                     android:layout_width="280dp"
                     android:layout_height="wrap_content"
                     android:hint=" ID"
+                    android:inputType="textEmailAddress"
                     android:layout_gravity="center"
                     android:padding="10dp"
                     android:textColor="#ffffff"
@@ -58,7 +59,7 @@
 
                 <EditText
                     android:id="@+id/edtRegisterTelephone"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:layout_width="280dp"
                     android:layout_height="wrap_content"
                     android:hint=" 전화번호"
@@ -93,6 +94,20 @@
                     android:layout_marginTop="20dp"
                     android:layout_gravity="center"
                     android:id="@+id/registerButton" />
+            <TextView
+                android:id="@+id/tvFailMsg"
+                android:layout_width="280dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginTop="80dp"
+                android:textSize="13dp"
+                android:padding="10dp"
+                android:textStyle="bold"
+                android:textColor="#FF2222"
+                android:background="@color/colorPrimary"
+                android:visibility="gone"
+                android:layout_marginBottom="50dp"
+                ></TextView>
         </LinearLayout>
     </FrameLayout>
 </LinearLayout>
