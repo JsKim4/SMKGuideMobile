@@ -31,7 +31,7 @@
                    android:textSize="8dp"
                    android:layout_gravity="center"
                    android:background="@drawable/most_btn_main"
-                   android:layout_marginRight="10dp" />
+                   android:layout_marginRight="8dp" />
 
                <Button
                    android:id="@+id/btnBest"
@@ -41,7 +41,7 @@
                    android:textSize="8dp"
                    android:layout_gravity="center"
                    android:background="@drawable/best_btn_main"
-                   android:layout_marginRight="15dp" />
+                   android:layout_marginRight="8dp" />
 
                <LinearLayout
                    android:layout_width="match_parent"
