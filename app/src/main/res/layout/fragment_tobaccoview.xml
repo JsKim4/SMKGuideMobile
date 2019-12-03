@@ -88,7 +88,7 @@
                                 android:text=" 원"
                                 android:textSize="16dp"
                                 android:textColor="@color/highlightColor"
-                                android:layout_marginRight="5dp"></TextView>
+                                android:layout_marginRight="10dp"></TextView>
                         </LinearLayout>
 
 
@@ -123,7 +123,7 @@
                                 android:text=" 개"
                                 android:textSize="16dp"
                                 android:textColor="@color/highlightColor"
-                                android:layout_marginRight="5dp"></TextView>
+                                android:layout_marginRight="10dp"></TextView>
                         </LinearLayout>
 
                         <LinearLayout
@@ -157,7 +157,7 @@
                                 android:text=" mg"
                                 android:textSize="16dp"
                                 android:textColor="@color/highlightColor"
-                                android:layout_marginRight="5dp"></TextView>
+                                android:layout_marginRight="10dp"></TextView>
                         </LinearLayout>
 
                         <LinearLayout
@@ -191,7 +191,7 @@
                                 android:text=" mg"
                                 android:textSize="16dp"
                                 android:textColor="@color/highlightColor"
-                                android:layout_marginRight="5dp"></TextView>
+                                android:layout_marginRight="10dp"></TextView>
                         </LinearLayout>
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -224,7 +224,7 @@
                                 android:text=" 점"
                                 android:textSize="16dp"
                                 android:textColor="@color/highlightColor"
-                                android:layout_marginRight="5dp"></TextView>
+                                android:layout_marginRight="10dp"></TextView>
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>

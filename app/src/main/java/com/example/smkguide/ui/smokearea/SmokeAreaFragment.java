@@ -386,7 +386,7 @@ public class SmokeAreaFragment extends Fragment implements OnMapReadyCallback,
 
 
         if (addresses == null || addresses.size() == 0) {
-            Toast.makeText(getActivity(), "주소 미발견", Toast.LENGTH_LONG).show();
+            //Toast.makeText(getActivity(), "주소 미발견", Toast.LENGTH_LONG).show();
             return "주소 미발견";
 
         } else {
