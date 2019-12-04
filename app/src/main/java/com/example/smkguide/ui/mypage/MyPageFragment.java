@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -62,6 +63,7 @@ public class MyPageFragment extends Fragment {
                     editor.remove("token");
                     editor.commit();
                     Navigation.findNavController(myFragment).navigate(R.id.nav_home);
+                    Toast.makeText(getContext(),"로그아웃 하였습니다.",Toast.LENGTH_LONG).show();
                 }
             });
             viewPager = myFragment.findViewById(R.id.viewPager);
@@ -120,7 +122,7 @@ public class MyPageFragment extends Fragment {
 
         adapter.addFragment(new LogFragment(), "LOG");
         adapter.addFragment(new CommentFragment(), "COMMENT");
-        adapter.addFragment(new LikeFragment(),"Grade");
+        adapter.addFragment(new GradeFragment(),"Grade");
 
         viewPager.setAdapter(adapter);
     }

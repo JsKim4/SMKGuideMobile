@@ -12,8 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.smkguide.R;
 import com.example.smkguide.task.member.mypage.MyTask;
 
-public class LikeFragment extends Fragment {
-    public LikeFragment() {
+public class GradeFragment extends Fragment {
+    public GradeFragment() {
 
     }
 
