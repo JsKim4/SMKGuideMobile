@@ -197,9 +197,15 @@ public class TobaccoListViewAdapter extends BaseAdapter {
             Collections.sort(list, new Comparator<TobaccoVO>() {
                 @Override
                 public int compare(TobaccoVO s1, TobaccoVO s2) {
-                    if (s1.getGradeSum() < s2.getGradeSum()) {
+                    if (s1.getGradeNum()==0 & s2.getGradeNum()==0)
+                        return 0;
+                    else if (s1.getGradeNum()==0 & s2.getGradeNum()!=0)
                         return 1;
-                    } else if (s1.getGradeSum() > s2.getGradeSum()) {
+                    else if (s1.getGradeNum()!=0 & s2.getGradeNum()==0)
+                        return -1;
+                    else if (s1.getGradeSum()/s1.getGradeNum() < s2.getGradeSum()/s2.getGradeNum()) {
+                        return 1;
+                    } else if (s1.getGradeSum()/s1.getGradeNum() > s2.getGradeSum()/s2.getGradeNum()) {
                         return -1;
                     }
                     return 0;

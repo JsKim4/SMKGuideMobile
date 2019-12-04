@@ -120,7 +120,7 @@ public class MyPageFragment extends Fragment {
 
         adapter.addFragment(new LogFragment(), "LOG");
         adapter.addFragment(new CommentFragment(), "COMMENT");
-        adapter.addFragment(new LikeFragment(),"LIKE");
+        adapter.addFragment(new LikeFragment(),"Grade");
 
         viewPager.setAdapter(adapter);
     }
