@@ -60,7 +60,7 @@ public class TobaccoListFragment extends Fragment {
     Fragment fragmentView;
     ListView tobaccoListView;
     Spinner spBrand, spType, spCountry;
-    Button btnMost, btnBest, btnReset, btnLogView;
+    Button btnMost, btnBest, btnReset;
     LinearLayout linearLayout;
     EditText etSearchTobacco;
     Criteria cri = new Criteria();
@@ -83,7 +83,6 @@ public class TobaccoListFragment extends Fragment {
         btnMost = root.findViewById(R.id.btnMost);
         btnBest = root.findViewById(R.id.btnBest);
         btnReset = root.findViewById(R.id.btnReset);
-        btnLogView = root.findViewById(R.id.btnLogVIew);
         setEvent();
     }
 
@@ -124,19 +123,7 @@ public class TobaccoListFragment extends Fragment {
                 search();
             }
         });
-        btnLogView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                fragmentView = SmokeLogChartFragment.newInstance();
-                FragmentTransaction childFt = getChildFragmentManager().beginTransaction();
-                if (!fragmentView.isAdded()) {
-                    childFt.replace(R.id.fragmentTobaccoList, fragmentView);
-                    childFt.addToBackStack(null);
-                    childFt.commit();
-                }
-            }
 
-        });
         btnMost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

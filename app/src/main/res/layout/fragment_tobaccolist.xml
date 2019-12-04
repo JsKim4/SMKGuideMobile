@@ -98,13 +98,6 @@
                    android:layout_height="match_parent"
                    android:layout_weight="1"
                    android:background="@drawable/spinner_component" />
-               <Button
-                   android:id="@+id/btnLogVIew"
-                   android:layout_width="35dp"
-                   android:layout_height="35dp"
-                   android:layout_gravity="center_vertical"
-                   android:layout_marginLeft="10dp"
-                   android:background="@drawable/ic_log_btn"></Button>
            </LinearLayout>
 
            <LinearLayout

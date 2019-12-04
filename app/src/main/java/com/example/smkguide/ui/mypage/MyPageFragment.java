@@ -12,6 +12,7 @@ import android.widget.Button;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.Navigation;
 import androidx.viewpager.widget.ViewPager;
 import com.example.smkguide.Adpter.SectionPagerAdapter;
@@ -24,10 +25,11 @@ import com.google.android.material.tabs.TabLayout;
 
 public class MyPageFragment extends Fragment {
 
+    Fragment fragmentView;
     View myFragment;
     ViewPager viewPager;
     TabLayout tabLayout;
-    Button btnLogout;
+    Button btnLogout,btnLogView;
     public static MyPageFragment newInstance(){
         return new MyPageFragment();
     }
@@ -65,6 +67,21 @@ public class MyPageFragment extends Fragment {
             viewPager = myFragment.findViewById(R.id.viewPager);
             tabLayout = myFragment.findViewById(R.id.tabLayout);
             Log.d("token",token);
+            btnLogView = myFragment.findViewById(R.id.btnLogVIew);
+
+            btnLogView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    fragmentView = SmokeLogChartFragment.newInstance();
+                    FragmentTransaction childFt = getChildFragmentManager().beginTransaction();
+                    if (!fragmentView.isAdded()) {
+                        childFt.replace(R.id.fragmentMyPage, fragmentView);
+                        childFt.addToBackStack(null);
+                        childFt.commit();
+                    }
+                }
+
+            });
         }
 
         return myFragment;
