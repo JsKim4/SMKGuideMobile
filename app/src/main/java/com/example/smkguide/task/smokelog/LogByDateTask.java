@@ -109,14 +109,14 @@ public class LogByDateTask extends AsyncTask<SearchDateBySmokelog,Void, ArrayLis
 
                     if(Integer.valueOf(cFrom.get(Calendar.YEAR)+""+(cFrom.get(Calendar.MONTH)+1)+""+(cFrom.get(Calendar.DATE)<10?"0"+cFrom.get(Calendar.DATE):cFrom.get(Calendar.DATE)))
                             .equals(Integer.valueOf(smokelog.getDate().replace("-","")))){
-                        smokelog.setDate(String.valueOf(i));
+                        smokelog.setDate(String.valueOf(cFrom.get(Calendar.DATE)));
                         list.add(smokelog);
                         j++;
                     }else
-                        list.add(new DateBySmokelog(String.valueOf(i),0));
+                        list.add(new DateBySmokelog(String.valueOf(cFrom.get(Calendar.DATE)),0));
                 }
-                for(;i<5;i++){
-                    list.add(new DateBySmokelog(String.valueOf(i),0));
+                for(;i<5;i++,cFrom.add(Calendar.DATE,1)){
+                    list.add(new DateBySmokelog(String.valueOf(cFrom.get(Calendar.DATE)),0));
                 }
                 return list;
             } else {
@@ -189,7 +189,7 @@ public class LogByDateTask extends AsyncTask<SearchDateBySmokelog,Void, ArrayLis
         }
         LineDataSet lineDataSet = new LineDataSet(entries, "개비수");
         lineDataSet.setLineWidth(2);
-        lineDataSet.setCircleRadius(6);
+        lineDataSet.setCircleRadius(4);
         lineDataSet.setCircleColor(Color.parseColor("#FFA1B4DC"));
         lineDataSet.setCircleColorHole(Color.BLUE);
         lineDataSet.setColor(Color.parseColor("#FFA1B4DC"));
@@ -204,7 +204,7 @@ public class LogByDateTask extends AsyncTask<SearchDateBySmokelog,Void, ArrayLis
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setTextColor(Color.BLACK);
         xAxis.enableGridDashedLine(8, 24, 0);
-
+        xAxis.setLabelCount(5,true);
         YAxis yLAxis = lineChart.getAxisLeft();
         yLAxis.setTextColor(Color.BLACK);
 
