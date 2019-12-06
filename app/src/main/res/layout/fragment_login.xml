@@ -62,6 +62,7 @@
                     android:layout_gravity="center"
                     android:padding="10dp"
                     android:textColor="#ffffff"
+                    android:inputType="textEmailAddress"
                     android:textColorHint="#ffffff"
                     android:drawableLeft="@drawable/ic_lock_white"
                     android:layout_marginTop="50dp"
