@@ -10,6 +10,7 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.Navigation;
 
 import com.example.smkguide.Adpter.PaginationViewAdapter;
 import com.example.smkguide.R;
@@ -84,14 +85,15 @@ public class LoginTask extends AsyncTask<MemberVO, Void, String> {
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
         if(s!=null&&s.length()!=0){
-            Fragment fg = HomeFragment.newInstance();
-            FragmentTransaction childFt = maneger.beginTransaction();
-            if (!fg.isAdded()) {
-                childFt.replace(R.id.fragment, fg);
-                childFt.addToBackStack(null);
-                childFt.commit();
+            Navigation.findNavController(root).navigate(R.id.nav_home);
+            //Fragment fg = HomeFragment.newInstance();
+            //FragmentTransaction childFt = maneger.beginTransaction();
+            //if (!fg.isAdded()) {
+              //  childFt.replace(R.id.fragment, fg);
+                //childFt.addToBackStack(null);
+              //  childFt.commit();
                 Toast.makeText(context, "로그인 하였습니다.",Toast.LENGTH_LONG).show();
-            }
+            //}
         }else{
             Toast.makeText(context,"로그인 정보가 일치하지 않습니다",Toast.LENGTH_LONG).show();
         }
