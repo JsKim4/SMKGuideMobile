@@ -78,7 +78,6 @@ public class ComponentTask extends AsyncTask<String,Void, ArrayList<ComponentVO>
 
 
         }catch(Exception e){
-            Log.d("error","error");
             e.printStackTrace();
         }
         return null;
