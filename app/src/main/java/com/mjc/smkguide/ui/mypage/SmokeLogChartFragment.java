@@ -11,6 +11,8 @@ import com.mjc.smkguide.R;
 import com.mjc.smkguide.domain.SearchDateBySmokelog;
 import com.mjc.smkguide.task.smokelog.LogByDateTask;
 
+import java.util.Calendar;
+
 public class SmokeLogChartFragment extends Fragment {
     public static SmokeLogChartFragment newInstance(){
         return new SmokeLogChartFragment();
@@ -28,8 +30,9 @@ public class SmokeLogChartFragment extends Fragment {
         searchDateBySmokelog = new SearchDateBySmokelog();
         java.util.Calendar cal = java.util.Calendar.getInstance();
         searchDateBySmokelog.setDateFormat("%25Y-%25m-%25d");
-        searchDateBySmokelog.setEndDate(cal.get(cal.YEAR)+"-"+(cal.get(cal.MONTH)+1)+"-"+cal.getActualMaximum(cal.DAY_OF_MONTH));
         searchDateBySmokelog.setStartDate(cal.get(cal.YEAR)+"-"+(cal.get(cal.MONTH)+1)+"-"+cal.getActualMinimum(cal.DAY_OF_MONTH));
+        cal.add(Calendar.MONTH,1);
+        searchDateBySmokelog.setEndDate(cal.get(cal.YEAR)+"-"+(cal.get(cal.MONTH)==11?1:cal.get(cal.MONTH)+1)+"-"+cal.getActualMinimum(cal.DAY_OF_MONTH));
         LogByDateTask task = new LogByDateTask(getActivity(),root);
         task.execute(searchDateBySmokelog);
         return root;

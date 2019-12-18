@@ -33,7 +33,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="SMK Guide"
+                    android:text="@string/app_name"
                     android:textColor="#ffffff"
                     android:textSize="23dp"
                     android:textStyle="bold"

@@ -1,6 +1,7 @@
 package com.mjc.smkguide.task.smokelog;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.view.View;
@@ -15,15 +16,18 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class AddSmokelogTask extends AsyncTask<SmokelogVO, Void, Void> {
-    private Activity context;
+    private Context context;
     private View root;
     private String str, receiveMsg;
     private final static String LoginURL = "http://ggi4111.cafe24.com/mobile/smokelog/new";
 
 
-    public AddSmokelogTask(Activity context, View root) {
+    public AddSmokelogTask(Context context, View root) {
         this.context = context;
         this.root = root;
+    }
+
+    public AddSmokelogTask() {
     }
 
     @Override
@@ -55,6 +59,8 @@ public class AddSmokelogTask extends AsyncTask<SmokelogVO, Void, Void> {
     @Override
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
-        Toast.makeText(context,"흡연 로그가 추가되었습니다",Toast.LENGTH_LONG).show();
+        if(context!=null){
+            Toast.makeText(context,"흡연 로그가 추가되었습니다",Toast.LENGTH_LONG).show();
+        }
     }
 }

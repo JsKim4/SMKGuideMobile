@@ -80,8 +80,9 @@
                 android:id="@+id/btnViewType"
                 android:layout_gravity="center"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="누적으로 보기"></Button>
+                android:layout_height="30dp"
+                android:text="누적으로 보기"
+                android:background="@drawable/btn_chart_box"></Button>
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
@@ -94,8 +95,9 @@
         android:layout_marginBottom="10dp">
         <Button
             android:id="@+id/btnPrev"
-            android:layout_width="35dp"
+            android:layout_width="16dp"
             android:layout_height="match_parent"
+            android:background="@drawable/btn_chart_box"
             android:text="Prev"></Button>
 
         <com.github.mikephil.charting.charts.LineChart
@@ -107,8 +109,9 @@
 
         <Button
             android:id="@+id/btnNext"
-            android:layout_width="35dp"
+            android:layout_width="16dp"
             android:layout_height="match_parent"
+            android:background="@drawable/btn_chart_box"
             android:text="Next"></Button>
     </LinearLayout>
 </LinearLayout>

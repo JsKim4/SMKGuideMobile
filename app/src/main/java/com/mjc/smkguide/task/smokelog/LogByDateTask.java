@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.mjc.smkguide.Adpter.LogMarkerView;
 import com.mjc.smkguide.R;
 import com.mjc.smkguide.domain.DateBySmokelog;
 import com.mjc.smkguide.domain.MemberVO;
@@ -53,7 +54,6 @@ public class LogByDateTask extends AsyncTask<SearchDateBySmokelog, Void, ArrayLi
     private boolean status=false;
     public LogByDateTask(Activity context, View root) {
         this.context = context;
-
         this.root = root;
     }
 
@@ -71,6 +71,7 @@ public class LogByDateTask extends AsyncTask<SearchDateBySmokelog, Void, ArrayLi
             OutputStream os = conn.getOutputStream();
             MemberVO vo = new MemberVO();
             vo.setToken(pref.getString("token", null));
+            status = pref.getBoolean("chartStatus",false);
             os.write(vo.tokenToJson().toString().getBytes("UTF-8"));
             os.flush();
             os.close();
@@ -104,6 +105,7 @@ public class LogByDateTask extends AsyncTask<SearchDateBySmokelog, Void, ArrayLi
                 Calendar cTo = Calendar.getInstance();
                 cTo.setTime(to);
                 for (; cFrom.compareTo(cTo) != 0; cFrom.add(Calendar.DATE, 1)) {
+                    Log.d("dateAdd",String.valueOf(cFrom.get(Calendar.DATE)));
                     if (j < array.length()) {
                         JSONObject object = array.getJSONObject(j);
                         DateBySmokelog smokelog = new DateBySmokelog(object);
@@ -157,19 +159,10 @@ public class LogByDateTask extends AsyncTask<SearchDateBySmokelog, Void, ArrayLi
         btnPrev.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                java.util.Calendar cal = java.util.Calendar.getInstance();
-                SEARCH_DATE.setDateFormat("%25Y-%25m-%25d");
-                SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
-                Date endDate = null;
-                try {
-                    endDate = transFormat.parse(SEARCH_DATE.getStartDate());
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-                cal.setTime(endDate);
-                cal.add(Calendar.DATE, -1);
-                SEARCH_DATE.setEndDate(cal.get(cal.YEAR) + "-" + (cal.get(cal.MONTH) + 1) + "-" + cal.getActualMaximum(cal.DAY_OF_MONTH));
-                SEARCH_DATE.setStartDate(cal.get(cal.YEAR) + "-" + (cal.get(cal.MONTH) + 1) + "-" + cal.getActualMinimum(cal.DAY_OF_MONTH));
+                Calendar cal = getCalendarDate(Calendar.MONTH,-1);
+                SEARCH_DATE.setStartDate(cal.get(cal.YEAR)+"-"+(cal.get(cal.MONTH)+1)+"-"+cal.getActualMinimum(cal.DAY_OF_MONTH));
+                cal.add(Calendar.MONTH,1);
+                SEARCH_DATE.setEndDate(cal.get(cal.YEAR)+"-"+(cal.get(cal.MONTH)+1)+"-"+cal.getActualMinimum(cal.DAY_OF_MONTH));
                 LogByDateTask task = new LogByDateTask(context, root);
                 task.execute(SEARCH_DATE);
             }
@@ -177,19 +170,10 @@ public class LogByDateTask extends AsyncTask<SearchDateBySmokelog, Void, ArrayLi
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                java.util.Calendar cal = java.util.Calendar.getInstance();
-                SEARCH_DATE.setDateFormat("%25Y-%25m-%25d");
-                SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
-                Date startDate = null;
-                try {
-                    startDate = transFormat.parse(SEARCH_DATE.getEndDate());
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-                cal.setTime(startDate);
-                cal.add(Calendar.DATE, +1);
-                SEARCH_DATE.setEndDate(cal.get(cal.YEAR) + "-" + (cal.get(cal.MONTH) + 1) + "-" + cal.getActualMaximum(cal.DAY_OF_MONTH));
-                SEARCH_DATE.setStartDate(cal.get(cal.YEAR) + "-" + (cal.get(cal.MONTH) + 1) + "-" + cal.getActualMinimum(cal.DAY_OF_MONTH));
+                Calendar cal = getCalendarDate(Calendar.MONTH,1);
+                SEARCH_DATE.setStartDate(cal.get(cal.YEAR)+"-"+(cal.get(cal.MONTH)+1)+"-"+cal.getActualMinimum(cal.DAY_OF_MONTH));
+                cal.add(Calendar.MONTH,1);
+                SEARCH_DATE.setEndDate(cal.get(cal.YEAR)+"-"+(cal.get(cal.MONTH)+1)+"-"+cal.getActualMinimum(cal.DAY_OF_MONTH));
                 LogByDateTask task = new LogByDateTask(context, root);
                 task.execute(SEARCH_DATE);
             }
@@ -206,10 +190,20 @@ public class LogByDateTask extends AsyncTask<SearchDateBySmokelog, Void, ArrayLi
                     b.setText("일별로 보기");
                 }
                 status=!status;
+                SharedPreferences pref = context.getSharedPreferences("user-info", context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = pref.edit();
+                editor.remove("chartStatus");
+                editor.putBoolean("chartStatus", status);
+                editor.commit();
             }
         });
-        setChart(dateList);
-
+        if(!status){
+            setChart(dateList);
+            btnViewButton.setText("누적으로 보기");
+        }else{
+            setChart(accDateList);
+            btnViewButton.setText("일별로 보기");
+        }
     }
     public void setChart(ArrayList<DateBySmokelog> dateBySmokelogs){
         Log.d("dateBySmokelog",dateBySmokelogs.toString());
@@ -221,9 +215,9 @@ public class LogByDateTask extends AsyncTask<SearchDateBySmokelog, Void, ArrayLi
         LineDataSet lineDataSet = new LineDataSet(entries, "개비수");
         lineDataSet.setLineWidth(2);
         lineDataSet.setCircleRadius(4);
-        lineDataSet.setCircleColor(Color.parseColor("#FFA1B4DC"));
+        lineDataSet.setCircleColor(Color.parseColor("#000000"));
         lineDataSet.setCircleColorHole(Color.BLUE);
-        lineDataSet.setColor(Color.parseColor("#FFA1B4DC"));
+        lineDataSet.setColor(Color.parseColor("#000000"));
         lineDataSet.setDrawCircleHole(true);
         lineDataSet.setDrawCircles(true);
         lineDataSet.setDrawHorizontalHighlightIndicator(false);
@@ -236,7 +230,7 @@ public class LogByDateTask extends AsyncTask<SearchDateBySmokelog, Void, ArrayLi
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setTextColor(Color.BLACK);
         xAxis.enableGridDashedLine(8, 24, 0);
-        xAxis.setLabelCount(Integer.valueOf(SEARCH_DATE.getEndDate().substring(SEARCH_DATE.getEndDate().length() - 2)) + 2, true);
+        xAxis.setLabelCount(getCalendarDate(Calendar.MONTH,0).getActualMaximum(Calendar.DAY_OF_MONTH)/5, true);
         YAxis yLAxis = lineChart.getAxisLeft();
         yLAxis.setTextColor(Color.BLACK);
 
@@ -253,5 +247,22 @@ public class LogByDateTask extends AsyncTask<SearchDateBySmokelog, Void, ArrayLi
         lineChart.setDescription(description);
         lineChart.animateY(300, Easing.EasingOption.EaseInCubic);
         lineChart.invalidate();
+        LogMarkerView marker = new LogMarkerView(context,R.layout.log_marker_view);
+        marker.setChartView(lineChart);
+        lineChart.setMarker(marker);
+    }
+    public Calendar getCalendarDate(int type,int amount){
+        java.util.Calendar cal = java.util.Calendar.getInstance();
+        SEARCH_DATE.setDateFormat("%25Y-%25m-%25d");
+        SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = null;
+        try {
+            date = transFormat.parse(SEARCH_DATE.getStartDate());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        cal.setTime(date);
+        cal.add(type, amount);
+        return cal;
     }
 }

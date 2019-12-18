@@ -107,7 +107,18 @@ public class TobaccoViewFragment extends Fragment {
     }
 
     public void setEvent() {
-
+        tvTobaccoName.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                SharedPreferences pref = getActivity().getSharedPreferences("user-info", getActivity().MODE_PRIVATE);
+                SharedPreferences.Editor editor = pref.edit();
+                editor.remove("likeTobacco");
+                editor.putLong("likeTobacco", vo.getTobaccoId());
+                editor.commit();
+                Toast.makeText(getActivity(),vo.getTobaccoName()+"(이)가 대표담배로 설정되었습니다.",Toast.LENGTH_LONG).show();
+                return true;
+            }
+        });
 
 
         topLayout.setOnTouchListener(new View.OnTouchListener() {
